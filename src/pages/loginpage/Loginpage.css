@@ -1,0 +1,26 @@
+.loginpage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.loginpage-logo {
+    margin: 100px;
+    color: white;
+}
+.login-form {
+    background-color: white;
+    padding: 20px;
+    border-radius: 7px;
+}
+.login-button {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+.login-button button {
+    border: 0;
+    background-color: black;
+    color: white;
+    padding: 10px 20px 10px 20px;
+    border-radius: 7px;
+}

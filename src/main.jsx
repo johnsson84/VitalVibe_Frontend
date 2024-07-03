@@ -1,10 +1,10 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import App from './App.jsx'
+import VitalVibeApp from './VitalVibeApp'
 import './index.css'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <App />
+    <VitalVibeApp></VitalVibeApp>
   </React.StrictMode>,
 )
