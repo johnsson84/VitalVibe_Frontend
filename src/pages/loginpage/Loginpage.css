@@ -12,6 +12,12 @@
     padding: 20px;
     border-radius: 7px;
 }
+.new-user {
+    padding: 5px 0px 5px 0px;
+    font-size: 10px;
+    display: flex;
+    justify-content: space-between;
+}
 .login-button {
     display: flex;
     justify-content: center;

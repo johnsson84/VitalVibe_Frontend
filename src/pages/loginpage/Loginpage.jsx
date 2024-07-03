@@ -11,6 +11,15 @@ const Loginpage = () => {
             <form className='login-form'>
                 <input type="text" placeholder='Användarnamn'></input><br></br>
                 <input type="text" placeholder='Lösenord'></input><br></br>
+                <div className='new-user'>
+                    <div>
+                        <a href="">Registrera konto</a>
+                    </div>
+                    <div>
+                        <a href=''>Glömt<br></br> lösenord?</a>
+                    </div>
+                    
+                </div>
                 <div className='login-button'>
                     <button type="submit">Logga in</button>
                 </div>
