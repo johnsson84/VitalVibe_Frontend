@@ -9,8 +9,8 @@ const Loginpage = () => {
             </div>
             
             <form className='login-form'>
-                <input type="text" placeholder='Användarnamn'></input><br></br>
-                <input type="text" placeholder='Lösenord'></input><br></br>
+                <input className='username' type="text" placeholder='Användarnamn'></input><br></br>
+                <input className='password' type="text" placeholder='Lösenord'></input><br></br>
                 <div className='new-user'>
                     <div>
                         <a href="">Registrera konto</a>
