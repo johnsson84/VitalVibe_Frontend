@@ -1,8 +1,23 @@
 import "./Loginpage.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import logo from "../../assets/logo.png";
+import { useState } from "react";
+
 
 const Loginpage = () => {
+
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
+
+    
+
+
+
+
+
+
+
+
   return (
     <main className="loginpage">
       <div className="loginpage-logo">
@@ -11,7 +26,6 @@ const Loginpage = () => {
         </Link>
         <h1 className="logo-h1">VitalVibe</h1>
       </div>
-      
 
       <form className="login-form">
         <input
