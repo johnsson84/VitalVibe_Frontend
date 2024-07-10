@@ -41,13 +41,13 @@ const Sidebar = () => {
           {/** Maybe we change text to icons later? */}
 
           <Link className={panelStatus === 1 ? "sideLink" : "sideLinkHide"} to="/training">
-            Logga<br></br>träning
+            Logga träning
           </Link>
           <Link className={panelStatus === 1 ? "sideLink" : "sideLinkHide"} to="/food">
-            Logga<br></br>mat
+            Logga mat
           </Link>
           <Link className={panelStatus === 1 ? "sideLink" : "sideLinkHide"} to="/challenges">
-            Se<br></br>utmaningar
+            Utmaningar
           </Link>
           <Link className={panelStatus === 1 ? "sideLink" : "sideLinkHide"} to="/profile">
             Profil
