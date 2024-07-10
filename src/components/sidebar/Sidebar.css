@@ -1,0 +1,18 @@
+nav {
+    background-color: black;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid white;
+    height: 100%;
+}
+.sideLink {
+    text-align: center;
+    padding: 10px 5px 20px 5px;
+    text-decoration: none;
+    color: white;
+}
+.sideLink:hover {
+    background-color: white;
+    color: black;
+}
