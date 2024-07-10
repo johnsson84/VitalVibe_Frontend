@@ -1,25 +1,65 @@
 // STUFF
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 // CSS
-import './Sidebar.css';
+import "./Sidebar.css";
+import { useEffect, useState } from "react";
 
 const Sidebar = () => {
 
-    return (
-        <sidebar>
-            <nav>
+    const [panelStatus, setPanelStatus] = useState(1);
 
-                {/** Maybe we change text to icons later? */}
+    const handleArrowClick = () => {
+        if (panelStatus === 1) {
+            setPanelStatus(0)
+        } else {
+            setPanelStatus(1)
+        }
+    }
 
-                <Link className='sideLink' to="/training">Logga<br></br>träning</Link>
-                <Link className='sideLink' to="/food">Logga<br></br>mat</Link>
-                <Link className='sideLink' to="/challenges">Se<br></br>utmaningar</Link>
-                <Link className='sideLink' to="/profile">Profil</Link>
-                <Link className='sideLink' to="/about">Om oss</Link>
-            </nav>
-        </sidebar>
-    )
-}
+    const showPanel = () => {
+        if (panelStatus === 1 ) {
+            return (
+                <div className="sidebar-arrow">
+                    <button onClick={handleArrowClick}>&#8676;</button>
+                </div>
+                
+            )
+        } else {
+            return (
+                <div className="sidebar-arrow sidebar-arrow-smaller">
+                    <button onClick={handleArrowClick}>&#8677;</button>
+                </div>
+            )
+        }
+    }
+
+  return (
+    
+      <div className="side-main">
+        <nav>
+          {/** Maybe we change text to icons later? */}
+
+          <Link className={panelStatus === 1 ? "sideLink" : "sideLinkHide"} to="/training">
+            Logga<br></br>träning
+          </Link>
+          <Link className={panelStatus === 1 ? "sideLink" : "sideLinkHide"} to="/food">
+            Logga<br></br>mat
+          </Link>
+          <Link className={panelStatus === 1 ? "sideLink" : "sideLinkHide"} to="/challenges">
+            Se<br></br>utmaningar
+          </Link>
+          <Link className={panelStatus === 1 ? "sideLink" : "sideLinkHide"} to="/profile">
+            Profil
+          </Link>
+          <Link className={panelStatus === 1 ? "sideLink" : "sideLinkHide"} to="/about">
+            Om oss
+          </Link>
+        </nav>
+        {showPanel()}
+      </div>
+    
+  );
+};
 
 export default Sidebar;
