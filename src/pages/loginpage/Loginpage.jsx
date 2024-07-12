@@ -2,6 +2,7 @@ import "./Loginpage.css";
 import { Link, useNavigate } from "react-router-dom";
 import logo from "../../assets/logo.png";
 import { useContext, useState } from "react";
+import { Authentication } from "../../components/authentication/Authentication";
 
 
 const Loginpage = () => {
@@ -15,7 +16,21 @@ const Loginpage = () => {
     const {
       state: { user },
       dispacth
-    }= useContext()
+    }= useContext(Authentication)
+
+    const handleSubmit = async (e) => {
+      e.preventDefault();
+
+      if (!username || !password && password != (data)) {
+        alert("Fill in username and password please")
+        return
+      }
+
+
+      try {
+        const {data} = await axios.post
+      }
+    }
 
 
 
