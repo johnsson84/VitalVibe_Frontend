@@ -1,0 +1,10 @@
+.trainingMain {
+    height: 100vh;
+}
+.trainingHeader {
+    height: 10%;
+}
+.training {
+    display: flex;
+    height: 90%;
+}
