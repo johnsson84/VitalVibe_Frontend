@@ -1,0 +1,43 @@
+.side-main {
+    display: flex;
+    flex-direction: column;
+    background-color: black;
+    border-right: 1px solid white;
+    height: 100%;
+}
+nav {
+    background-color: black;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+.sideLink {
+    text-align: center;
+    padding: 10px 10px 20px 10px;
+    text-decoration: none;
+    color: white;
+}
+.sideLink:hover {
+    background-color: white;
+    color: black;
+}
+.sideLinkHide {
+    display: none;
+}
+.sidebar-arrow {
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+}
+.sidebar-arrow-smaller {
+    padding: 0px;
+    padding-bottom: 5px;    
+}
+.sidebar-arrow button {
+    font-size: 2em;
+    padding: 10px;
+    border: none;
+    background-color: black;
+    color: white;
+}
