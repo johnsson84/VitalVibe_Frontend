@@ -59,3 +59,5 @@ const AuthProvider = ({Children}) => {
         </Authentication.Provider>
     )
 }  
+
+export {Authentication, AuthProvider}
