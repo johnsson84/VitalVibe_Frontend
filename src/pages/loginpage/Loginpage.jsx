@@ -1,16 +1,12 @@
 import "./Loginpage.css";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import logo from "../../assets/logo.png";
-import { useState } from "react";
+
 
 
 const Loginpage = () => {
 
-    const [username, setUsername] = useState("");
-    const [password, setPassword] = useState("");
-
     
-    const navigate = useNavigate
 
 
 
