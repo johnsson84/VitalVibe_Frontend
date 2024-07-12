@@ -10,7 +10,7 @@ const Loginpage = () => {
     const [password, setPassword] = useState("");
 
     
-
+    const navigate = useNavigate
 
 
 
