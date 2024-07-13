@@ -2,9 +2,9 @@ import { createContext } from "react";
 
 const Login = createContext();
 
-const LoginProvider = ({ children, username, password }) => {
+export const LoginProvider = ({ children, username, password }) => {
   // this is the login method, and i will call it with login("username, "password)
-  const login = async (username, password) => {
+  const logIn = async (username, password) => {
     const loginData = {
       username: `${username}`,
       password: `${password}`,
@@ -12,7 +12,7 @@ const LoginProvider = ({ children, username, password }) => {
 
     const options = {
       method: "POST",
-      header: {
+      headers: {
         "Content-Type": "application/json",
       },
       credentials: "include",
@@ -40,7 +40,7 @@ const LoginProvider = ({ children, username, password }) => {
   };
 
   return (
-    <Login.Provider value={{ login, username, password }}>
+    <Login.Provider value={{ logIn, username, password }}>
       {children}
     </Login.Provider>
   );

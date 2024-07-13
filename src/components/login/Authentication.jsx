@@ -1,4 +1,4 @@
-import { useEffect, useReducer, createContext, Children } from "react";
+import { useEffect, useReducer, createContext } from "react";
 
 // this is the global initial state
 const initialState = {
