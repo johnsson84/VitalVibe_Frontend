@@ -22,11 +22,11 @@ const rootReducer = (state, action) => {
 const Authentication = createContext();
 //creating a provider for the context
 
-const AuthProvider = ({ Children }) => {
-  const [state, dispacth] = useReducer(rootReducer, initialState);
+const AuthProvider = ({ children }) => {
+  const [state, dispatch] = useReducer(rootReducer, initialState);
 
   useEffect(() => {
-    dispacth({
+    dispatch({
       type: "LOGIN",
       payload: JSON.stringify(window.localStorage.getItem("user")),
     });
@@ -48,8 +48,8 @@ const AuthProvider = ({ Children }) => {
   };
 
   return (
-    <Authentication.Provider value={{ state, dispacth, logout }}>
-      {Children}
+    <Authentication.Provider value={{ state, dispatch, logout }}>
+      {children}
     </Authentication.Provider>
   );
 };

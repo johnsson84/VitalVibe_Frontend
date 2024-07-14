@@ -64,7 +64,7 @@
            <Link to="">
              <img src={logo} className="logo" alt="VitalVibe" />
            </Link>
-           <h1 className="logo-h1">VitalVibe</h1>
+           {/* <h1 className="logo-h1">VitalVibe</h1> */}
          </div>
 
          <form className="login-form">
@@ -72,16 +72,16 @@
              className="username"
              type="text"
              placeholder="Användarnamn"
-            //  value={username}
-            //  onChange={(e) => setUsername(e.target.value)}
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
            ></input>
            <br></br>
            <input
              className="password"
              type="text"
              placeholder="Lösenord"
-            //  value={password}
-            //  onChange={(e) => setPassword(e.target.value)}
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
            ></input>
 
            <br></br>
@@ -96,7 +96,7 @@
              </div>
            </div>
            <div className="login-button">
-             <button type="submit">Logga in</button>
+             <button type="submit" onClick={handleSubmit}>Logga in</button>
            </div>
          </form>
        </main>
