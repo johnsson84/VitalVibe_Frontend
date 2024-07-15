@@ -59,7 +59,7 @@ const Loginpage = () => {
     <>
       <main className="loginpage">
         <div className="loginpage-logo">
-          <Link to="">
+          <Link to="/login">
             <img src={logo} className="logo" alt="VitalVibe" />
           </Link>
         </div>
@@ -84,17 +84,15 @@ const Loginpage = () => {
           <br></br>
           <div className="new-user">
             <div>
-              <Link to="register">
-                <a className="register" href="">
+              <Link className="register" to="register">Regristrera konto
+                {/* <a className="register" href="">
                   Registrera konto
-                </a>
+                </a> */}
               </Link>
             </div>
             <div>
-              <Link to="forgot-password">
-                <a className="forgot-password" href="">
-                  Glömt lösenord?
-                </a>
+              <Link className="forgot-password" to="forgot-password">Glömt lösenord?
+                {/* <a className="forgot-password" href="">Glömt lösenord?</a> */}
               </Link>
             </div>
           </div>
