@@ -48,7 +48,7 @@
 
        //this will redirect the user to home page
 
-       await navigate("/");
+       await navigate("/home");
        window.location.reload();
      } catch (err) {
        console.log(
@@ -87,12 +87,12 @@
            <br></br>
            <div className="new-user">
              <div>
-               <a href="">Registrera konto</a>
+               <Link to="register"><a className="register" href="">Registrera konto</a></Link>
              </div>
              <div>
-               <a href="">
-                 Glömt<br></br> lösenord?
-               </a>
+               <Link to="forgot-password"><a className="forgot-password" href="">
+                 Glömt lösenord?
+               </a></Link>
              </div>
            </div>
            <div className="login-button">

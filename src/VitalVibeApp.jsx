@@ -18,6 +18,8 @@ function VitalVibeApp() {
           <BrowserRouter>
             <Routes>
               <Route path="/login" element={<Loginpage />}></Route>
+              {/* <Route path="/register" element={<RegisterPage />}></Route> */}
+              {/* <Route path="forgot-password" element={<ForgotPasswordPage />}></Route> */}
               <Route path="/training" element={<TrainingPage />}></Route>
             </Routes>
           </BrowserRouter>
