@@ -51,7 +51,11 @@ const Loginpage = () => {
       await navigate("/home");
       window.location.reload();
     } catch (err) {
-      alert("Lösenordet eller användarnamnet du har angivit är felaktigt");
+      if (err.response && err.response.data && err.response.data.message) {
+        alert(err.response.data.message);
+      } else {
+        alert("Lösenordet eller användarnamnet du har angivit är felaktigt");
+      }
     }
   };
 
