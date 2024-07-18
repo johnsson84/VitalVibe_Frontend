@@ -1,14 +1,16 @@
 import "./Loginpage.css";
-import { Link, useNavigate } from "react-router-dom";
 import logo from "../../assets/logo.png";
+import Alert from "../../components/alert/Alert.jsx"
+import { Link, useNavigate } from "react-router-dom";
 import { useState, useContext } from "react";
 import { Authentication } from "../../components/login/Authentication.jsx";
 import axios from "axios";
 
+
 const Loginpage = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-
+  const [errorMessage, setErrorMessage] = useState(null);
   const navigate = useNavigate();
 
   const {
@@ -16,11 +18,15 @@ const Loginpage = () => {
     dispatch,
   } = useContext(Authentication);
 
+
+
+
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (!username || (!password && password != data)) {
-      alert("Fyll i ditt användarnamn och lösenord");
+      setErrorMessage("Fyll i ditt användarnamn och lösenord");
       return;
     }
 
@@ -52,11 +58,15 @@ const Loginpage = () => {
       window.location.reload();
     } catch (err) {
       if (err.response && err.response.data && err.response.data.message) {
-        alert(err.response.data.message);
+        setErrorMessage(err.response.data.message);
       } else {
-        alert("Lösenordet eller användarnamnet du har angivit är felaktigt");
+        // setErrorMessage(error.response.data.message);
+          setErrorMessage("Lösenordet eller användarnamnet du har angivit är felaktigt");
       }
     }
+  };
+  const closeAlert = () => {
+    setErrorMessage(null);
   };
 
   return (
@@ -89,14 +99,10 @@ const Loginpage = () => {
           <div className="new-user">
             <div>
               <Link className="register" to="register">Regristrera konto
-                {/* <a className="register" href="">
-                  Registrera konto
-                </a> */}
               </Link>
             </div>
             <div>
               <Link className="forgot-password" to="forgot-password">Glömt lösenord?
-                {/* <a className="forgot-password" href="">Glömt lösenord?</a> */}
               </Link>
             </div>
           </div>
@@ -106,6 +112,7 @@ const Loginpage = () => {
             </button>
           </div>
         </form>
+        {errorMessage && <Alert alert={errorMessage} onClose={closeAlert} />}
       </main>
     </>
   );

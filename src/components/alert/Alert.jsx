@@ -1,14 +1,16 @@
-import "../alert/Alert.css"
+import "../alert/Alert.css";
 
-const Alert = ({alert, onClose }) => {
+const Alert = ({ alert, onClose }) => {
   return (
-  <div className="alert-container">
-    <div className="alert">
-        <p>{alert}</p>
-        <button onClick={onClose}>Close</button>
+    <div className="background-layer">
+      <div className="alert-container">
+        <div className="alert">
+          <p className="alert-p">{alert}</p>
+          <button onClick={onClose}>Försök igen</button>
+        </div>
+      </div>
     </div>
-  </div>
- )
-}
+  );
+};
 
 export default Alert;
