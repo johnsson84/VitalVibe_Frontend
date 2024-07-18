@@ -1,11 +1,10 @@
 import "./Loginpage.css";
 import logo from "../../assets/logo.png";
-import Alert from "../../components/alert/Alert.jsx"
+import Alert from "../../components/alert/Alert.jsx";
 import { Link, useNavigate } from "react-router-dom";
 import { useState, useContext } from "react";
 import { Authentication } from "../../components/login/Authentication.jsx";
 import axios from "axios";
-
 
 const Loginpage = () => {
   const [username, setUsername] = useState("");
@@ -18,10 +17,6 @@ const Loginpage = () => {
     dispatch,
   } = useContext(Authentication);
 
-
-
-
-  
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -61,10 +56,14 @@ const Loginpage = () => {
         setErrorMessage(err.response.data.message);
       } else {
         // setErrorMessage(error.response.data.message);
-          setErrorMessage("Lösenordet eller användarnamnet du har angivit är felaktigt");
+        setErrorMessage(
+          "Lösenordet eller användarnamnet du har angivit är felaktigt"
+        );
       }
     }
   };
+  console.log(errorMessage);
+
   const closeAlert = () => {
     setErrorMessage(null);
   };
@@ -98,11 +97,13 @@ const Loginpage = () => {
           <br></br>
           <div className="new-user">
             <div>
-              <Link className="register" to="register">Regristrera konto
+              <Link className="register" to="register">
+                Regristrera konto
               </Link>
             </div>
             <div>
-              <Link className="forgot-password" to="forgot-password">Glömt lösenord?
+              <Link className="forgot-password" to="forgot-password">
+                Glömt lösenord?
               </Link>
             </div>
           </div>
