@@ -8,6 +8,19 @@ import "./TrainingPage.css";
 
 const TrainingPage = () => {
 
+    const [reviewValue, setReviewValue] = useState([]);
+  const [error, setError] = useState([]);
+
+  const createActivity = async (reviewValue) => {
+    try {
+      await axios.post(`${import.meta.env.VITE_API_URL}/reviews/create`, reviewValue, {withCredentials: true})
+      console.log(reviewValue);
+    } catch (error) {
+      console.log("err: " + error);
+      setError(error);
+    }
+  };
+
     return (
         <main>
 
