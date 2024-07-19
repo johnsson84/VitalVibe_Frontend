@@ -6,7 +6,9 @@ const Alert = ({ alert, onClose }) => {
       <div className="alert-container">
         <div className="alert">
           <p className="alert-p">{alert}</p>
-          <button onClick={onClose}>Försök igen</button>
+          <button className="alert-button" onClick={onClose}>
+            Försök igen
+          </button>
         </div>
       </div>
     </div>

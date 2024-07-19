@@ -62,7 +62,6 @@ const Loginpage = () => {
       }
     }
   };
-  console.log(errorMessage);
 
   const closeAlert = () => {
     setErrorMessage(null);
