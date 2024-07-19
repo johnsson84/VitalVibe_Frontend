@@ -96,7 +96,7 @@ const Loginpage = () => {
           <br></br>
           <div className="new-user">
             <div>
-              <Link className="register" to="register">
+              <Link className="register" to="/register">
                 Regristrera konto
               </Link>
             </div>
