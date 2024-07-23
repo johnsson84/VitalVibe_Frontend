@@ -1,0 +1,37 @@
+.registerpage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.registerpage-logo {
+    margin: 100px 50px 50px 50px;
+}
+#personalinfo, #distance{
+    border: 1px solid rgb(167, 167, 167);
+    border-radius: 5px;
+    margin-bottom: 1rem;
+    height: 2rem;
+    text-align: center;
+    /* width: 100%; */
+}
+.age {
+    width: 12.3rem;
+    height: 2rem;
+    border: 1px solid rgb(167, 167, 167);
+    border-radius: 5px;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+.year-option {
+    
+}
+.profilepicture {
+    border: 1px solid rgb(167, 167, 167);
+    border-radius: 5px;
+    margin-bottom: 1rem;
+    height: 2rem;
+    text-align: center;
+    /* width: 100%; */
+}
+
