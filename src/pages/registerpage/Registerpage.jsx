@@ -34,11 +34,7 @@ const Registerpage = () => {
               <input type="number" id="personalinfo" className="age" placeholder="Ålder"/>
             </div>
 
-            <div className="register-btn-container">
-              <button className="register-btn" type="submit">
-                Skapa Konto
-              </button>
-            </div>
+            
 
             <div className="form-subcontainer-2">
               <br />
@@ -63,7 +59,13 @@ const Registerpage = () => {
               <input type="number" id="distance" className="42" placeholder="Bästa 42km"
               />
             </div>
+            <div className="register-btn-container">
+              <button className="register-btn" type="submit">
+                Skapa Konto
+              </button>
+            </div>
           </form>
+          
         </div>
       </main>
     </>
