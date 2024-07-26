@@ -5,17 +5,20 @@ import { useContext, useState } from "react";
 
 import { ActivityContext } from "../../pages/trainingPage/TrainingContext";
 
-
 const AddTraining = () => {
-
   const { addActivity } = useContext(ActivityContext);
-  
+
+  const [loggedInUserId, setLoggedInUserId] = useState(
+    localStorage.getItem("loggedInUserId")
+  );
+
   const [activity, setActivity] = useState({
-    activity: "",
+    userId: loggedInUserId,
+    activityName: "",
     distance: "",
-    time: "",
-    calories: "",
     mood: "",
+    calories: "",
+    time: "",
   });
 
   const handleActivity = (e) => {
@@ -33,7 +36,7 @@ const AddTraining = () => {
     console.log("Activity added, check database!");
 
     setActivity({
-      activity: "",
+      activityName: "",
       distance: "",
       time: "",
       calories: "",
@@ -47,23 +50,23 @@ const AddTraining = () => {
       <section>
         <p>Activity:</p>
         <select
-          name="activity"
+          name="activityName"
           placeholder="activity"
-          value={activity.activity}
+          value={activity.activityName}
           required
           onChange={handleActivity}
           className="chooseActivity"
         >
-          <option value="">Choose Activity</option>
-          <option value="running">Running</option>
-          <option value="walking">Walking</option>
-          <option value="biking">Biking</option>
+          <option  value="">Choose Activity</option>
+          <option  value="running">Running</option>
+          <option  value="walking">Walking</option>
+          <option  value="biking">Biking</option>
         </select>
       </section>
       <section>
         <p>Time:</p>
         <input
-          type="text"
+          type="number"
           name="time"
           value={activity.time}
           required
@@ -72,7 +75,7 @@ const AddTraining = () => {
         />
         <p>Distance:</p>
         <input
-          type="text"
+          type="number"
           name="distance"
           value={activity.distance}
           required
@@ -81,7 +84,7 @@ const AddTraining = () => {
         />
         <p>Calories:</p>
         <input
-          type="text"
+          type="number"
           name="calories"
           value={activity.calories}
           required
@@ -98,15 +101,15 @@ const AddTraining = () => {
           onChange={handleActivity}
           className="chooseMood"
         >
-          <option value="">Choose Mood</option>
-          <option value="GOOD">Bad</option>
-          <option value="AVERAGE">Average</option>
-          <option value="GOOD">Good</option>
-          <option value="VERYGOOD">Very Good</option>
+          <option  value="">Choose Mood</option>
+          <option  value="BAD">Bad</option>
+          <option  value="AVERAGE">Average</option>
+          <option  value="GOOD">Good</option>
+          <option  value="VERYGOOD">Very Good</option>
         </select>
       </section>
 
-      <button type="button" onClick={handlePublish}>
+      <button type="button" className="publishButton" onClick={handlePublish}>
         PUBLISH
       </button>
     </div>

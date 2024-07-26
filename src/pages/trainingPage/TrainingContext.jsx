@@ -14,7 +14,12 @@ const ActivityProvider = ({ children }) => {
       credentials: "include",
 
       body: JSON.stringify({
-        acitvity,
+        userId: `${acitvity.userId}`,
+        activityName: `${acitvity.activityName}`,
+        distance: `${acitvity.distance}`,
+        time: `${acitvity.time}`,
+        calories: `${acitvity.calories}`,
+        mood: `${acitvity.mood}`,
       }),
     };
 
@@ -23,6 +28,8 @@ const ActivityProvider = ({ children }) => {
         `${import.meta.env.VITE_API_URL}/activity/create`,
         activityOptions
       );
+      console.log(JSON.stringify(acitvity) + " activity");
+      console.log(activityOptions.body + " body");
       const data = await res.json();
       console.log(JSON.stringify(data + " data"));
     } catch (error) {

@@ -1,43 +1,58 @@
-.addTMain{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+.addTMain {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 
-    background-color: black;
-    height: 100vh;
-    width: 100vw;
-    text-align: center;
+  background-color: black;
+  height: 100vh;
+  width: 100vw;
+  text-align: center;
 }
 
-section{
-    margin: 1rem;
-    background-color: white;
-    color: black;
-    width: 90%;
-    max-width: 400px;
-    border-radius: 20px;
-    height: auto;
+section {
+  margin: 1rem;
+  background-color: white;
+  color: black;
+  width: 90%;
+  max-width: 400px;
+  border-radius: 20px;
+  height: auto;
 }
 
-section p{
-    margin-top: 1rem;
-    
+section p {
+  margin-top: 1rem;
 }
-section select{
-    margin-bottom: 1rem;
+section select {
+  margin-bottom: 1rem;
 }
 
-section input{
-    border-radius: 15px;
-    width: 50%;
+section input {
+  border-radius: 15px;
+  width: 50%;
 }
 
 select {
-    background-color: white;
-    border-radius: 15px;
-    width: 50%;
-    text-align: center;
-    color: gray;
+  border-radius: 15px;
+  width: 50%;
+  text-align: center;
+  background-color: white;
+}
 
+.optionOne{
+    background-color: blue;
+    color: red;
+}
+
+
+
+.publishButton {
+  background-color: #c7ff52;
+  color: black;
+  border-style: none;
+  border-radius: 15px;
+  height: 2rem;
+  width: 50%;
+  max-width: 200px;
+  margin-top: 1rem;
 }
