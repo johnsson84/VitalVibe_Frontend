@@ -18,9 +18,7 @@ const AddTraining = () => {
     setActivity({ ...activity, [name]: value });
   };
 
-  const handlePublish = (e) => {
-    
-  }
+  const handlePublish = (e) => {};
 
   return (
     <div className="addTMain">
@@ -39,6 +37,15 @@ const AddTraining = () => {
         </select>
       </section>
       <section>
+        <p>Time:</p>
+        <input type="text" name="time" id="time" />
+        <p>Distance:</p>
+        <input type="text" name="distance" id="distance" />
+        <p>Calories:</p>
+        <input type="text" name="calories" id="calories" />
+
+        
+
         <p>Mood:</p>
         <select
           name="mood"
@@ -54,7 +61,9 @@ const AddTraining = () => {
         </select>
       </section>
 
-      <button type="button" onClick={handlePublish}>PUBLISH</button>
+      <button type="button" onClick={handlePublish}>
+        PUBLISH
+      </button>
     </div>
   );
 };
