@@ -5,6 +5,7 @@ import { useContext, useState, createContext } from "react";
 const ActivityContext = createContext();
 
 const ActivityProvider = ({ children }) => {
+  const [message, setMessage] = useState([]);
   const addActivity = async (acitvity) => {
     var activityOptions = {
       method: "POST",
@@ -30,14 +31,32 @@ const ActivityProvider = ({ children }) => {
       );
 
       const data = await res.json();
+      //console.log(data.errors);
+      //setMessage(data.errors);
+
+      data.errors.map((item, index) => {
+        console.log(
+          `Item ${index + 1}: ${JSON.stringify(
+            item.field + " " + item.defaultMessage
+          )}`
+        );
+        setMessage(
+          
+            item.field + " " + item.defaultMessage
+        
+        );
+        return null;
+      });
     } catch (error) {
-      console.log(error + " <- error");
-      alert(error)
+      if (error) {
+        //setMessage(data[1].status);
+        //console.log(data);
+      }
     }
   };
 
   return (
-    <ActivityContext.Provider value={{ addActivity }}>
+    <ActivityContext.Provider value={{ addActivity, message }}>
       {children}
     </ActivityContext.Provider>
   );

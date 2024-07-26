@@ -1,16 +1,22 @@
 // CSS
 import "./AddTraining.css";
 
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 
 import { ActivityContext } from "../../pages/trainingPage/TrainingContext";
 
 const AddTraining = () => {
-  const { addActivity } = useContext(ActivityContext);
+  const { addActivity, message } = useContext(ActivityContext);
 
   const [loggedInUserId, setLoggedInUserId] = useState(
     localStorage.getItem("loggedInUserId")
   );
+
+  const [errorMessage, setErrorMessage] = useState("");
+
+  useEffect(() => {
+    setErrorMessage(message);
+  }, [message]);
 
   const [activity, setActivity] = useState({
     userId: loggedInUserId,
@@ -108,6 +114,10 @@ const AddTraining = () => {
       <button type="button" className="publishButton" onClick={handlePublish}>
         PUBLISH
       </button>
+
+      <div className="messageContainer">
+        <p>{errorMessage}</p>
+      </div>
     </div>
   );
 };

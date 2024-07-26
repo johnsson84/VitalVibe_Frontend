@@ -39,12 +39,10 @@ select {
   background-color: white;
 }
 
-.optionOne{
-    background-color: blue;
-    color: red;
+.optionOne {
+  background-color: blue;
+  color: red;
 }
-
-
 
 .publishButton {
   background-color: #c7ff52;
@@ -58,5 +56,23 @@ select {
 }
 
 .publishButton:hover {
-    background-color: lightgray;
+  background-color: lightgray;
+}
+
+.messageContainer {
+  height: auto;
+  width: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: start;
+  background-color: white;
+  border-radius: 15px;
+  margin-top: 1rem;
+  color: black;
+}
+
+.messageContainer p{
+    margin: 0.5rem;
 }
