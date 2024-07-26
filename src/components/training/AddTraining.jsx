@@ -29,11 +29,8 @@ const AddTraining = () => {
 
   const handlePublish = (e) => {
     e.preventDefault();
-    console.log(JSON.stringify(activity) + " this is the acitvity!");
 
     addActivity(activity);
-
-    console.log("Activity added, check database!");
 
     setActivity({
       activityName: "",
@@ -42,7 +39,6 @@ const AddTraining = () => {
       calories: "",
       mood: "",
     });
-    console.log(JSON.stringify(activity) + " this is the empty acitvity!");
   };
 
   return (
@@ -57,10 +53,10 @@ const AddTraining = () => {
           onChange={handleActivity}
           className="chooseActivity"
         >
-          <option  value="">Choose Activity</option>
-          <option  value="running">Running</option>
-          <option  value="walking">Walking</option>
-          <option  value="biking">Biking</option>
+          <option value="">Choose Activity</option>
+          <option value="running">Running</option>
+          <option value="walking">Walking</option>
+          <option value="biking">Biking</option>
         </select>
       </section>
       <section>
@@ -101,11 +97,11 @@ const AddTraining = () => {
           onChange={handleActivity}
           className="chooseMood"
         >
-          <option  value="">Choose Mood</option>
-          <option  value="BAD">Bad</option>
-          <option  value="AVERAGE">Average</option>
-          <option  value="GOOD">Good</option>
-          <option  value="VERYGOOD">Very Good</option>
+          <option value="">Choose Mood</option>
+          <option value="BAD">Bad</option>
+          <option value="AVERAGE">Average</option>
+          <option value="GOOD">Good</option>
+          <option value="VERYGOOD">Very Good</option>
         </select>
       </section>
 

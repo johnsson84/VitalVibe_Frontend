@@ -28,12 +28,11 @@ const ActivityProvider = ({ children }) => {
         `${import.meta.env.VITE_API_URL}/activity/create`,
         activityOptions
       );
-      console.log(JSON.stringify(acitvity) + " activity");
-      console.log(activityOptions.body + " body");
+
       const data = await res.json();
-      console.log(JSON.stringify(data + " data"));
     } catch (error) {
       console.log(error + " <- error");
+      alert(error)
     }
   };
 
