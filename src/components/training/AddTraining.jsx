@@ -18,7 +18,18 @@ const AddTraining = () => {
     setActivity({ ...activity, [name]: value });
   };
 
-  const handlePublish = (e) => {};
+  const handlePublish = (e) => {
+    e.preventDefault();
+    console.log(JSON.stringify(activity) + " this is the acitvity!");
+    setActivity({
+      activity: "",
+      distance: "",
+      time: "",
+      calories: "",
+      mood: "",
+    });
+    console.log(JSON.stringify(activity) + " this is the empty acitvity!");
+  };
 
   return (
     <div className="addTMain">
@@ -27,6 +38,8 @@ const AddTraining = () => {
         <select
           name="activity"
           placeholder="activity"
+          value={activity.activity}
+          required
           onChange={handleActivity}
           className="chooseActivity"
         >
@@ -38,18 +51,39 @@ const AddTraining = () => {
       </section>
       <section>
         <p>Time:</p>
-        <input type="text" name="time" id="time" />
+        <input
+          type="text"
+          name="time"
+          value={activity.time}
+          required
+          onChange={handleActivity}
+          id="time"
+        />
         <p>Distance:</p>
-        <input type="text" name="distance" id="distance" />
+        <input
+          type="text"
+          name="distance"
+          value={activity.distance}
+          required
+          onChange={handleActivity}
+          id="distance"
+        />
         <p>Calories:</p>
-        <input type="text" name="calories" id="calories" />
-
-        
+        <input
+          type="text"
+          name="calories"
+          value={activity.calories}
+          required
+          onChange={handleActivity}
+          id="calories"
+        />
 
         <p>Mood:</p>
         <select
           name="mood"
           placeholder="Mood"
+          value={activity.mood}
+          required
           onChange={handleActivity}
           className="chooseMood"
         >
