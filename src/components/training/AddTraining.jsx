@@ -1,9 +1,15 @@
 // CSS
 import "./AddTraining.css";
 
-import { useState } from "react";
+import { useContext, useState } from "react";
+
+import { ActivityContext } from "../../pages/trainingPage/TrainingContext";
+
 
 const AddTraining = () => {
+
+  const { addActivity } = useContext(ActivityContext);
+  
   const [activity, setActivity] = useState({
     activity: "",
     distance: "",
@@ -21,6 +27,11 @@ const AddTraining = () => {
   const handlePublish = (e) => {
     e.preventDefault();
     console.log(JSON.stringify(activity) + " this is the acitvity!");
+
+    addActivity(activity);
+
+    console.log("Activity added, check database!");
+
     setActivity({
       activity: "",
       distance: "",
