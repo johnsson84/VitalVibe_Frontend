@@ -37,7 +37,8 @@
 #personalinfo,
 #distance,
 .register-username,
-.register-password {
+.register-password,
+.confirmpassword {
   border: 1px solid rgb(167, 167, 167);
   border-radius: 5px;
   margin-bottom: 1rem;

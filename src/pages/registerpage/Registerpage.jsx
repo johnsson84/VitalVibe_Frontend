@@ -8,17 +8,17 @@ const Registerpage = () => {
   const [registerData, setRegisterData] = useState({
     username: "",
     password: "",
-    confirmPassword: "",
+    confirmpassword: "",
     email: "",
     firstname: "",
     lastname: "",
     age: "",
     vo2max: "",
-    distance5km: "",
-    distance10km: "",
-    distance15km: "",
-    distance21km: "",
-    distance42km: "",
+    fivekm: "",
+    tenkm: "",
+    fifteenkm: "",
+    halfmarathon: "",
+    marathon: "",
   });
 
   const handleInputChange = (e) => {
@@ -32,7 +32,7 @@ const Registerpage = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (registerData.password !== registerData.confirmPassword) {
+    if (registerData.password !== registerData.confirmpassword) {
       alert("the given password did not match")
       return;
     }
@@ -68,7 +68,7 @@ const Registerpage = () => {
               <br />
               <input
                 type="password"
-                className="confirmPassword"
+                className="confirmpassword"
                 placeholder="Bekräfta lösenord"
               />
               <br />
@@ -102,6 +102,7 @@ const Registerpage = () => {
             </div>
 
             <div className="form-subcontainer-2">
+              <input type="file" className="profilepic" placeholder="Profil bild" />
               <br />
               <input
                 type="number"
@@ -109,41 +110,39 @@ const Registerpage = () => {
                 className="vo2max"
                 placeholder="Vo2max"
               />
-              {/* <br />
-            <input type="image" className="profilepicture" src="" alt="profil bild"/> */}
               <br />
               <input
                 type="number"
                 id="distance"
-                className="distance5km"
+                className="fivekm"
                 placeholder="Bästa 5km"
               />
               <br />
               <input
                 type="number"
                 id="distance"
-                className="distance10km"
+                className="tenkm"
                 placeholder="Bästa 10km"
               />
               <br />
               <input
                 type="number"
                 id="distance"
-                className="distmance15km"
+                className="fifteenkm"
                 placeholder="Bästa 15km"
               />
               <br />
               <input
                 type="number"
                 id="distance"
-                className="distance21km"
+                className="halfmarathon"
                 placeholder="Bästa 21km"
               />
               <br />
               <input
                 type="number"
                 id="distance"
-                className="distance42km"
+                className="marathon"
                 placeholder="Bästa 42km"
               />
             </div>
