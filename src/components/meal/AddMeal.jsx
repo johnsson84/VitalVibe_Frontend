@@ -1,13 +1,73 @@
 // CSS
-import './AddMeal.css';
+import "./AddMeal.css";
+
+// react
+import React from "react";
+import { useState } from "react";
 
 const AddMeal = () => {
+  const [loggedInUserId, setLoggedInUserId] = useState(
+    localStorage.getItem("loggedInUserId")
+  );
 
-    return (
-        <>
-            <p>No meal yet...</p>
-        </>
-    )
-}
+  const [meal, newMeal] = useState({
+    userId: loggedInUserId,
+    mealType: "",
+    name: "",
+    amount: "",
+    calories: "",
+  });
+
+  const handleMeal = (e) => {
+    const name = e.target.name;
+    const value = e.target.value;
+    newMeal({ ...meal, [name]: value });
+  };
+
+  const handlePublish = (e) => {
+    e.preventDefault();
+
+    //addMeal(meal);    KOMMER VARA FETCH METOD (CONTEXT)
+
+    setActivity({
+      activityName: "",
+      distance: "",
+      time: "",
+      calories: "",
+      mood: "",
+    });
+  };
+
+  return (
+    <main className="addMealContainer">
+      <section>
+        <select
+          name="mealType"
+          placeholder="meal"
+          value={meal.mealType}
+          required
+          onChange={handleMeal}
+          className="chooseMealType"
+        >
+          <option value="">Måltidstyp:</option>
+          <option value="frukost">Frukost</option>
+          <option value="lunch">Lunch</option>
+          <option value="middag">Middag</option>
+          <option value="övrigt">Mellanmål</option>
+        </select>
+      </section>
+      <section>
+        <input type="text" placeholder="Måltid:"/>
+      </section>
+      <section>
+      <input type="number" placeholder="Antal:"/>
+      </section>
+      <section>
+        <input type="text" placeholder="Kalorier:"/>
+      </section>
+      <button  onClick={handlePublish}>PUBLISH</button>
+    </main>
+  );
+};
 
 export default AddMeal;
