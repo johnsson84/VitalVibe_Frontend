@@ -9,6 +9,7 @@ import { LoginProvider } from "./components/login/Login";
 // PAGES
 import Loginpage from "./pages/loginpage/Loginpage";
 import TrainingPage from "./pages/trainingPage/TrainingPage";
+import HomePage from "./pages/HomePage";
 
 function VitalVibeApp() {
   return (
@@ -21,6 +22,8 @@ function VitalVibeApp() {
               {/* <Route path="/register" element={<RegisterPage />}></Route> */}
               {/* <Route path="forgot-password" element={<ForgotPasswordPage />}></Route> */}
               <Route path="/training" element={<TrainingPage />}></Route>
+              <Route path="/home" element={<HomePage />}></Route>
+
             </Routes>
           </BrowserRouter>
         </LoginProvider>
