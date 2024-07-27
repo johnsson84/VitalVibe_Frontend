@@ -31,15 +31,8 @@ const ActivityProvider = ({ children }) => {
       );
 
       const data = await res.json();
-      //console.log(data.errors);
-      //setMessage(data.errors);
 
-      data.errors.map((item, index) => {
-        console.log(
-          `Item ${index + 1}: ${JSON.stringify(
-            item.field + " " + item.defaultMessage
-          )}`
-        );
+      data.errors.map((item) => {
         setMessage(
           
             item.field + " " + item.defaultMessage
@@ -47,6 +40,8 @@ const ActivityProvider = ({ children }) => {
         );
         return null;
       });
+
+      
     } catch (error) {
       if (error) {
         //setMessage(data[1].status);

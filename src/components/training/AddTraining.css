@@ -67,10 +67,10 @@ select {
   align-items: center;
   justify-content: center;
   text-align: start;
-  background-color: white;
+  background-color: black;
   border-radius: 15px;
   margin-top: 1rem;
-  color: black;
+  color: white;
 }
 
 .messageContainer p{
