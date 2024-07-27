@@ -1,0 +1,11 @@
+.mealMain {
+    height: 100vh;
+    width: auto;
+}
+.mealHeader {
+    height: 10%;
+}
+.meal {
+    display: flex;
+    height: 90%;
+}

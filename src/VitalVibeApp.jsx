@@ -10,6 +10,7 @@ import { LoginProvider } from "./components/login/Login";
 import Loginpage from "./pages/loginpage/Loginpage";
 import TrainingPage from "./pages/trainingPage/TrainingPage";
 import HomePage from "./pages/HomePage";
+import MealPage from "./pages/vitalMealPage/MealPage";
 
 function VitalVibeApp() {
   return (
@@ -23,7 +24,7 @@ function VitalVibeApp() {
               {/* <Route path="forgot-password" element={<ForgotPasswordPage />}></Route> */}
               <Route path="/training" element={<TrainingPage />}></Route>
               <Route path="/home" element={<HomePage />}></Route>
-
+              <Route path="/food" element={<MealPage />}></Route>
             </Routes>
           </BrowserRouter>
         </LoginProvider>
