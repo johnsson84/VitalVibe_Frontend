@@ -9,6 +9,7 @@ import "./TrainingPage.css";
 const TrainingPage = () => {
 
 
+
     return (
         <main>
 

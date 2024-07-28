@@ -2,20 +2,26 @@
 import "./VitalVibeApp.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
+
 //PROVIDERS
 import { AuthProvider } from "./components/login/Authentication";
 import { LoginProvider } from "./components/login/Login";
+import { ActivityProvider } from "./pages/trainingPage/TrainingContext";
+
 
 // PAGES
 import Loginpage from "./pages/loginpage/Loginpage";
 import TrainingPage from "./pages/trainingPage/TrainingPage";
 import HomePage from "./pages/HomePage";
 
+
 function VitalVibeApp() {
   return (
     <div className="vitalvibe">
+
       <AuthProvider>
         <LoginProvider>
+              <ActivityProvider>
           <BrowserRouter>
             <Routes>
               <Route path="/login" element={<Loginpage />}></Route>
@@ -26,8 +32,10 @@ function VitalVibeApp() {
 
             </Routes>
           </BrowserRouter>
+</ActivityProvider>
         </LoginProvider>
       </AuthProvider>
+
     </div>
   );
 }
