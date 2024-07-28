@@ -31,10 +31,10 @@ const AddMeal = () => {
 
     setActivity({
       activityName: "",
-      distance: "",
-      time: "",
+      mealType: "",
+      name: "",
+      amount: "",
       calories: "",
-      mood: "",
     });
   };
 
@@ -57,15 +57,15 @@ const AddMeal = () => {
         </select>
       </section>
       <section>
-        <input type="text" placeholder="Måltid:"/>
+        <input type="text" placeholder="Måltid:" />
       </section>
       <section>
-      <input type="number" placeholder="Antal:"/>
+        <input type="number" placeholder="Antal:" />
       </section>
       <section>
-        <input type="text" placeholder="Kalorier:"/>
+        <input type="text" placeholder="Kalorier:" />
       </section>
-      <button  onClick={handlePublish}>PUBLISH</button>
+      <button onClick={handlePublish}>PUBLISH</button>
     </main>
   );
 };
