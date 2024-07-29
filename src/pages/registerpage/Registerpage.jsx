@@ -5,23 +5,23 @@ import logo from "../../assets/logo.png";
 import { useEffect, useState } from "react";
 
 const Registerpage = () => {
-  const [imageLink, setImageLink] = useState("");
+  // const [imageLink, setImageLink] = useState("");
 
   const [registerData, setRegisterData] = useState({
     username: "",
     password: "",
     confirmpassword: "",
     email: "",
-    firstname: "",
-    lastname: "",
+    firstName: "",
+    lastName: "",
     age: "",
-    profilephoto: "",
+    // profilephoto: "",
     vo2max: "",
-    fivekm: "",
-    tenkm: "",
-    fifteenkm: "",
-    halfmarathon: "",
-    marathon: "",
+    // fivekm: "",
+    // tenkm: "",
+    // fifteenkm: "",
+    // halfmarathon: "",
+    // marathon: "",
   });
 
   const handleInputChange = (e) => {
@@ -32,27 +32,29 @@ const Registerpage = () => {
     });
   };
 
-  const saveImageLink = () => {
-    setRegisterData((prevData) => ({
-      ...prevData,
-      profilephoto: imageLink,
-    }));
-  };
+  // const saveImageLink = () => {
+  //   setRegisterData((prevData) => ({
+  //     ...prevData,
+  //     profilephoto: imageLink,
+  //   }));
+  // };
 
-  const handleSubmit = async (e, registerData) => {
+
+  // should be registerData after (e,) like this (e, registerData)
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (registerData.password !== registerData.confirmpassword) {
-      alert("the given password did not match");
-      return;
-    }
-    if (
-      (!Number,
-      isInteger(Number(registerData.age)) || Number(registerData.age) <= 0)
-    ) {
-      alert("Enter a valid age");
-      return;
-    }
+    // if (registerData.password !== registerData.confirmpassword) {
+    //   alert("the given password did not match");
+    //   return;
+    // }
+    // if (
+    //   (!Number,
+    //   isInteger(Number(registerData.age)) || Number(registerData.age) <= 0)
+    // ) {
+    //   alert("Enter a valid age");
+    //   return;
+    // }
 
     var options = {
       method: "POST",
@@ -88,7 +90,7 @@ const Registerpage = () => {
           </Link>
         </div>
         <div className="form-container">
-          <form className="form">
+          <form className="form" onSubmit={handleSubmit}>
             <div className="form-subcontainer-1">
               <br />
               <input
@@ -122,6 +124,7 @@ const Registerpage = () => {
                 type="email"
                 id="personalinfo"
                 className="email"
+                name="email"
                 value={registerData.email}
                 onChange={handleInputChange}
                 placeholder="E-mail"
@@ -130,7 +133,8 @@ const Registerpage = () => {
               <input
                 type="text"
                 id="personalinfo"
-                className="firstname"
+                className="firstName"
+                name="firstName"
                 value={registerData.firstname}
                 onChange={handleInputChange}
                 placeholder="Förnamn"
@@ -139,7 +143,8 @@ const Registerpage = () => {
               <input
                 type="text"
                 id="personalinfo"
-                className="lastname"
+                className="lastName"
+                name="lastName"
                 value={registerData.lastname}
                 onChange={handleInputChange}
                 placeholder="Efternamn"
@@ -149,6 +154,7 @@ const Registerpage = () => {
                 type="number"
                 id="personalinfo"
                 className="age"
+                name="age"
                 value={registerData.age}
                 onChange={handleInputChange}
                 placeholder="Ålder"
@@ -156,74 +162,80 @@ const Registerpage = () => {
             </div>
 
             <div className="form-subcontainer-2">
-              <input
+              {/* <input
                 type="text"
                 id="personalinfo"
                 className="profilephoto"
+                name="profilephoto"
                 value={registerData.profilephoto}
                 onChange={handleInputChange}
                 placeholder="Klistra in Profil bild"
-              />
+              /> */}
               <br />
               <input
                 type="number"
                 id="personalinfo"
                 className="vo2max"
+                name="vo2max"
                 value={registerData.vo2max}
                 onChange={handleInputChange}
                 placeholder="Vo2max"
               />
               <br />
-              <input
-                type="number"
+              {/* <input
+                type="text"
                 id="distance"
                 className="fivekm"
+                name="fivekm"
                 value={registerData.fivekm}
                 onChange={handleInputChange}
                 placeholder="Bästa 5km"
               />
               <br />
               <input
-                type="number"
+                type="text"
                 id="distance"
                 className="tenkm"
+                name="tenkm"
                 value={registerData.tenkm}
                 onChange={handleInputChange}
                 placeholder="Bästa 10km"
               />
               <br />
               <input
-                type="number"
+                type="text"
                 id="distance"
                 className="fifteenkm"
+                name="fifteenkm"
                 value={registerData.fifteenkm}
                 onChange={handleInputChange}
                 placeholder="Bästa 15km"
               />
               <br />
               <input
-                type="number"
+                type="text"
                 id="distance"
                 className="halfmarathon"
+                name="halfmarathon"
                 value={registerData.halfmarathon}
                 onChange={handleInputChange}
                 placeholder="Bästa 21km"
               />
               <br />
               <input
-                type="number"
+                type="text"
                 id="distance"
                 className="marathon"
+                name="marathon"
                 value={registerData.marathon}
                 onChange={handleInputChange}
                 placeholder="Bästa 42km"
-              />
+              /> */}
             </div>
             <div className="register-btn-container">
               <button
                 className="register-btn"
                 type="submit"
-                onSubmit={handleSubmit}
               >
                 Skapa Konto
               </button>
