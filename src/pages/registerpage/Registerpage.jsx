@@ -2,9 +2,11 @@
 import "../../pages/registerpage/Registerpage.css";
 import { Link } from "react-router-dom";
 import logo from "../../assets/logo.png";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const Registerpage = () => {
+  const [imageLink, setImageLink] = useState("");
+
   const [registerData, setRegisterData] = useState({
     username: "",
     password: "",
@@ -13,6 +15,7 @@ const Registerpage = () => {
     firstname: "",
     lastname: "",
     age: "",
+    profilephoto: "",
     vo2max: "",
     fivekm: "",
     tenkm: "",
@@ -22,25 +25,59 @@ const Registerpage = () => {
   });
 
   const handleInputChange = (e) => {
-    const [name, value] = e.target;
+    const { name, value } = e.target;
     setRegisterData({
       ...registerData,
       [name]: value,
     });
   };
 
-  const handleSubmit = (e) => {
+  const saveImageLink = () => {
+    setRegisterData((prevData) => ({
+      ...prevData,
+      profilephoto: imageLink,
+    }));
+  };
+
+  const handleSubmit = async (e, registerData) => {
     e.preventDefault();
 
     if (registerData.password !== registerData.confirmpassword) {
-      alert("the given password did not match")
+      alert("the given password did not match");
       return;
     }
-    if (!Number,isInteger(Number(registerData.age)) || Number(registerData.age) <= 0) {
-      alert("Enter a valid age")
+    if (
+      (!Number,
+      isInteger(Number(registerData.age)) || Number(registerData.age) <= 0)
+    ) {
+      alert("Enter a valid age");
       return;
     }
-  }
+
+    var options = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      credentials: "include",
+      body: JSON.stringify(registerData),
+    };
+
+    try {
+      const res = await fetch(
+        `${import.meta.env.VITE_API_URL}/auth/signup`,
+        options
+      );
+
+      if (res.status === 200) {
+        alert("regristrering ok");
+        // Here i want to redirect the user
+      }
+    } catch (err) {
+      console.log("Misslyckad regristrering:", err);
+      alert("gick ej att skapa anv'ndare");
+    }
+  };
 
   return (
     <>
@@ -57,18 +94,27 @@ const Registerpage = () => {
               <input
                 type="text"
                 className="register-username"
+                name="username"
+                value={registerData.username}
+                onChange={handleInputChange}
                 placeholder="Användarnamn"
               />
               <br />
               <input
                 type="password"
                 className="register-password"
+                name="password"
+                value={registerData.password}
+                onChange={handleInputChange}
                 placeholder="Lösenord"
               />
               <br />
               <input
                 type="password"
                 className="confirmpassword"
+                name="confirmpassword"
+                value={registerData.confirmpassword}
+                onChange={handleInputChange}
                 placeholder="Bekräfta lösenord"
               />
               <br />
@@ -76,6 +122,8 @@ const Registerpage = () => {
                 type="email"
                 id="personalinfo"
                 className="email"
+                value={registerData.email}
+                onChange={handleInputChange}
                 placeholder="E-mail"
               />
               <br />
@@ -83,6 +131,8 @@ const Registerpage = () => {
                 type="text"
                 id="personalinfo"
                 className="firstname"
+                value={registerData.firstname}
+                onChange={handleInputChange}
                 placeholder="Förnamn"
               />
               <br />
@@ -90,6 +140,8 @@ const Registerpage = () => {
                 type="text"
                 id="personalinfo"
                 className="lastname"
+                value={registerData.lastname}
+                onChange={handleInputChange}
                 placeholder="Efternamn"
               />
               <br />
@@ -97,17 +149,28 @@ const Registerpage = () => {
                 type="number"
                 id="personalinfo"
                 className="age"
+                value={registerData.age}
+                onChange={handleInputChange}
                 placeholder="Ålder"
               />
             </div>
 
             <div className="form-subcontainer-2">
-              <input type="file" className="profilepic" placeholder="Profil bild" />
+              <input
+                type="text"
+                id="personalinfo"
+                className="profilephoto"
+                value={registerData.profilephoto}
+                onChange={handleInputChange}
+                placeholder="Klistra in Profil bild"
+              />
               <br />
               <input
                 type="number"
                 id="personalinfo"
                 className="vo2max"
+                value={registerData.vo2max}
+                onChange={handleInputChange}
                 placeholder="Vo2max"
               />
               <br />
@@ -115,6 +178,8 @@ const Registerpage = () => {
                 type="number"
                 id="distance"
                 className="fivekm"
+                value={registerData.fivekm}
+                onChange={handleInputChange}
                 placeholder="Bästa 5km"
               />
               <br />
@@ -122,6 +187,8 @@ const Registerpage = () => {
                 type="number"
                 id="distance"
                 className="tenkm"
+                value={registerData.tenkm}
+                onChange={handleInputChange}
                 placeholder="Bästa 10km"
               />
               <br />
@@ -129,6 +196,8 @@ const Registerpage = () => {
                 type="number"
                 id="distance"
                 className="fifteenkm"
+                value={registerData.fifteenkm}
+                onChange={handleInputChange}
                 placeholder="Bästa 15km"
               />
               <br />
@@ -136,6 +205,8 @@ const Registerpage = () => {
                 type="number"
                 id="distance"
                 className="halfmarathon"
+                value={registerData.halfmarathon}
+                onChange={handleInputChange}
                 placeholder="Bästa 21km"
               />
               <br />
@@ -143,11 +214,17 @@ const Registerpage = () => {
                 type="number"
                 id="distance"
                 className="marathon"
+                value={registerData.marathon}
+                onChange={handleInputChange}
                 placeholder="Bästa 42km"
               />
             </div>
             <div className="register-btn-container">
-              <button className="register-btn" type="submit">
+              <button
+                className="register-btn"
+                type="submit"
+                onSubmit={handleSubmit}
+              >
                 Skapa Konto
               </button>
             </div>
