@@ -6,17 +6,22 @@ const ThemeColorContext = createContext;
 
 const ThemeColorProvider = ({children}) => {
 
-    const [themeColor, setThemeColor] = useState('#ffffff');
+    const [themeColor, setThemeColor] = useState('#198891');
 
     useEffect(() => {
         const savedColor = localStorage.getItem('user.themeColor');
-        if (savedColor) {
-            setThemeColor(savedColor)
+        switch(savedColor) {
+            case 1 : 
+                setThemeColor('#198891')
+                break;
+            case 2 :
+                setThemeColor('#198891')
+                break;
         }
     }, []);
 
     return (
-        <ThemeColorContext.Provider value={{}}>
+        <ThemeColorContext.Provider value={{ themeColor, setThemeColor }}>
                 {children}
         </ThemeColorContext.Provider>
     )
