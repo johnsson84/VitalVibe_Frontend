@@ -1,12 +1,11 @@
 .side-main {
     display: flex;
     flex-direction: column;
-    background-color: black;
-    border-right: 1px solid white;
+    background-color: #2A2E37;
     height: 100%;
 }
 nav {
-    background-color: black;
+    background-color: #2A2E37;
     color: white;
     display: flex;
     flex-direction: column;

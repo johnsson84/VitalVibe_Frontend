@@ -1,0 +1,57 @@
+.addMealContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  border: 1px red solid;
+  gap: 1rem;
+}
+
+.addMealContainer select {
+  border-style: none;
+  border-radius: 15px;
+  height: 2rem;
+  width: 110%;
+  text-align: center;
+}
+
+option {
+  display: none;
+}
+.select-selected:after {
+  background-color: blue;
+  color: white;
+  height: 5rem;
+  width: 5rem;
+}
+
+.addMealContainer input {
+  border-style: none;
+  border-radius: 15px;
+  height: 2rem;
+  width: 110%;
+  text-align: center;
+}
+
+/*remove input arrows*/
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/*remove input arrows*/
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.addMealContainer button {
+  border-style: none;
+  border-radius: 15px;
+  height: 2rem;
+  width: 50%;
+  max-width: 250px;
+  margin-top: 2rem;
+}
