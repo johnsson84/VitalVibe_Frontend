@@ -1,0 +1,17 @@
+.homeMain {
+    height: 100%;
+    width: 100%;
+    display: flex;
+}
+.homeLeft {
+
+}
+.homeRight {
+    width: 100%;
+}
+.homeHeader {
+    height: 10%;   
+}
+.homeContent {
+    height: 90%;
+}
