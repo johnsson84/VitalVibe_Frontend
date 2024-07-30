@@ -19,7 +19,7 @@ nav {
     background-color: #2A2E37;
 }
 .sideLink:hover {
-    background-color: black;
+    background-color: var(--custom-color);
     color: white;
 }
 .sideLinkHide {

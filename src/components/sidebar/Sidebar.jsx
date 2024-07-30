@@ -1,11 +1,14 @@
 // STUFF
 import { Link } from "react-router-dom";
+import { ThemeColorContext } from "../../context/themeColor/ThemeColorContext";
 
 // CSS
 import "./Sidebar.css";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 
 const Sidebar = () => {
+
+  const { style } = useContext(ThemeColorContext);
 
     const [panelStatus, setPanelStatus] = useState(1);
 
@@ -40,22 +43,22 @@ const Sidebar = () => {
         <nav>
           {/** Maybe we change text to icons later? */}
 
-          <Link className={panelStatus === 1 ? "sideLink" : "sideLinkHide"} to="/profile">
+          <Link style={style} className={panelStatus === 1 ? "sideLink" : "sideLinkHide"} to="/profile">
             Profil
           </Link>
-          <Link className={panelStatus === 1 ? "sideLink" : "sideLinkHide"} to="/profile/training">
+          <Link style={style} className={panelStatus === 1 ? "sideLink" : "sideLinkHide"} to="/profile/training">
             Logga träning
           </Link>
-          <Link className={panelStatus === 1 ? "sideLink" : "sideLinkHide"} to="/profile/food">
+          <Link style={style} className={panelStatus === 1 ? "sideLink" : "sideLinkHide"} to="/profile/food">
             Logga mat
           </Link>
-          <Link className={panelStatus === 1 ? "sideLink" : "sideLinkHide"} to="/profile/challenges">
+          <Link style={style} className={panelStatus === 1 ? "sideLink" : "sideLinkHide"} to="/profile/challenges">
             Utmaningar
           </Link>   
-          <Link className={panelStatus === 1 ? "sideLink" : "sideLinkHide"} to="/profile/about">
+          <Link style={style} className={panelStatus === 1 ? "sideLink" : "sideLinkHide"} to="/profile/about">
             Om oss
           </Link>
-          <Link className={panelStatus === 1 ? "sideLink" : "sideLinkHide"} to="/profile/settings">
+          <Link style={style} className={panelStatus === 1 ? "sideLink" : "sideLinkHide"} to="/profile/settings">
             Settings
           </Link>
         </nav>

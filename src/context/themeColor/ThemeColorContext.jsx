@@ -1,30 +1,49 @@
-import { useEffect, useState } from "react";
+import React from "react";
+import { UserContext } from "../../context/user/UserContext";
 
-const { createContext } = require("react");
+import { useEffect, useState, createContext, useContext } from "react";
 
-const ThemeColorContext = createContext;
+const ThemeColorContext = createContext();
 
 const ThemeColorProvider = ({children}) => {
 
-    const [themeColor, setThemeColor] = useState('#198891');
+    const { updateUserTheme } = useContext(UserContext);
+
+    const savedUser = JSON.parse(localStorage.getItem('user'));
+    const [themeColor, setThemeColor] = useState(savedUser.themeColor);
+    const [backgroundThemeColor, setBackgroundThemeColor] = useState('#198891')
+    
+    // const style = {
+    //     backgroundColor: backgroundThemeColor,
+    //   };
+
+    const style = {"--custom-color": backgroundThemeColor}
+    
+    
+    
 
     useEffect(() => {
-        const savedColor = localStorage.getItem('user.themeColor');
-        switch(savedColor) {
+        updateUserTheme(themeColor)
+        switch(themeColor) {
             case 1 : 
-                setThemeColor('#198891')
+                setBackgroundThemeColor('#198891')
+                
                 break;
             case 2 :
-                setThemeColor('#FF3C3C')
+                setBackgroundThemeColor('#FF3C3C')
+                
                 break;
         }
-    }, []);
+        location.reload
+    }, [themeColor]);
+
+    
 
     return (
-        <ThemeColorContext.Provider value={{ themeColor, setThemeColor }}>
+        <ThemeColorContext.Provider value={{ themeColor, setThemeColor, backgroundThemeColor, setBackgroundThemeColor, style }}>
                 {children}
         </ThemeColorContext.Provider>
     )
 }
 
-export {ThemeColorContext, ThemeColorProvider};
+export { ThemeColorContext, ThemeColorProvider };
