@@ -1,5 +1,4 @@
 import React from "react";
-import { UserContext } from "../../context/user/UserContext";
 
 import { useEffect, useState, createContext, useContext } from "react";
 
@@ -7,23 +6,18 @@ const ThemeColorContext = createContext();
 
 const ThemeColorProvider = ({children}) => {
 
-    const { updateUserTheme } = useContext(UserContext);
-
-    const savedUser = JSON.parse(localStorage.getItem('user'));
-    const [themeColor, setThemeColor] = useState(savedUser.themeColor);
-    const [backgroundThemeColor, setBackgroundThemeColor] = useState('#198891')
+    // Sparar 'user' från localStorage om den finns
+    const [savedUser, setSavedUser] = useState(JSON.parse(localStorage.getItem('user')));
     
-    // const style = {
-    //     backgroundColor: backgroundThemeColor,
-    //   };
+    // Sätt themeColor till siffra från 'user' om den finns, annars 1.
+    const [themeColor, setThemeColor] = useState(
+        (savedUser !== null ? savedUser.themeColor : 1)    
+    );
+    const [backgroundThemeColor, setBackgroundThemeColor] = useState('#198891')
 
     const style = {"--custom-color": backgroundThemeColor}
     
-    
-    
-
     useEffect(() => {
-        updateUserTheme(themeColor)
         switch(themeColor) {
             case 1 : 
                 setBackgroundThemeColor('#198891')
@@ -38,13 +32,12 @@ const ThemeColorProvider = ({children}) => {
                 setBackgroundThemeColor('#465146')
                 break;
         }
-        location.reload
     }, [themeColor]);
 
     
 
     return (
-        <ThemeColorContext.Provider value={{ themeColor, setThemeColor, backgroundThemeColor, setBackgroundThemeColor, style }}>
+        <ThemeColorContext.Provider value={{ themeColor, setThemeColor, backgroundThemeColor, setBackgroundThemeColor, style, savedUser }}>
                 {children}
         </ThemeColorContext.Provider>
     )

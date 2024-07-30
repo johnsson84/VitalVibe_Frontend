@@ -4,13 +4,16 @@ import "./Settings.css";
 // Context
 import { ThemeColorContext } from "../../context/themeColor/ThemeColorContext";
 import { useContext, useEffect, useState } from "react";
+import { UserContext } from "../../context/user/UserContext";
 
 const Settings = () => {
   const { themeColor, setThemeColor, style } = useContext(ThemeColorContext);
+  const { updateUserTheme } = useContext(UserContext);
 
   const handleThemeColorChange = (event) => {
     const selectedThemeColor = parseInt(event.target.value);
-    setThemeColor(selectedThemeColor);
+    setThemeColor(selectedThemeColor); // Sätt themeColor efter val i dropdown.
+    updateUserTheme(selectedThemeColor); // Sätt themeColor för usern i databasen.
   }
 
   return (

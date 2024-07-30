@@ -5,12 +5,15 @@ import { Link, useNavigate } from "react-router-dom";
 import { useState, useContext } from "react";
 import { Authentication } from "../../components/login/Authentication.jsx";
 import axios from "axios";
+import { ThemeColorContext } from "../../context/themeColor/ThemeColorContext.jsx";
 
 const Loginpage = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState(null);
   const navigate = useNavigate();
+
+  const { setThemeColor } = useContext(ThemeColorContext);
 
   const {
     state: { user },
@@ -44,6 +47,7 @@ const Loginpage = () => {
 
       window.localStorage.setItem("user", JSON.stringify(data));
       localStorage.setItem("loggedInUserId", data.id);
+      setThemeColor(data.themeColor); // Sätt themeColor från usern i databasen.
       console.log("User login: " + username);
       console.log("userId: " + data.id);
       console.log("theme: " + data.themeColor);
