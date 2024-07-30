@@ -27,11 +27,15 @@ const ThemeColorProvider = ({children}) => {
         switch(themeColor) {
             case 1 : 
                 setBackgroundThemeColor('#198891')
-                
                 break;
             case 2 :
                 setBackgroundThemeColor('#FF3C3C')
-                
+                break;
+            case 3 : 
+                setBackgroundThemeColor('#F4682E')
+                break;
+            case 4 : 
+                setBackgroundThemeColor('#465146')
                 break;
         }
         location.reload

@@ -23,6 +23,8 @@ const Settings = () => {
           <select name="color" id="color" value={themeColor} onChange={handleThemeColorChange}>
             <option>1</option>
             <option>2</option>
+            <option>3</option>
+            <option>4</option>
           </select>
         </div>
         <div style={style} className="picked-color"></div>

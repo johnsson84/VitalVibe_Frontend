@@ -4,7 +4,7 @@
   align-items: center;
   justify-content: center;
 
-  background-color: black;
+  /* background-color: black; */
   height: 100%;
   width: 100%;
   text-align: center;
@@ -45,8 +45,8 @@ select {
 }
 
 .publishButton {
-  background-color: #c7ff52;
-  color: black;
+  background-color: var(--custom-color);
+  color: white;
   border-style: none;
   border-radius: 15px;
   height: 2rem;
@@ -57,6 +57,7 @@ select {
 
 .publishButton:hover {
   background-color: lightgray;
+  color: black;
 }
 
 .messageContainer {
@@ -67,7 +68,7 @@ select {
   align-items: center;
   justify-content: center;
   text-align: start;
-  background-color: black;
+  /* background-color: black; */
   border-radius: 15px;
   margin-top: 1rem;
   color: white;
