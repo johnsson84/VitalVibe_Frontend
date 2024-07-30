@@ -15,7 +15,7 @@ const ThemeColorProvider = ({children}) => {
                 setThemeColor('#198891')
                 break;
             case 2 :
-                setThemeColor('#198891')
+                setThemeColor('#FF3C3C')
                 break;
         }
     }, []);

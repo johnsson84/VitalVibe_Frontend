@@ -40,20 +40,23 @@ const Sidebar = () => {
         <nav>
           {/** Maybe we change text to icons later? */}
 
-          <Link className={panelStatus === 1 ? "sideLink" : "sideLinkHide"} to="/home/training">
-            Logga träning
-          </Link>
-          <Link className={panelStatus === 1 ? "sideLink" : "sideLinkHide"} to="/food">
-            Logga mat
-          </Link>
-          <Link className={panelStatus === 1 ? "sideLink" : "sideLinkHide"} to="/challenges">
-            Utmaningar
-          </Link>
           <Link className={panelStatus === 1 ? "sideLink" : "sideLinkHide"} to="/profile">
             Profil
           </Link>
-          <Link className={panelStatus === 1 ? "sideLink" : "sideLinkHide"} to="/about">
+          <Link className={panelStatus === 1 ? "sideLink" : "sideLinkHide"} to="/profile/training">
+            Logga träning
+          </Link>
+          <Link className={panelStatus === 1 ? "sideLink" : "sideLinkHide"} to="/profile/food">
+            Logga mat
+          </Link>
+          <Link className={panelStatus === 1 ? "sideLink" : "sideLinkHide"} to="/profile/challenges">
+            Utmaningar
+          </Link>   
+          <Link className={panelStatus === 1 ? "sideLink" : "sideLinkHide"} to="/profile/about">
             Om oss
+          </Link>
+          <Link className={panelStatus === 1 ? "sideLink" : "sideLinkHide"} to="/profile/settings">
+            Settings
           </Link>
         </nav>
         {showPanel()}

@@ -46,10 +46,11 @@ const Loginpage = () => {
       localStorage.setItem("loggedInUserId", data.id);
       console.log("User login: " + username);
       console.log("userId: " + data.id);
+      console.log("theme: " + data.themeColor);
 
       //this will redirect the user to home page
 
-      await navigate("/home");
+      await navigate("/profile");
       window.location.reload();
     } catch (err) {
       if (err.response && err.response.data && err.response.data.message) {
