@@ -59,7 +59,7 @@ const Sidebar = () => {
             Om oss
           </Link>
           <Link style={style} className={panelStatus === 1 ? "sideLink" : "sideLinkHide"} to="/profile/settings">
-            Settings
+            Inställningar
           </Link>
         </nav>
         {showPanel()}
