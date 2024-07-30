@@ -15,8 +15,7 @@
 }
 .form {
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  flex-direction: column;
   justify-content: center;
   max-width: 100%;
   height: auto;
@@ -26,14 +25,7 @@
   border: none;
   box-shadow: 5px 5px 5px 5px rgb(0, 0, 0);
 }
-.form-subcontainer-1,
-.form-subcontainer-2 {
-  display: flex;
-  flex-direction: column;
-  width: 50%;
-  box-sizing: border-box;
-  padding: 10px;
-}
+
 #personalinfo,
 #distance,
 .register-username,
@@ -107,15 +99,12 @@
     flex-direction: column;
   }
 
-  .form-subcontainer-1,
-  .form-subcontainer-2 {
+  .form-subcontainer-1 {
     width: 100%;
     margin: 0;
     padding: 0;
   }
-  .form-subcontainer-2 {
-    margin-top: 1rem;
-  }
+  
   .register-btn-container {
     width: 100%;
     margin-top: 1rem;
