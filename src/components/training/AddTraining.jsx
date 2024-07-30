@@ -3,7 +3,7 @@ import "./AddTraining.css";
 
 import { useContext, useEffect, useState } from "react";
 
-import { ActivityContext } from "../../pages/trainingPage/TrainingContext";
+import { ActivityContext } from "../../context/TrainingContext";
 
 const AddTraining = () => {
   const { addActivity, message } = useContext(ActivityContext);

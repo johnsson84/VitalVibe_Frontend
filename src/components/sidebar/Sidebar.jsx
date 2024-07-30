@@ -40,7 +40,7 @@ const Sidebar = () => {
         <nav>
           {/** Maybe we change text to icons later? */}
 
-          <Link className={panelStatus === 1 ? "sideLink" : "sideLinkHide"} to="/training">
+          <Link className={panelStatus === 1 ? "sideLink" : "sideLinkHide"} to="/home/training">
             Logga träning
           </Link>
           <Link className={panelStatus === 1 ? "sideLink" : "sideLinkHide"} to="/food">
