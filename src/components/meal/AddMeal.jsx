@@ -5,6 +5,8 @@ import "./AddMeal.css";
 import React from "react";
 import { useState } from "react";
 
+import Dropdown from "../DropDown/DropDown";
+
 const AddMeal = () => {
   const [loggedInUserId, setLoggedInUserId] = useState(
     localStorage.getItem("loggedInUserId")
@@ -41,20 +43,7 @@ const AddMeal = () => {
   return (
     <main className="addMealContainer">
       <section>
-        <select
-          name="mealType"
-          placeholder="meal"
-          value={meal.mealType}
-          required
-          onChange={handleMeal}
-          className="chooseMealType"
-        >
-          <option value="">Måltidstyp:</option>
-          <option value="frukost">Frukost</option>
-          <option value="lunch">Lunch</option>
-          <option value="middag">Middag</option>
-          <option value="övrigt">Mellanmål</option>
-        </select>
+        <Dropdown></Dropdown>
       </section>
       <section>
         <input type="text" placeholder="Måltid:" />
@@ -65,7 +54,7 @@ const AddMeal = () => {
       <section>
         <input type="text" placeholder="Kalorier:" />
       </section>
-      <button onClick={handlePublish}>PUBLISH</button>
+      <button className="publishMealButton" onClick={handlePublish}>PUBLISH</button>
     </main>
   );
 };

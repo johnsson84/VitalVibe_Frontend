@@ -11,6 +11,7 @@ import { ActivityProvider } from "./context/TrainingContext";
 import Loginpage from "./pages/loginpage/Loginpage";
 import HomePage from "./pages/HomePage";
 import AddTraining from "./components/training/AddTraining";
+import AddMeal from "./components/meal/AddMeal";
 
 function VitalVibeApp() {
   return (
@@ -29,6 +30,10 @@ function VitalVibeApp() {
                   <Route
                     path="/home/training"
                     element={<AddTraining></AddTraining>}
+                  ></Route>
+                  <Route
+                    path="/home/food"
+                    element={<AddMeal></AddMeal>}
                   ></Route>
                 </Route>
               </Routes>

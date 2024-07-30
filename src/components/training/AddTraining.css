@@ -10,7 +10,7 @@
   text-align: center;
 }
 
-section {
+.addTMain section {
   margin: 1rem;
   background-color: white;
   color: black;
@@ -20,19 +20,19 @@ section {
   height: auto;
 }
 
-section p {
+.addTMain section p {
   margin-top: 1rem;
 }
-section select {
+.addTMain section select {
   margin-bottom: 1rem;
 }
 
-section input {
+.addTMain section input {
   border-radius: 15px;
   width: 50%;
 }
 
-select {
+.addTMain select {
   border-radius: 15px;
   width: 50%;
   text-align: center;

@@ -43,7 +43,7 @@ const Sidebar = () => {
           <Link className={panelStatus === 1 ? "sideLink" : "sideLinkHide"} to="/home/training">
             Logga träning
           </Link>
-          <Link className={panelStatus === 1 ? "sideLink" : "sideLinkHide"} to="/food">
+          <Link className={panelStatus === 1 ? "sideLink" : "sideLinkHide"} to="/home/food">
             Logga mat
           </Link>
           <Link className={panelStatus === 1 ? "sideLink" : "sideLinkHide"} to="/challenges">
