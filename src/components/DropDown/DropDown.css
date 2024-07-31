@@ -7,14 +7,14 @@
     width: 100%;
     border-style: none;
     background-color: white;
-    border-radius: 15px;
     height: 4rem;
     color: gray;
     font-size: 17px;
+    border-radius: 15px;
 }
 
 .dropdown-toggle:hover {
-    background-color: #e0e0e0
+    background-color: #e0e0e0;
 }
 
 .dropdown-menu {
@@ -23,7 +23,6 @@
     color: black;
     background-color: white;
     text-align: center;
-    margin-top: -0.8rem;
     height: auto;
     padding-top: 0.3rem;
     padding-bottom: 1rem;
@@ -33,11 +32,18 @@
 
 .dropdown-menu li {
     cursor: pointer;
-    margin: 0.2rem;
 }
 
 .dropdown-menu li:hover {
     background-color: #f0f0f0;
     font-size: 30px;
     
+}
+
+.dropdown.open .dropdown-toggle {
+    border-radius: 15px 15px 0 0;
+}
+
+.dropdown.open .dropdown-menu {
+    display: block;
 }

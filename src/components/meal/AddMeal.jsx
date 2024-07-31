@@ -15,10 +15,14 @@ const AddMeal = () => {
   const [meal, newMeal] = useState({
     userId: loggedInUserId,
     mealType: "",
-    name: "",
-    amount: "",
     calories: "",
   });
+  const [mealContent, newMealContent] = useState({
+    name: "",
+    amount: "",
+    unit: "",
+  });
+  const [mealArray, setMealArray] = useState([]);
 
   const handleMeal = (e) => {
     const name = e.target.name;
@@ -26,13 +30,31 @@ const AddMeal = () => {
     newMeal({ ...meal, [name]: value });
   };
 
+  const handleMealContent = (e) => {
+    const name = e.target.name;
+    const value = e.target.value;
+    newMealContent({ ...mealContent, [name]: value });
+  };
+
+  const handleContent = () => {
+    setMealArray([...mealArray, mealContent]);
+    console.log("mealContent: ", mealContent);
+    console.log("mealArray: ", mealArray);
+
+    newMealContent({
+      // reset mealContent
+      name: "",
+      amount: "",
+      unit: "",
+    });
+  };
+
   const handlePublish = (e) => {
     e.preventDefault();
 
     //addMeal(meal);    KOMMER VARA FETCH METOD (CONTEXT)
 
-    setActivity({
-      activityName: "",
+    setMeal({
       mealType: "",
       name: "",
       amount: "",
@@ -46,16 +68,61 @@ const AddMeal = () => {
       <section>
         <Dropdown></Dropdown>
       </section>
-      <section>
-        <input type="text" placeholder="Måltid:" />
-      </section>
-      <section>
-        <input type="number" placeholder="Antal:" />
+      <section className="addContent">
+        <input
+          onChange={handleMealContent}
+          name="name"
+          value={mealContent.name}
+          type="text"
+          placeholder="Ingrediens:"
+        />
+        <input
+          onChange={handleMealContent}
+          name="amount"
+          value={mealContent.amount}
+          type="number"
+          placeholder="Antal:"
+        />
+
+        <select
+          name="unit"
+          value={mealContent.unit}
+          onChange={handleMealContent}
+          className="chooseUnit"
+          required
+        >
+          <option value="">Enhet:</option>
+          <option value="g">g</option>
+          <option value="kg">kg</option>
+          <option value="l">l</option>
+          <option value="dl">dl</option>
+          <option value="st">st</option>
+        </select>
+
+        <button onClick={handleContent}>+</button>
       </section>
       <section>
         <input type="text" placeholder="Kalorier:" />
       </section>
-      <button className="publishMealButton" onClick={handlePublish}>PUBLISH</button>
+
+      <section className="contentArray">
+        Ingredienser:{" "}
+        {mealArray.length > 0
+          ? mealArray.map((meal, index) => (
+              <div className="contentArrayDiv" key={index}>
+                <span>{meal.name}</span> - <span>{meal.amount}</span>{" "}
+                <span>{meal.unit}</span>-{" "}
+                <span>
+                  <button className="removeContentButton">radera</button>
+                </span>
+              </div>
+            ))
+          : "No meals available"}
+      </section>
+
+      <button className="publishMealButton" onClick={handlePublish}>
+        PUBLISERA
+      </button>
     </main>
   );
 };

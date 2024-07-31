@@ -17,7 +17,7 @@ const Dropdown = () => {
     const options = ['Frukost', 'Lunch', 'Middag', 'Mellanmål']; 
 
     return (
-        <div className="dropdown">
+        <div className={`dropdown ${isOpen ? 'open' : ''}`}>
             <button className="dropdown-toggle" onClick={toggleDropdown}>
                 {selectedOption || 'Måltidstyp  ↓'}
             </button>
