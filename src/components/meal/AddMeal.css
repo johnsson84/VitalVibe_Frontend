@@ -1,6 +1,6 @@
 .addMealContainer {
   width: 40%;
-  height: 60%;
+  height: 65%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -9,6 +9,12 @@
   color: black;
   background-color: #2a2e37;
   border-radius: 25px;
+}
+
+.addMealContainer h1 {
+  color: white;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
 }
 
 .addMealContainer section {
@@ -48,4 +54,5 @@ input[type="number"] {
   margin-top: 2rem;
   font-size: 15px;
   font-weight: bold;
+  margin-bottom: 2rem;
 }

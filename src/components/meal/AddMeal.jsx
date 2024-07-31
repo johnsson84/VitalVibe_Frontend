@@ -42,6 +42,7 @@ const AddMeal = () => {
 
   return (
     <main className="addMealContainer">
+      <h1>Logga Måltid:</h1>
       <section>
         <Dropdown></Dropdown>
       </section>
