@@ -26,7 +26,8 @@ const UserProvider = ({children}) => {
               activityOptions
             );
       
-            // const data = await res.json();
+            const data = await res.json();
+            localStorage.setItem('savedColor', data.themeColor);
             // console.log(data)      
             
           } catch (error) {

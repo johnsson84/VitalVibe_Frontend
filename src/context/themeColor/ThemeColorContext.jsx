@@ -10,14 +10,12 @@ const ThemeColorProvider = ({children}) => {
     const [savedUser, setSavedUser] = useState(JSON.parse(localStorage.getItem('user')));
     
     // Sätt themeColor till siffra från 'user' om den finns, annars 1.
-    const [themeColor, setThemeColor] = useState(
-        (savedUser !== null ? savedUser.themeColor : 1)    
-    );
+    const [themeColor, setThemeColor] = useState(null);
     const [backgroundThemeColor, setBackgroundThemeColor] = useState('#198891')
 
     const style = {"--custom-color": backgroundThemeColor}
-    
-    useEffect(() => {
+
+    const changeColor = (themeColor) => {
         switch(themeColor) {
             case 1 : 
                 setBackgroundThemeColor('#198891')
@@ -32,6 +30,29 @@ const ThemeColorProvider = ({children}) => {
                 setBackgroundThemeColor('#465146')
                 break;
         }
+    }
+
+    useEffect(() => {
+        
+
+        
+
+    }, [])
+    
+    useEffect(() => {
+        let colorFromLocalStorage = localStorage.getItem('savedColor');
+
+        if (colorFromLocalStorage !== null) {
+            setThemeColor(colorFromLocalStorage)
+            console.log("colorFromLocalStorage: " + colorFromLocalStorage);
+        } else if (savedUser !== null) {
+            setThemeColor(savedUser.themeColor)
+            console.log("savedUser: " + savedUser.themeColor)
+        } else {
+            setThemeColor(1)
+            console.log("no previous colors: 1")
+        }
+        changeColor(themeColor)
     }, [themeColor]);
 
     
