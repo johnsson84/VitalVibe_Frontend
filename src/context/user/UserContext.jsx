@@ -27,6 +27,9 @@ const UserProvider = ({children}) => {
             );
       
             const data = await res.json();
+            // Skapar en ny variabel i localStorage som sparar tema siffran, enklare än att försöka uppdatera user.
+            // Man kan uppdatera user i localStorage med infon som kommer från data i denna fetchen men den innehåller
+            // allt från en user jämnfört med det lilla som kommer med i login fetchen.
             localStorage.setItem('savedColor', data.themeColor);
             // console.log(data)      
             
