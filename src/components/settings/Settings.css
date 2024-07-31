@@ -1,0 +1,32 @@
+.settingsPage {
+    color: white;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background-color: #2A2E37;
+}
+
+#settings-headline {
+    margin-bottom: 20px;
+}
+
+.themeColorSection {
+    align-self: flex-start;
+    display: flex;
+    width: 100%;
+}
+
+#color {
+    border: none;
+}
+
+.picked-color {
+    padding: 20px;
+    align-self: flex-end;
+    border-radius: 5px;
+    margin-left: auto;
+    background-color: var(--custom-color);
+}
