@@ -1,26 +1,28 @@
 .side-main {
     display: flex;
     flex-direction: column;
-    background-color: black;
-    border-right: 1px solid white;
+    background-color: #2A2E37;
+    /* border-right: 1px solid white; */
     height: 100%;
 }
 nav {
-    background-color: black;
-    color: white;
+    background-color: #2A2E37;
     display: flex;
     flex-direction: column;
     height: 100%;
 }
 .sideLink {
     text-align: center;
-    padding: 10px 10px 20px 10px;
+    padding: 15px 15px 15px 15px;
+    margin: 5px;
     text-decoration: none;
     color: white;
+    background-color: #2A2E37;
 }
 .sideLink:hover {
-    background-color: white;
-    color: black;
+    background-color: var(--custom-color);
+    color: white;
+    border-radius: 15px;
 }
 .sideLinkHide {
     display: none;
@@ -38,6 +40,6 @@ nav {
     font-size: 2em;
     padding: 10px;
     border: none;
-    background-color: black;
+    background-color: #2A2E37;
     color: white;
 }

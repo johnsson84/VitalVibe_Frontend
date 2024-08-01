@@ -8,20 +8,14 @@ const Registerpage = () => {
   // const [imageLink, setImageLink] = useState("");
 
   const [registerData, setRegisterData] = useState({
-    username: "",
-    password: "",
-    confirmpassword: "",
-    email: "",
-    firstName: "",
-    lastName: "",
-    age: "",
-    // profilephoto: "",
-    vo2max: "",
-    // fivekm: "",
-    // tenkm: "",
-    // fifteenkm: "",
-    // halfmarathon: "",
-    // marathon: "",
+    username: '',
+    email: '',
+    password: '',
+    confirmpassword: '',
+    firstName: '',
+    lastName: '',
+    age: '',
+    vo2max: '',
   });
 
   const handleInputChange = (e) => {
@@ -32,13 +26,6 @@ const Registerpage = () => {
     });
   };
 
-  // const saveImageLink = () => {
-  //   setRegisterData((prevData) => ({
-  //     ...prevData,
-  //     profilephoto: imageLink,
-  //   }));
-  // };
-
   // should be registerData after (e,) like this (e, registerData)
   const handleSubmit = async (e, registerData) => {
     e.preventDefault();
@@ -48,7 +35,6 @@ const Registerpage = () => {
       alert("the given password did not match");
       return;
     }
-
     // VALIDATE THE AGE
     if (
       !Number.isInteger(Number(registerData.age)) ||
@@ -57,6 +43,10 @@ const Registerpage = () => {
       alert("you must enter a valid age");
       return;
     }
+
+
+
+
 
     // SETTING UP THE REQUEST OPTIONS
     var options = {
@@ -76,7 +66,8 @@ const Registerpage = () => {
 
       if (res.status === 200) {
         alert("regristrering ok");
-        // Here i want to redirect the user
+        // Here i want to redirect the created user
+        window.location.href = "/profile";
       }
     } catch (err) {
       console.log("Misslyckad regristrering:", err);
@@ -93,7 +84,7 @@ const Registerpage = () => {
           </Link>
         </div>
         <div className="form-container">
-          <form className="form" onSubmit={handleSubmit}>
+          <form className="form" onSubmit={(e) => handleSubmit(e, registerData)}>
             <br />
             <input
               type="text"
@@ -102,6 +93,16 @@ const Registerpage = () => {
               value={registerData.username}
               onChange={handleInputChange}
               placeholder="Användarnamn"
+            />
+            <br />
+            <input
+              type="email"
+              id="personalinfo"
+              className="email"
+              name="email"
+              value={registerData.email}
+              onChange={handleInputChange}
+              placeholder="E-mail"
             />
             <br />
             <input
@@ -120,16 +121,6 @@ const Registerpage = () => {
               value={registerData.confirmpassword}
               onChange={handleInputChange}
               placeholder="Bekräfta lösenord"
-            />
-            <br />
-            <input
-              type="email"
-              id="personalinfo"
-              className="email"
-              name="email"
-              value={registerData.email}
-              onChange={handleInputChange}
-              placeholder="E-mail"
             />
             <br />
             <input
