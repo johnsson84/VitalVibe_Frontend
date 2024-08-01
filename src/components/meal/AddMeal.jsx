@@ -3,43 +3,82 @@ import "./AddMeal.css";
 
 // react
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-import Dropdown from "../DropDown/DropDown";
 
 const AddMeal = () => {
+  // const { style } = useContext(ThemeColorContext);
+
+  //DROPDOWN  {
+  const [isOpen, setIsOpen] = useState(false);
+  const [selectedOption, setSelectedOption] = useState(null);
+
+  //TOGGLE OM ÖPPEN ELLER STÄNGD
+  const toggleDropdown = () => {
+    setIsOpen(!isOpen);
+  };
+
+  //SET SETTER
+  const handleOptionClick = (option) => {
+    setSelectedOption(option);
+    // Update meal state with new mealType
+    newMeal((prevMeal) => ({
+      ...prevMeal,
+      mealType: option,
+    }));
+    setIsOpen(false);
+  };
+  //DROPDOWN OPTIONS
+  const options = ["Frukost", "Lunch", "Middag", "Mellanmål"];
+
+  //--------
+  // MEAL
+  //--------
+
+  //inloggad userId
   const [loggedInUserId, setLoggedInUserId] = useState(
     localStorage.getItem("loggedInUserId")
   );
 
+  //CONTENT ARRAY
+  const [mealArray, setMealArray] = useState([]);
+
+  //food OBJECT
   const [meal, newMeal] = useState({
     userId: loggedInUserId,
     mealType: "",
+    content: mealArray,
     calories: "",
   });
+
+  //CONTENT
   const [mealContent, newMealContent] = useState({
     name: "",
     amount: "",
     unit: "",
   });
-  const [mealArray, setMealArray] = useState([]);
 
+  //ADDERA TILL OBJECT
   const handleMeal = (e) => {
     const name = e.target.name;
     const value = e.target.value;
     newMeal({ ...meal, [name]: value });
   };
 
+  //ADDERA TILL CONTENT
   const handleMealContent = (e) => {
     const name = e.target.name;
     const value = e.target.value;
     newMealContent({ ...mealContent, [name]: value });
   };
 
+  //ADDERA CONTENT TILL CONTENT-ARRAY
   const handleContent = () => {
-    setMealArray([...mealArray, mealContent]);
-    console.log("mealContent: ", mealContent);
-    console.log("mealArray: ", mealArray);
+    setMealArray((prevMealArray) => {
+      const newMealArray = [...prevMealArray, mealContent];
+
+      return newMealArray;
+    });
 
     newMealContent({
       // reset mealContent
@@ -49,24 +88,68 @@ const AddMeal = () => {
     });
   };
 
-  const handlePublish = (e) => {
-    e.preventDefault();
-
-    //addMeal(meal);    KOMMER VARA FETCH METOD (CONTEXT)
-
-    setMeal({
-      mealType: "",
-      name: "",
-      amount: "",
-      calories: "",
-    });
+  //TÖM ARRAY MED CONTENT
+  const handleDeleteContent = () => {
+    setMealArray([]);
   };
+
+  //håll mealArray uppdaterad
+  useEffect(() => {
+    newMeal((prevMeal) => ({
+      ...prevMeal,
+      content: mealArray,
+    }));
+  }, [mealArray]);
+
+  //FETCH
+  const handlePublish = () => {
+    
+
+    addMeal(meal);    
+
+    newMeal((prevMeal) => ({
+      ...prevMeal,
+      content: mealArray,
+    }));
+
+
+    //rensa meal array
+    handleDeleteContent();
+    //rensa meal object
+     newMeal((prevMeal) => ({
+      ...prevMeal,
+       userId: loggedInUserId,
+       mealType: "",
+       content: mealArray,
+       calories: "",
+     }));
+
+  };
+
+  // --------------------------
 
   return (
     <main className="addMealContainer">
       <h1>Logga Måltid:</h1>
       <section>
-        <Dropdown></Dropdown>
+        <div className={`dropdown ${isOpen ? "open" : ""}`}>
+          <button className="dropdown-toggle" onClick={toggleDropdown}>
+            {selectedOption || "Måltidstyp  ↓"}
+          </button>
+          {isOpen && (
+            <ul className="dropdown-menu">
+              {options.map((option, index) => (
+                <li
+                  value={meal.mealType}
+                  key={index}
+                  onClick={() => handleOptionClick(option)}
+                >
+                  {option}
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
       </section>
       <section className="addContent">
         <input
@@ -102,24 +185,38 @@ const AddMeal = () => {
         <button onClick={handleContent}>+</button>
       </section>
       <section>
-        <input type="text" placeholder="Kalorier:" />
+        <input
+          value={meal.calories}
+          onChange={handleMeal}
+          type="number"
+          name="calories"
+          placeholder="Kalorier:"
+        />
       </section>
 
       <section className="contentArray">
-        Ingredienser:{" "}
-        {mealArray.length > 0
-          ? mealArray.map((meal, index) => (
-              <div className="contentArrayDiv" key={index}>
-                <span>{meal.name}</span> - <span>{meal.amount}</span>{" "}
-                <span>{meal.unit}</span>-{" "}
-                <span>
-                  <button className="removeContentButton">radera</button>
-                </span>
-              </div>
-            ))
-          : "No meals available"}
+        {/* style={style} */}
+        <button
+          onClick={() => handleDeleteContent()}
+          className="removeContentButton"
+        >
+          Töm Ingredienser
+        </button>
+        Ingredienser:{""}
+        {mealArray.length > 0 ? (
+          mealArray.map((meal, index) => (
+            <div className="contentArrayDiv" key={index}>
+              <span>{meal.name}</span>
+              {", "}-<span>{meal.amount}</span> <span>{meal.unit}</span>{" "}
+              <span></span>
+            </div>
+          ))
+        ) : (
+          <span> "Inga Ingredienser Tillagda..." </span>
+        )}
       </section>
 
+      {/* style={style} */}
       <button className="publishMealButton" onClick={handlePublish}>
         PUBLISERA
       </button>

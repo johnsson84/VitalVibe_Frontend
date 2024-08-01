@@ -25,7 +25,7 @@
 .addMealContainer input {
   border-style: none;
   border-radius: 15px;
-  height:3rem;
+  height: 3rem;
   width: 100%;
   text-align: center;
   font-size: 15px;
@@ -57,21 +57,24 @@ input[type="number"] {
   margin-bottom: 2rem;
 }
 
-.addContent{
+.addContent {
   display: flex;
   flex-direction: row;
   gap: 1rem;
 }
 
-.addContent button{
+.addContent button {
   width: 35%;
   border-style: none;
   border-radius: 15px;
-  background-color: white;
-
+  cursor: pointer;
 }
 
-.chooseUnit{
+.addContent select:hover, button:hover{
+  background-color: lightgray;
+}
+
+.chooseUnit {
   width: 35%;
   border-style: none;
   border-radius: 15px;
@@ -80,9 +83,10 @@ input[type="number"] {
   padding-left: 0.3rem;
   padding-right: 0.3rem;
   color: gray;
+  cursor: pointer;
 }
 
-.contentArray{
+.contentArray {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -91,9 +95,11 @@ input[type="number"] {
   height: auto;
   justify-content: center;
   padding: 1rem;
+  color: gray;
+  gap: 1rem;
 }
 
-.contentArrayDiv{
+.contentArrayDiv {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -101,10 +107,67 @@ input[type="number"] {
   width: auto;
 }
 
-.removeContentButton{
+.removeContentButton {
   text-align: center;
-  padding-left: 0.3rem;
-  padding-right: 0.3rem;
-  margin-left: 1rem;
   border-style: none;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.2rem;
+  padding-bottom: 0.2rem;
+  border-radius: 15px;
+  cursor: pointer;
+}
+
+
+
+/* DROPDOWN */
+
+.dropdown {
+  width: 100%;
+}
+
+.dropdown-toggle {
+  cursor: pointer;
+  width: 100%;
+  border-style: none;
+  background-color: white;
+  height: 4rem;
+  color: gray;
+  font-size: 17px;
+  border-radius: 15px;
+}
+
+.dropdown-toggle:hover {
+  background-color: #e0e0e0;
+}
+
+.dropdown-menu {
+  width: 100%;
+  list-style: none;
+  color: black;
+  background-color: white;
+  text-align: center;
+  height: auto;
+  padding-top: 0.3rem;
+  padding-bottom: 1rem;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
+
+.dropdown-menu li {
+  cursor: pointer;
+}
+
+.dropdown-menu li:hover {
+  background-color: #f0f0f0;
+  font-size: 30px;
+  
+}
+
+.dropdown.open .dropdown-toggle {
+  border-radius: 15px 15px 0 0;
+}
+
+.dropdown.open .dropdown-menu {
+  display: block;
 }
