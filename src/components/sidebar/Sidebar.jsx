@@ -61,6 +61,9 @@ const Sidebar = () => {
           <Link style={style} className={panelStatus === 1 ? "sideLink" : "sideLinkHide"} to="/profile/settings">
             Inställningar
           </Link>
+          <Link style={style} className={panelStatus === 1 ? "sideLink" : "sideLinkHide"} to="/logout">
+            Logga ut
+          </Link>
         </nav>
         {showPanel()}
       </div>
