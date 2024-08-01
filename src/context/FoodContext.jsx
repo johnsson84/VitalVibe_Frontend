@@ -5,7 +5,7 @@ import { useContext, useState, createContext } from "react";
 const FoodContext = createContext();
 
 const FoodProvider = ({ children }) => {
-  const [message, setMessage] = useState([]);
+  
   const addFood = async (food) => {
     var foodOptions = {
       method: "POST",
@@ -16,32 +16,33 @@ const FoodProvider = ({ children }) => {
 
       body: JSON.stringify({
         userId: `${food.userId}`,
-        mealType: `${food.activityName}`,
-        content: `${food.distance}`,
+        mealType: `${food.mealType}`,
+        content: `${food.content}`,
         calories: `${food.calories}`
       }),
     };
 
     try {
+        console.log("body: " + foodOptions.body)
       const res = await fetch(
-        `${import.meta.env.VITE_API_URL}/activity/create`,
+        `${import.meta.env.VITE_API_URL}/meal/create`,
         foodOptions
       );
 
       const data = await res.json();
+      console.log(JSON.stringify(data))
 
       
 
       
     } catch (error) {
       
-        console.log(data);
       
     }
   };
 
   return (
-    <FoodContext.Provider value={{ addFood, message }}>
+    <FoodContext.Provider value={{ addFood }}>
       {children}
     </FoodContext.Provider>
   );

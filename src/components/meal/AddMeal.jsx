@@ -3,22 +3,26 @@ import "./AddMeal.css";
 
 // react
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 
+// context
+import { FoodContext } from "../../context/FoodContext";
 
 const AddMeal = () => {
+  const { addFood } = useContext(FoodContext);
+
   // const { style } = useContext(ThemeColorContext);
 
   //DROPDOWN  {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState(null);
 
-  //TOGGLE OM ÖPPEN ELLER STÄNGD
+  //TOGGLE dd OM ÖPPEN ELLER STÄNGD
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
   };
 
-  //SET SETTER
+  //SET dd SETTER
   const handleOptionClick = (option) => {
     setSelectedOption(option);
     // Update meal state with new mealType
@@ -74,6 +78,7 @@ const AddMeal = () => {
 
   //ADDERA CONTENT TILL CONTENT-ARRAY
   const handleContent = () => {
+
     setMealArray((prevMealArray) => {
       const newMealArray = [...prevMealArray, mealContent];
 
@@ -103,27 +108,24 @@ const AddMeal = () => {
 
   //FETCH
   const handlePublish = () => {
-    
+    // newMeal((prevMeal) => ({
+    //   ...prevMeal,
+    //   content: mealArray,
+    // }));
 
-    addMeal(meal);    
 
-    newMeal((prevMeal) => ({
-      ...prevMeal,
-      content: mealArray,
-    }));
-
+    addFood(meal);
 
     //rensa meal array
     handleDeleteContent();
     //rensa meal object
-     newMeal((prevMeal) => ({
+    newMeal((prevMeal) => ({
       ...prevMeal,
-       userId: loggedInUserId,
-       mealType: "",
-       content: mealArray,
-       calories: "",
-     }));
-
+      userId: loggedInUserId,
+      mealType: "",
+      content: mealArray,
+      calories: "",
+    }));
   };
 
   // --------------------------
