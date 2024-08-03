@@ -67,15 +67,10 @@ const Sidebar = () => {
           <Link style={style} className={panelStatus === 1 ? "sideLink" : "sideLinkHide"} to="/profile/settings">
             Inställningar
           </Link>
-          {/* <Link style={style} className={panelStatus === 1 ? "sideLink" : "sideLinkHide"} to="/logout">
-            Logga ut
-          </Link> */}
           <Link style={style} className={panelStatus === 1 ? "sideLink" : "sideLinkHide"} onClick={handleShow}>
             Logga ut
           </Link>
-          <LogoutModal isOpen={showModal} onClose={handleClose}>
-            
-          </LogoutModal>
+          <LogoutModal isOpen={showModal} onClose={handleClose}></LogoutModal>
         </nav>
         {showPanel()}
       </div>

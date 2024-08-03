@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { ThemeColorContext } from "../../context/themeColor/ThemeColorContext";
 import { useContext } from "react";
 
-const LogoutModal = ({ isOpen, onClose, children }) => {
+const LogoutModal = ({ isOpen, onClose, }) => {
 
     const { style } = useContext(ThemeColorContext);
 
@@ -18,8 +18,8 @@ const LogoutModal = ({ isOpen, onClose, children }) => {
           <h1>Är du säker?</h1>
         </div>
         <div className="modal-options">
-          <Link style={style} className="modal-link modal-link-hover modal-yes" to="/logout">Ja</Link>
-          <Link style={style} className="modal-link modal-link-hover modal-no" onClick={onClose}>Nej</Link>
+          <Link style={style} className="modal-link modal-yes" to="/logout">Ja</Link>
+          <Link style={style} className="modal-link modal-no" onClick={onClose}>Nej</Link>
         </div>
       </div>
     </div>

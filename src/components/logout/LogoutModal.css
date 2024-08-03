@@ -31,12 +31,12 @@
     color: white;
 }
 .modal-yes {
-    background-color: #242424;
+    background-color: #911919;
 }
 .modal-no {
-    background-color: #911919;
+    background-color: #242424;
     margin-left: 10px;
 }
-.modal-link-hover:hover {
+.modal-link:hover {
     background-color: var(--custom-color);
 }
