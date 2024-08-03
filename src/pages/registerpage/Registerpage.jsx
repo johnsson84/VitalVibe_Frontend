@@ -71,13 +71,16 @@ const Registerpage = () => {
       }
     } catch (err) {
       console.log("Misslyckad regristrering:", err);
-      alert("gick ej att skapa användare");
+      alert("gick ej att skapa anv'ndare");
     }
   };
 
   return (
     <>
       <main className="registerpage">
+        <div>
+        <FontAwesomeIcon icon={faBackwardStep} style={{color: "#198891",}} />
+        </div>
         <div className="registerpage-logo">
           <Link to="/login">
             <img src={logo} className="logo" alt="VitalVibe" />
@@ -87,17 +90,17 @@ const Registerpage = () => {
           <form className="form" onSubmit={(e) => handleSubmit(e, registerData)}>
             <br />
             <div className="input-demand"><p>Fält som har symbolen (*) är krav och måste vara ifyllda</p></div>
-            <p>*</p>
+            <p className="p-demand">Användarnamn *</p>
             <input
               type="text"
               className="register-username"
               name="username"
               value={registerData.username}
               onChange={handleInputChange}
-              placeholder="*  Användarnamn"
+              placeholder="Användarnamn"
             />
             <br />
-            <p>*</p>
+            <p className="p-demand">E-post *</p>
             <input
               type="email"
               id="personalinfo"
@@ -105,30 +108,30 @@ const Registerpage = () => {
               name="email"
               value={registerData.email}
               onChange={handleInputChange}
-              placeholder="*  E-post"
+              placeholder="E-post"
             />
             <br />
-            <p>*</p>
+            <p className="p-demand">Lösenord *</p>
             <input
               type="password"
               className="register-password"
               name="password"
               value={registerData.password}
               onChange={handleInputChange}
-              placeholder="*  Lösenord"
+              placeholder="Lösenord"
             />
             <br />
-            <p>*</p>
+            <p className="p-demand">Bekräfta lösenord *</p>
             <input
               type="password"
               className="confirmpassword"
               name="confirmpassword"
               value={registerData.confirmpassword}
               onChange={handleInputChange}
-              placeholder="*  Bekräfta lösenord"
+              placeholder="Bekräfta lösenord"
             />
             <br />
-            <p>*</p>
+            <p className="p-demand">Förnamn *</p>
             <input
               type="text"
               id="personalinfo"
@@ -136,10 +139,10 @@ const Registerpage = () => {
               name="firstName"
               value={registerData.firstname}
               onChange={handleInputChange}
-              placeholder="*  Förnamn"
+              placeholder="Förnamn"
             />
             <br />
-            <p>*</p>
+            <p className="p-demand">Efternamn *</p>
             <input
               type="text"
               id="personalinfo"
@@ -147,10 +150,10 @@ const Registerpage = () => {
               name="lastName"
               value={registerData.lastname}
               onChange={handleInputChange}
-              placeholder="*  Efternamn"
+              placeholder="Efternamn"
             />
             <br />
-            <p>*</p>
+            <p className="p-demand">Ålder *</p>
             <input
               type="number"
               id="personalinfo"
@@ -158,7 +161,7 @@ const Registerpage = () => {
               name="age"
               value={registerData.age}
               onChange={handleInputChange}
-              placeholder="*  Ålder"
+              placeholder="   Ålder"
             />
             <br />
             <input
@@ -168,7 +171,7 @@ const Registerpage = () => {
               name="vo2max"
               value={registerData.vo2max}
               onChange={handleInputChange}
-              placeholder="Vo2max"
+              placeholder="   Vo2max"
             />
 
             <div className="register-btn-container">
