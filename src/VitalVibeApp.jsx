@@ -16,19 +16,22 @@ import HomePage from "./pages/HomePage";
 import AddTraining from "./components/training/AddTraining";
 import Profile from "./components/profile/Profile";
 import Settings from "./components/settings/Settings";
+import RegisterPage from "./pages/registerpage/Registerpage";
+
 
 function VitalVibeApp() {
   return (
     <div className="vitalvibe">
       <AuthProvider>
         <LoginProvider>
+
           <UserProvider>
             <ActivityProvider>
               <ThemeColorProvider>
                 <BrowserRouter>
                   <Routes>
                     <Route path="/login" element={<Loginpage />}></Route>
-                    {/* <Route path="/register" element={<RegisterPage />}></Route> */}
+                    <Route path="/register" element={<RegisterPage />}></Route>
                     {/* <Route path="forgot-password" element={<ForgotPasswordPage />}></Route> */}
                     {/** PrivateRoute till /profile innefattar alla som kommer efter /profile ex /profile/training osv...  */}
                     <Route path="/profile" element={<PrivateRoute><HomePage /></PrivateRoute>}>
