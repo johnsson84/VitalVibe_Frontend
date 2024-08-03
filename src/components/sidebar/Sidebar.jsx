@@ -1,6 +1,7 @@
 // STUFF
 import { Link } from "react-router-dom";
 import { ThemeColorContext } from "../../context/themeColor/ThemeColorContext";
+import LogoutModal from "../logout/LogoutModal";
 
 // CSS
 import "./Sidebar.css";
@@ -11,6 +12,11 @@ const Sidebar = () => {
   const { style } = useContext(ThemeColorContext);
 
     const [panelStatus, setPanelStatus] = useState(1);
+
+    const [ showModal, setShowModal ] = useState(false);
+
+    const handleClose = () => setShowModal(false);
+    const handleShow = () => setShowModal(true);
 
     const handleArrowClick = () => {
         if (panelStatus === 1) {
@@ -61,9 +67,15 @@ const Sidebar = () => {
           <Link style={style} className={panelStatus === 1 ? "sideLink" : "sideLinkHide"} to="/profile/settings">
             Inställningar
           </Link>
-          <Link style={style} className={panelStatus === 1 ? "sideLink" : "sideLinkHide"} to="/logout">
+          {/* <Link style={style} className={panelStatus === 1 ? "sideLink" : "sideLinkHide"} to="/logout">
+            Logga ut
+          </Link> */}
+          <Link style={style} className={panelStatus === 1 ? "sideLink" : "sideLinkHide"} onClick={handleShow}>
             Logga ut
           </Link>
+          <LogoutModal isOpen={showModal} onClose={handleClose}>
+            
+          </LogoutModal>
         </nav>
         {showPanel()}
       </div>
