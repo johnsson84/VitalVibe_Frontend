@@ -7,7 +7,7 @@
   align-items: center;
 }
 .registerpage-logo {
-  margin: 100px 50px 50px 50px;
+  margin: 10px 50px 50px 50px;
 }
 .form-container {
   padding: 20px;
@@ -47,6 +47,9 @@
   border-radius: 5px;
   text-align: center;
 }
+.vo2max {
+  margin-top: 0.5rem;
+}
 .register-btn-container {
   display: flex;
   justify-content: center;
@@ -64,6 +67,14 @@
   background-color: black;
   color: white;
   text-align: center;
+}
+.input-demand {
+  padding: 0px 0px 15px;
+  font-size: x-small;
+}
+p {
+  font-size: xx-small;
+  color: brown;
 }
 
 /* HOVER STYLING-------------------------------------------*/

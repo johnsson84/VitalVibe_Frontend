@@ -67,11 +67,11 @@ const Registerpage = () => {
       if (res.status === 200) {
         alert("regristrering ok");
         // Here i want to redirect the created user
-        window.location.href = "/profile";
+        window.location.href = "/login";
       }
     } catch (err) {
       console.log("Misslyckad regristrering:", err);
-      alert("gick ej att skapa anv'ndare");
+      alert("gick ej att skapa användare");
     }
   };
 
@@ -86,15 +86,18 @@ const Registerpage = () => {
         <div className="form-container">
           <form className="form" onSubmit={(e) => handleSubmit(e, registerData)}>
             <br />
+            <div className="input-demand"><p>Fält som har symbolen (*) är krav och måste vara ifyllda</p></div>
+            <p>*</p>
             <input
               type="text"
               className="register-username"
               name="username"
               value={registerData.username}
               onChange={handleInputChange}
-              placeholder="Användarnamn"
+              placeholder="*  Användarnamn"
             />
             <br />
+            <p>*</p>
             <input
               type="email"
               id="personalinfo"
@@ -102,27 +105,30 @@ const Registerpage = () => {
               name="email"
               value={registerData.email}
               onChange={handleInputChange}
-              placeholder="E-mail"
+              placeholder="*  E-post"
             />
             <br />
+            <p>*</p>
             <input
               type="password"
               className="register-password"
               name="password"
               value={registerData.password}
               onChange={handleInputChange}
-              placeholder="Lösenord"
+              placeholder="*  Lösenord"
             />
             <br />
+            <p>*</p>
             <input
               type="password"
               className="confirmpassword"
               name="confirmpassword"
               value={registerData.confirmpassword}
               onChange={handleInputChange}
-              placeholder="Bekräfta lösenord"
+              placeholder="*  Bekräfta lösenord"
             />
             <br />
+            <p>*</p>
             <input
               type="text"
               id="personalinfo"
@@ -130,9 +136,10 @@ const Registerpage = () => {
               name="firstName"
               value={registerData.firstname}
               onChange={handleInputChange}
-              placeholder="Förnamn"
+              placeholder="*  Förnamn"
             />
             <br />
+            <p>*</p>
             <input
               type="text"
               id="personalinfo"
@@ -140,9 +147,10 @@ const Registerpage = () => {
               name="lastName"
               value={registerData.lastname}
               onChange={handleInputChange}
-              placeholder="Efternamn"
+              placeholder="*  Efternamn"
             />
             <br />
+            <p>*</p>
             <input
               type="number"
               id="personalinfo"
@@ -150,7 +158,7 @@ const Registerpage = () => {
               name="age"
               value={registerData.age}
               onChange={handleInputChange}
-              placeholder="Ålder"
+              placeholder="*  Ålder"
             />
             <br />
             <input
