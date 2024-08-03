@@ -15,9 +15,10 @@
     width: 15rem;
 }
 .login-form {
+    /*Kan bytas ut mot color=#198891, för att få så som figma HI-FI profilen*/
     background-color: white;
     padding: 40px;
-    height: 20rem;
+    height: 22rem;
     width: 20rem;
     border-radius: 10px;
     border: none;

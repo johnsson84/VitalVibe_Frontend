@@ -15,6 +15,7 @@ import HomePage from "./pages/HomePage";
 import AddTraining from "./components/training/AddTraining";
 import Profile from "./components/profile/Profile";
 import Settings from "./components/settings/Settings";
+import RegisterPage from "./pages/registerpage/Registerpage";
 
 
 function VitalVibeApp() {
@@ -29,7 +30,7 @@ function VitalVibeApp() {
                 <BrowserRouter>
                   <Routes>
                     <Route path="/login" element={<Loginpage />}></Route>
-                    {/* <Route path="/register" element={<RegisterPage />}></Route> */}
+                    <Route path="/register" element={<RegisterPage />}></Route>
                     {/* <Route path="forgot-password" element={<ForgotPasswordPage />}></Route> */}
                     <Route path="/profile" element={<HomePage />}>
                       <Route index element={<Profile></Profile>}></Route>{" "}
