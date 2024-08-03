@@ -1,6 +1,7 @@
 // STUFF
 import "./VitalVibeApp.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import PrivateRoute from "./components/privateRoute/PrivateRoute";
 
 //PROVIDERS
 import { AuthProvider } from "./components/login/Authentication";
@@ -29,7 +30,8 @@ function VitalVibeApp() {
                     <Route path="/login" element={<Loginpage />}></Route>
                     {/* <Route path="/register" element={<RegisterPage />}></Route> */}
                     {/* <Route path="forgot-password" element={<ForgotPasswordPage />}></Route> */}
-                    <Route path="/profile" element={<HomePage />}>
+                    {/** PrivateRoute till /profile innefattar alla som kommer efter /profile ex /profile/training osv...  */}
+                    <Route path="/profile" element={<PrivateRoute><HomePage /></PrivateRoute>}>
                       <Route index element={<Profile></Profile>}></Route>{" "}
                       {/** Ändra AddTraining till Profile komponenten */}
                       <Route
