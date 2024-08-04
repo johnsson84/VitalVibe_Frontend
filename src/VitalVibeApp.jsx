@@ -16,8 +16,8 @@ import HomePage from "./pages/HomePage";
 import AddTraining from "./components/training/AddTraining";
 import Profile from "./components/profile/Profile";
 import Settings from "./components/settings/Settings";
+import Logout from "./pages/logout/Logout";
 import RegisterPage from "./pages/registerpage/Registerpage";
-
 
 function VitalVibeApp() {
   return (
@@ -36,7 +36,6 @@ function VitalVibeApp() {
                     {/** PrivateRoute till /profile innefattar alla som kommer efter /profile ex /profile/training osv...  */}
                     <Route path="/profile" element={<PrivateRoute><HomePage /></PrivateRoute>}>
                       <Route index element={<Profile></Profile>}></Route>{" "}
-                      {/** Ändra AddTraining till Profile komponenten */}
                       <Route
                         path="/profile/training"
                         element={<AddTraining></AddTraining>}
@@ -49,6 +48,7 @@ function VitalVibeApp() {
                         element={<Settings></Settings>}
                       ></Route>
                     </Route>
+                    <Route path="/logout" element={<Logout></Logout>}></Route>
                   </Routes>
                 </BrowserRouter>
               </ThemeColorProvider>
