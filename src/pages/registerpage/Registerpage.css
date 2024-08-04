@@ -9,13 +9,32 @@
 .registerpage-logo {
   margin: 0px 50px 0px 50px;
   scale: 60%;
-  box-shadow: 5px 5px 5px 5px rgb(0, 0, 0);
   border-radius: 20px;
 }
+.reverse-icon {
+  position: relative;
+  bottom: 9rem;
+  right: 8rem;
+}
+.reverse-icon-arrow-p,
+.reverse-icon-p {
+  color: white;
+  font-size: x-small;
+  text-align: center;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.icon-arrow-right,
+.icon-arrow-up {
+  color: #198891;
+}
 .form-container {
+  margin-top: -3rem;
   padding: 20px;
   width: 50%;
 }
+
 .form {
   display: flex;
   flex-direction: column;
@@ -86,6 +105,10 @@
 }
 
 /* HOVER STYLING-------------------------------------------*/
+.registerpage-logo:hover {
+  box-shadow: 5px 5px 5px 5px rgb(0, 0, 0);
+}
+
 #personalinfo:hover,
 #distance:hover,
 .register-username:hover,
@@ -101,6 +124,12 @@
   box-shadow: 1px 1px 1px 1px rgb(0, 0, 0);
 }
 
+/*DISPLAYS reverse-icon-p WHEN HOVER ON LOGO*/
+.registerpage-logo:hover ~ .reverse-icon .reverse-icon-p {
+  visibility: visible;
+  opacity: 1;
+}
+
 /* FOCUS STYLING-------------------------------------------- */
 #personalinfo:focus,
 #distance:focus,
@@ -113,6 +142,9 @@
 
 /* RESPONSIVE DESIGN */
 @media only screen and (max-width: 1000px) {
+  .registerpage-logo {
+    box-shadow: 5px 5px 5px 5px rgb(0, 0, 0);
+  }
   .form-container {
     width: 80%;
     margin-bottom: 5rem;
@@ -142,5 +174,24 @@
   .register-password:hover,
   .age:hover {
     box-shadow: none;
+  }
+  .reverse-icon-p {
+    visibility: visible;
+    opacity: 1;
+  } 
+}
+
+@media only screen and (max-width: 360px) {
+  .icon-arrow-right {
+    display: none;
+  }
+
+  .reverse-icon {
+    bottom: 2.5rem;
+    right: 0;
+  }
+  .reverse-icon-arrow-p {
+    visibility: visible;
+    opacity: 1;
   }
 }

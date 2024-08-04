@@ -3,19 +3,23 @@ import "../../pages/registerpage/Registerpage.css";
 import { Link } from "react-router-dom";
 import logo from "../../assets/logo.png";
 import { useEffect, useState } from "react";
+import { FaArrowRight, FaArrowUp } from "react-icons/fa";
 
 const Registerpage = () => {
   // const [imageLink, setImageLink] = useState("");
-
+  
+  // I'm putting the state to false here.
+  // Later i set it to true inside the handleSubmit once the form is submitted
+  const [submitted, setSubmitted] = useState(false);
   const [registerData, setRegisterData] = useState({
-    username: '',
-    email: '',
-    password: '',
-    confirmpassword: '',
-    firstName: '',
-    lastName: '',
-    age: '',
-    vo2max: '',
+    username: "",
+    email: "",
+    password: "",
+    confirmpassword: "",
+    firstName: "",
+    lastName: "",
+    age: "",
+    vo2max: "",
   });
 
   const handleInputChange = (e) => {
@@ -26,9 +30,33 @@ const Registerpage = () => {
     });
   };
 
-  // should be registerData after (e,) like this (e, registerData)
+  // Shecks if any of the required fields are empty.
+  // If true it shows the information text that describes the required input.
+  const isAnyFieldEmpty = () => {
+    const fieldsRequired = [
+      "username",
+      "email",
+      "password",
+      "confirmpassword",
+      "firstName",
+      "lastName",
+      "age",
+    ];
+    return fieldsRequired.some((fieldName) => isFieldEmpty(fieldName));
+  };
+
+  // Shecks if any field in registerData is empty or undefined and therefore true
+  // (Only shows the specific fields that are left empty), otherwise false. 
+  const isFieldEmpty = (fieldName) => {
+    return !registerData[fieldName];
+  };
+
+
   const handleSubmit = async (e, registerData) => {
     e.preventDefault();
+
+    // HERE I SET THE STATE TO TRUE
+    setSubmitted(true);
 
     // CHECK PASSWORD MATCH
     if (registerData.password !== registerData.confirmpassword) {
@@ -43,11 +71,6 @@ const Registerpage = () => {
       alert("you must enter a valid age");
       return;
     }
-
-
-
-
-
     // SETTING UP THE REQUEST OPTIONS
     var options = {
       method: "POST",
@@ -75,22 +98,41 @@ const Registerpage = () => {
     }
   };
 
+  
   return (
     <>
       <main className="registerpage">
-        <div>
-        <FontAwesomeIcon icon={faBackwardStep} style={{color: "#198891",}} />
-        </div>
         <div className="registerpage-logo">
           <Link to="/login">
             <img src={logo} className="logo" alt="VitalVibe" />
           </Link>
         </div>
-        <div className="form-container">
-          <form className="form" onSubmit={(e) => handleSubmit(e, registerData)}>
+
+        <div className="reverse-icon">
+          <p className="reverse-icon-arrow-p">
+            <FaArrowUp className="icon-arrow-up" />
+          </p>
+          <p className="reverse-icon-p">
+            Loggan tar
             <br />
-            <div className="input-demand"><p>Fält som har symbolen (*) är krav och måste vara ifyllda</p></div>
-            <p className="p-demand">Användarnamn *</p>
+            dig tillbaks <FaArrowRight className="icon-arrow-right" />
+          </p>
+        </div>
+
+        <div className="form-container">
+          <form
+            className="form"
+            onSubmit={(e) => handleSubmit(e, registerData)}
+          >
+            <br />
+            {submitted && isAnyFieldEmpty() && (
+              <div className="input-demand">
+                <p>Fält som har symbolen (*) är krav och måste vara ifyllda</p>
+              </div>
+            )}
+            {submitted && isFieldEmpty("username") && (
+              <p className="p-demand">Användarnamn *</p>
+            )}
             <input
               type="text"
               className="register-username"
@@ -100,7 +142,9 @@ const Registerpage = () => {
               placeholder="Användarnamn"
             />
             <br />
-            <p className="p-demand">E-post *</p>
+            {submitted && isFieldEmpty("email") && (
+              <p className="p-demand">E-post *</p>
+            )}
             <input
               type="email"
               id="personalinfo"
@@ -111,7 +155,9 @@ const Registerpage = () => {
               placeholder="E-post"
             />
             <br />
-            <p className="p-demand">Lösenord *</p>
+            {submitted && isFieldEmpty("password") && (
+              <p className="p-demand">Lösenord *</p>
+            )}
             <input
               type="password"
               className="register-password"
@@ -121,7 +167,9 @@ const Registerpage = () => {
               placeholder="Lösenord"
             />
             <br />
-            <p className="p-demand">Bekräfta lösenord *</p>
+            {submitted && isFieldEmpty("confirmpassword") && (
+              <p className="p-demand">Bekräfta lösenord *</p>
+            )}
             <input
               type="password"
               className="confirmpassword"
@@ -131,7 +179,9 @@ const Registerpage = () => {
               placeholder="Bekräfta lösenord"
             />
             <br />
-            <p className="p-demand">Förnamn *</p>
+            {submitted && isFieldEmpty("firstName") && (
+              <p className="p-demand">Förnamn *</p>
+            )}
             <input
               type="text"
               id="personalinfo"
@@ -142,7 +192,9 @@ const Registerpage = () => {
               placeholder="Förnamn"
             />
             <br />
-            <p className="p-demand">Efternamn *</p>
+            {submitted && isFieldEmpty("lastName") && (
+              <p className="p-demand">Efternamn *</p>
+            )}
             <input
               type="text"
               id="personalinfo"
@@ -153,7 +205,9 @@ const Registerpage = () => {
               placeholder="Efternamn"
             />
             <br />
-            <p className="p-demand">Ålder *</p>
+            {submitted && isFieldEmpty("age") && (
+              <p className="p-demand">Ålder *</p>
+            )}
             <input
               type="number"
               id="personalinfo"
