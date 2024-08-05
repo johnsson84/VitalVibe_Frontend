@@ -15,10 +15,10 @@ const FoodProvider = ({ children }) => {
       credentials: "include",
 
       body: JSON.stringify({
-        userId: `${food.userId}`,
-        mealType: `${food.mealType}`,
-        content: `${food.content}`,
-        calories: `${food.calories}`
+        userId: food.userId,
+        mealType: food.mealType,
+        content: food.content,
+        calories: food.calories
       }),
     };
 

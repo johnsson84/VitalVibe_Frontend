@@ -78,9 +78,7 @@ const AddMeal = () => {
 
   //ADDERA CONTENT TILL CONTENT-ARRAY
   const handleContent = () => {
-   
-
-    const mealContentString = `${mealContent.name}, ${mealContent.amount}, ${mealContent.unit}`;
+    const mealContentString = `${mealContent.name} ${mealContent.amount}${mealContent.unit}`;
 
     setMealArray((prevMealArray) => {
       const newMealArray = [...prevMealArray, mealContentString];
@@ -198,14 +196,11 @@ const AddMeal = () => {
         >
           Töm Ingredienser
         </button>
-        Ingredienser:{""}
+        Ingredienser: {""}
         {mealArray.length > 0 ? (
-          mealArray.map((meal, index) => (
+          mealArray.map((item, index) => (
             <div className="contentArrayDiv" key={index}>
-              <span>{meal.name}</span>
-              {", "}
-              <span>{" " + meal.amount}</span>
-              <span>{meal.unit}</span> <span></span>
+              {item}
             </div>
           ))
         ) : (
