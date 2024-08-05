@@ -24,7 +24,9 @@
     flex-direction: column;
     margin: 20px 10px 10px 10px;
 }
-
+.directP {
+    padding: 5px;
+}
 .directLink {
     background-color: #198891;
     box-shadow: 2px 2px 1px 1px rgb(62, 62, 62);
@@ -32,4 +34,8 @@
     text-decoration: none;
     padding: 1px 3px 1px 3px;
     margin: 1px 2px 1px 2px;
+}
+.directLink:hover {
+    background-color: rgb(36, 36, 36);
+    color: white;
 }

@@ -48,7 +48,7 @@ function VitalVibeApp() {
                         element={<Settings></Settings>}
                       ></Route>
                     </Route>
-                    <Route path="/logout" element={<Logout></Logout>}></Route>
+                    <Route path="/logout" element={<PrivateRoute><Logout></Logout></PrivateRoute>}></Route>
                   </Routes>
                 </BrowserRouter>
               </ThemeColorProvider>

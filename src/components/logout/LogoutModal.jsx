@@ -15,7 +15,7 @@ const LogoutModal = ({ isOpen, onClose, }) => {
     <div className="logoutModal">
       <div className="modal-content">
         <div>
-          <h1>Är du säker?</h1>
+          <h1>Logga ut?</h1>
         </div>
         <div className="modal-options">
           <Link style={style} className="modal-link modal-yes" to="/logout">Ja</Link>

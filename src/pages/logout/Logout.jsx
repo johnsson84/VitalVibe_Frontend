@@ -53,7 +53,7 @@ const Logout = () => {
         </div>
       </div>
       <div className="logoutDirect">
-        <p>Klicka <Link to="/login" className="directLink">här</Link> för att återgå direkt.</p>
+        <p className="directP">Klicka <Link to="/login" className="directLink">här</Link> för att återgå direkt.</p>
       </div>
     </div>
   );
