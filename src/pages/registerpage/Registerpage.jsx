@@ -2,6 +2,7 @@
 import "../../pages/registerpage/Registerpage.css";
 import logo from "../../assets/logo.png";
 import { checkingErrors } from "../../helper/functions";
+import Alert from "../../components/alert/Alert";
 
 // IMPORT react
 import { Link } from "react-router-dom";
@@ -9,8 +10,8 @@ import { useEffect, useState } from "react";
 import { FaArrowRight, FaArrowUp } from "react-icons/fa";
 
 const Registerpage = () => {
-  // const [imageLink, setImageLink] = useState("");
-  
+
+  const [errorMessage, setErrorMessage] = useState(null);
   // I'm putting the state to false here.
   // Later i set it to true inside the handleSubmit once the form is submitted
   const [submitted, setSubmitted] = useState(false);
@@ -24,6 +25,10 @@ const Registerpage = () => {
     age: "",
     vo2max: "",
   });
+
+  const closeAlert = () => {
+    setErrorMessage(null);
+  }
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -91,17 +96,17 @@ const Registerpage = () => {
       );
 
       if (res.status === 200) {
-        alert("regristrering ok");
+        setErrorMessage("regristrering ok");
         // Here i want to redirect the created user
         window.location.href = "/login";
       }
       else {
         const errorMessageCode = checkingErrors(res.status);
-        alert(errorMessageCode);
+        setErrorMessage(errorMessageCode);
       } 
     } catch (err) {
       console.log("Internt serverfel:", err);
-      alert("Ett oväntat fel inträffade");
+      setErrorMessage("Ett oväntat fel inträffade");
     }
   };
 
@@ -241,6 +246,7 @@ const Registerpage = () => {
               </button>
             </div>
           </form>
+          {errorMessage && <Alert alert={errorMessage} onClose={closeAlert} />}
         </div>
       </main>
     </>
