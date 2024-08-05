@@ -5,7 +5,8 @@ import { useContext, useState, createContext } from "react";
 const FoodContext = createContext();
 
 const FoodProvider = ({ children }) => {
-  
+  const [message, setMessage] = useState("");
+
   const addFood = async (food) => {
     var foodOptions = {
       method: "POST",
@@ -18,32 +19,27 @@ const FoodProvider = ({ children }) => {
         userId: food.userId,
         mealType: food.mealType,
         content: food.content,
-        calories: food.calories
+        calories: food.calories,
       }),
     };
 
     try {
-        console.log("body: " + foodOptions.body)
+      console.log("body: " + foodOptions.body);
       const res = await fetch(
         `${import.meta.env.VITE_API_URL}/meal/create`,
         foodOptions
       );
 
       const data = await res.json();
-
-      
-
-      
+      console.log("data" + JSON.stringify(data));
+      setMessage("Message: " + JSON.stringify(data));
     } catch (error) {
-      
-      
+      console.log(error)
     }
   };
 
   return (
-    <FoodContext.Provider value={{ addFood }}>
-      {children}
-    </FoodContext.Provider>
+    <FoodContext.Provider value={{ addFood }}>{children}</FoodContext.Provider>
   );
 };
 

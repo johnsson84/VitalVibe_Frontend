@@ -9,7 +9,7 @@ import { useState, useEffect, useContext } from "react";
 import { FoodContext } from "../../context/FoodContext";
 
 const AddMeal = () => {
-  const { addFood } = useContext(FoodContext);
+  const { addFood, message } = useContext(FoodContext);
 
   // const { style } = useContext(ThemeColorContext);
 
@@ -57,7 +57,7 @@ const AddMeal = () => {
 
   //CONTENT
   const [mealContent, newMealContent] = useState({
-    name: "",
+    ingredient: "",
     amount: "",
     unit: "",
   });
@@ -78,7 +78,7 @@ const AddMeal = () => {
 
   //ADDERA CONTENT TILL CONTENT-ARRAY
   const handleContent = () => {
-    const mealContentString = `${mealContent.name} ${mealContent.amount}${mealContent.unit}`;
+    const mealContentString = `${mealContent.ingredient} ${mealContent.amount}${mealContent.unit}`;
 
     setMealArray((prevMealArray) => {
       const newMealArray = [...prevMealArray, mealContentString];
@@ -88,7 +88,7 @@ const AddMeal = () => {
 
     newMealContent({
       // reset mealContent
-      name: "",
+      ingredient: "",
       amount: "",
       unit: "",
     });
@@ -107,8 +107,37 @@ const AddMeal = () => {
     }));
   }, [mealArray]);
 
+  // felhanterare (koder och state)
+
+  const [errors, setErrors] = useState({});
+
+  const validateFields = () => {
+    let errors = {};
+    if (!meal.mealType) {
+      errors.mealType = "Vänligen välj en måltidstyp.";
+    }
+    if (!mealContent) {
+      errors.content = "Vänligen ange ingredienser.";
+    }
+    if (!meal.calories) {
+      errors.calories = "Vänligen fyll i antal kalorier.";
+    }
+    if (mealArray.length === 0) {
+      errors.contentArray = "Vänligen ange ingredienser.";
+    }
+    return errors;
+  };
+
   //FETCH
   const handlePublish = () => {
+
+    //sätter fel i errors
+    const validationErrors = validateFields();
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors);
+      return;
+    }
+
     addFood(meal);
 
     newMeal({
@@ -117,7 +146,7 @@ const AddMeal = () => {
       content: [],
       calories: "",
     });
-    newMealContent({ name: "", amount: "", unit: "" });
+    newMealContent({ ingredient: "", amount: "", unit: "" });
   };
 
   // --------------------------
@@ -144,12 +173,13 @@ const AddMeal = () => {
             </ul>
           )}
         </div>
+        {errors.mealType && <p className="error">{errors.mealType}</p>}
       </section>
       <section className="addContent">
         <input
           onChange={handleMealContent}
-          name="name"
-          value={mealContent.name}
+          name="ingredient"
+          value={mealContent.ingredient}
           type="text"
           placeholder="Ingrediens:"
         />
@@ -166,7 +196,6 @@ const AddMeal = () => {
           value={mealContent.unit}
           onChange={handleMealContent}
           className="chooseUnit"
-          required
         >
           <option value="">Enhet:</option>
           <option value="g">g</option>
@@ -186,31 +215,39 @@ const AddMeal = () => {
           name="calories"
           placeholder="Kalorier:"
         />
+        {errors.calories && <p className="error">{errors.calories}</p>}
       </section>
 
-      <section className="contentArray">
-        {/* style={style} */}
-        <button
-          onClick={() => handleDeleteContent()}
-          className="removeContentButton"
-        >
-          Töm Ingredienser
-        </button>
-        Ingredienser: {""}
-        {mealArray.length > 0 ? (
-          mealArray.map((item, index) => (
-            <div className="contentArrayDiv" key={index}>
-              {item}
-            </div>
-          ))
-        ) : (
-          <span> "Inga Ingredienser Tillagda..." </span>
+      <section>
+        <div className="contentArray">
+          {/* style={style} */}
+          <button
+            onClick={() => handleDeleteContent()}
+            className="removeContentButton"
+          >
+            Töm Ingredienser
+          </button>
+          Ingredienser: {""}
+          {mealArray.length > 0 ? (
+            mealArray.map((item, index) => (
+              <div className="contentArrayDiv" key={index}>
+                {item}
+              </div>
+            ))
+          ) : (
+            <span> "Inga Ingredienser Tillagda..." </span>
+          )}
+        </div>
+        {errors.contentArray && (
+          <p className="error" id="errorContent">
+            {errors.contentArray}
+          </p>
         )}
       </section>
 
       {/* style={style} */}
       <button className="publishMealButton" onClick={handlePublish}>
-        PUBLISERA
+        PUBLICERA
       </button>
     </main>
   );

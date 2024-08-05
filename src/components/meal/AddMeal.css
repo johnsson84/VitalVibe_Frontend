@@ -172,3 +172,12 @@ input[type="number"] {
 .dropdown.open .dropdown-menu {
   display: block;
 }
+
+.error{
+  margin-top: 0.3rem;
+  color: red;
+}
+#errorContent{
+  align-self: flex-start;
+
+}
