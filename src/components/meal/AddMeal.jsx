@@ -45,7 +45,7 @@ const AddMeal = () => {
   );
 
   //CONTENT ARRAY
-  const [mealArray, setMealArray] = useState([String]);
+  const [mealArray, setMealArray] = useState([]);
 
   //food OBJECT
   const [meal, newMeal] = useState({
@@ -78,16 +78,15 @@ const AddMeal = () => {
 
   //ADDERA CONTENT TILL CONTENT-ARRAY
   const handleContent = () => {
-    // Skapa en sträng från mealContent objektet
-    const mealContentString = `${mealContent.name}, ${mealContent.amount} ${mealContent.unit}`;
+   
 
-    // Lägg till strängen till mealArray
+    const mealContentString = `${mealContent.name}, ${mealContent.amount}, ${mealContent.unit}`;
+
     setMealArray((prevMealArray) => {
       const newMealArray = [...prevMealArray, mealContentString];
+
       return newMealArray;
     });
-
-    setMealArray((prevMealArray) => [...prevMealArray, { ...mealContent }]);
 
     newMealContent({
       // reset mealContent
@@ -204,8 +203,9 @@ const AddMeal = () => {
           mealArray.map((meal, index) => (
             <div className="contentArrayDiv" key={index}>
               <span>{meal.name}</span>
-              {", "}-<span>{meal.amount}</span> <span>{meal.unit}</span>{" "}
-              <span></span>
+              {", "}
+              <span>{" " + meal.amount}</span>
+              <span>{meal.unit}</span> <span></span>
             </div>
           ))
         ) : (

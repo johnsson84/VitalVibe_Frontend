@@ -1,5 +1,5 @@
 .addMealContainer {
-  width: 40%;
+  width: 90%;
   height: auto;
   display: flex;
   flex-direction: column;
@@ -9,6 +9,7 @@
   color: black;
   background-color: #2a2e37;
   border-radius: 25px;
+  max-width: 600px;
 }
 
 .addMealContainer h1 {
