@@ -45,7 +45,7 @@ const AddMeal = () => {
   );
 
   //CONTENT ARRAY
-  const [mealArray, setMealArray] = useState([]);
+  const [mealArray, setMealArray] = useState([String]);
 
   //food OBJECT
   const [meal, newMeal] = useState({
@@ -78,12 +78,16 @@ const AddMeal = () => {
 
   //ADDERA CONTENT TILL CONTENT-ARRAY
   const handleContent = () => {
+    // Skapa en sträng från mealContent objektet
+    const mealContentString = `${mealContent.name}, ${mealContent.amount} ${mealContent.unit}`;
 
+    // Lägg till strängen till mealArray
     setMealArray((prevMealArray) => {
-      const newMealArray = [...prevMealArray, mealContent];
-
+      const newMealArray = [...prevMealArray, mealContentString];
       return newMealArray;
     });
+
+    setMealArray((prevMealArray) => [...prevMealArray, { ...mealContent }]);
 
     newMealContent({
       // reset mealContent
@@ -108,24 +112,15 @@ const AddMeal = () => {
 
   //FETCH
   const handlePublish = () => {
-    // newMeal((prevMeal) => ({
-    //   ...prevMeal,
-    //   content: mealArray,
-    // }));
-
-
     addFood(meal);
 
-    //rensa meal array
-    handleDeleteContent();
-    //rensa meal object
-    newMeal((prevMeal) => ({
-      ...prevMeal,
-      userId: loggedInUserId,
+    newMeal({
+      userId: localStorage.getItem("loggedInUserId"),
       mealType: "",
-      content: mealArray,
+      content: [],
       calories: "",
-    }));
+    });
+    newMealContent({ name: "", amount: "", unit: "" });
   };
 
   // --------------------------

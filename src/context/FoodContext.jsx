@@ -30,7 +30,6 @@ const FoodProvider = ({ children }) => {
       );
 
       const data = await res.json();
-      console.log(JSON.stringify(data))
 
       
 
