@@ -50,6 +50,9 @@
   box-shadow: 5px 5px 5px 5px rgb(0, 0, 0);
 }
 
+.register-username {
+  margin-top: 1rem;
+}
 #personalinfo,
 #distance,
 .register-username,

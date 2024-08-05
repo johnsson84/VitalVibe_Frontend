@@ -1,7 +1,10 @@
 // IMPORT STUFF
 import "../../pages/registerpage/Registerpage.css";
-import { Link } from "react-router-dom";
 import logo from "../../assets/logo.png";
+import { checkingErrors } from "../../helper/functions";
+
+// IMPORT react
+import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { FaArrowRight, FaArrowUp } from "react-icons/fa";
 
@@ -92,9 +95,13 @@ const Registerpage = () => {
         // Here i want to redirect the created user
         window.location.href = "/login";
       }
+      else {
+        const errorMessageCode = checkingErrors(res.status);
+        alert(errorMessageCode);
+      } 
     } catch (err) {
-      console.log("Misslyckad regristrering:", err);
-      alert("gick ej att skapa anv'ndare");
+      console.log("Internt serverfel:", err);
+      alert("Ett oväntat fel inträffade");
     }
   };
 
