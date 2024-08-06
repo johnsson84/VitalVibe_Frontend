@@ -12,19 +12,21 @@
     margin-bottom: 20px;
     width: 100%;
     max-width: 500px;
+    padding: 10px;
 }
 .profilePicture {
     background-color: #2A2E37;
     border-radius: 15px;
     width: 70%;
     max-width: 300px;
+    box-shadow: 3px 3px 3px 1px rgb(18, 18, 18);
 }
 .profileButtons {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items:flex-end;
-    padding: 10px 0px 10px 0px;
+    padding: 10px 7px 10px 0px;
     width: 30%;
 }
 #profileButtonA, #profileButtonB {
@@ -35,6 +37,7 @@
     width: 70%;
     max-width: 70px;
     max-height: 70px;
+    box-shadow: 3px 3px 3px 1px rgb(18, 18, 18);
 }
 #profileButtonA:hover, #profileButtonB:hover {
     background-color: var(--custom-color);
@@ -57,6 +60,7 @@
     border-radius: 10px;
     flex-wrap: wrap;
     max-width: 500px;
+    box-shadow: 3px 3px 3px 1px rgb(18, 18, 18);
 }
 .profileUserInfoContent {
     display: flex;
