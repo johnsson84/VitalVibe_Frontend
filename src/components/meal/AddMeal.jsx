@@ -47,9 +47,7 @@ const AddMeal = () => {
   //CONTENT ARRAY
   const [mealArray, setMealArray] = useState([]);
 
-  //amount error
-  const [amountError, setAmountError] = useState("");
-  //amount error
+  //display + button
   const [isDisplayable, setIsDisplayable] = useState(true);
 
   //food OBJECT
@@ -232,7 +230,7 @@ const AddMeal = () => {
             onChange={handleMealContent}
             className="chooseUnit"
           >
-            <option value="">Enhet:</option>
+            <option value="">Enhet: </option>
             <option value="g">g</option>
             <option value="kg">kg</option>
             <option value="l">l</option>
@@ -282,8 +280,7 @@ const AddMeal = () => {
           ) : (
             <span>
               {" "}
-              Inga Ingredienser Tillagda... <br /> Antal får en innehålla
-              bokstäver!{" "}
+              Inga Ingredienser Tillagda... <br /> 
             </span>
           )}
         </div>

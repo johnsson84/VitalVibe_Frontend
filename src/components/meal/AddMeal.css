@@ -6,7 +6,6 @@
   align-items: center;
   justify-content: center;
   gap: 2rem;
-  color: black;
   background-color: #2a2e37;
   border-radius: 25px;
   max-width: 600px;
@@ -94,9 +93,10 @@
   background-color: white;
   padding-left: 0.3rem;
   padding-right: 0.3rem;
-  color: gray;
   cursor: pointer;
 }
+
+
 
 .pCantContain {
   color: white;
