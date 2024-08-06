@@ -130,7 +130,6 @@ const AddMeal = () => {
 
   //FETCH
   const handlePublish = () => {
-
     //sätter fel i errors
     const validationErrors = validateFields();
     if (Object.keys(validationErrors).length > 0) {
@@ -173,7 +172,7 @@ const AddMeal = () => {
             </ul>
           )}
         </div>
-        {errors.mealType && <p className="error">{errors.mealType}</p>}
+        {errors.mealType && <p className="mealError">{errors.mealType}</p>}
       </section>
       <section className="addContent">
         <input
@@ -191,21 +190,23 @@ const AddMeal = () => {
           placeholder="Antal:"
         />
 
-        <select
-          name="unit"
-          value={mealContent.unit}
-          onChange={handleMealContent}
-          className="chooseUnit"
-        >
-          <option value="">Enhet:</option>
-          <option value="g">g</option>
-          <option value="kg">kg</option>
-          <option value="l">l</option>
-          <option value="dl">dl</option>
-          <option value="st">st</option>
-        </select>
+        <div className="addContentUnitButton">
+          <select
+            name="unit"
+            value={mealContent.unit}
+            onChange={handleMealContent}
+            className="chooseUnit"
+          >
+            <option value="">Enhet:</option>
+            <option value="g">g</option>
+            <option value="kg">kg</option>
+            <option value="l">l</option>
+            <option value="dl">dl</option>
+            <option value="st">st</option>
+          </select>
 
-        <button onClick={handleContent}>+</button>
+          <button onClick={handleContent}>+</button>
+        </div>
       </section>
       <section>
         <input
@@ -215,7 +216,7 @@ const AddMeal = () => {
           name="calories"
           placeholder="Kalorier:"
         />
-        {errors.calories && <p className="error">{errors.calories}</p>}
+        {errors.calories && <p className="mealError">{errors.calories}</p>}
       </section>
 
       <section>
@@ -239,7 +240,7 @@ const AddMeal = () => {
           )}
         </div>
         {errors.contentArray && (
-          <p className="error" id="errorContent">
+          <p className="mealError" id="errorContent">
             {errors.contentArray}
           </p>
         )}

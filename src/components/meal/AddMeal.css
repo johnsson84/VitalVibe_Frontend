@@ -23,6 +23,9 @@
   max-width: 600px;
 }
 
+
+
+
 .addMealContainer input {
   border-style: none;
   border-radius: 15px;
@@ -34,15 +37,15 @@
 
 /*remove input arrows*/
 /* Chrome, Safari, Edge, Opera */
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
+.addMealContainer input::-webkit-outer-spin-button,
+.addMealContainer input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
 
 /*remove input arrows*/
 /* Firefox */
-input[type="number"] {
+.addMealContainer input[type="number"] {
   -moz-appearance: textfield;
 }
 
@@ -65,7 +68,8 @@ input[type="number"] {
 }
 
 .addContent button {
-  width: 35%;
+  width: 40%;
+  height: 100%;
   border-style: none;
   border-radius: 15px;
   cursor: pointer;
@@ -76,7 +80,8 @@ input[type="number"] {
 }
 
 .chooseUnit {
-  width: 35%;
+  height: 100%;
+  width: 60%;
   border-style: none;
   border-radius: 15px;
   text-align: center;
@@ -86,6 +91,36 @@ input[type="number"] {
   color: gray;
   cursor: pointer;
 }
+
+.addContentUnitButton{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+  width: 120%;
+}
+
+@media only screen and (max-width: 600px) {
+  .addContent{
+    flex-direction: column;
+    background-color: #222222;
+    padding: 1rem;
+    border-radius: 15px;
+  }
+
+  .addContentUnitButton{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    height: 30%;
+    width: auto;
+  }
+
+}
+
+
+
 
 .contentArray {
   display: flex;
@@ -173,10 +208,12 @@ input[type="number"] {
   display: block;
 }
 
-.error{
+.mealError{
   margin-top: 0.3rem;
   color: red;
 }
 #errorContent{
   align-self: flex-start;
 }
+
+
