@@ -14,7 +14,7 @@ import { UserProvider } from "./context/user/UserContext";
 import Loginpage from "./pages/loginpage/Loginpage";
 import HomePage from "./pages/HomePage";
 import AddTraining from "./components/training/AddTraining";
-import Profile from "./components/profile/Profile";
+import Profile from "./pages/profilepage/Profile";
 import Settings from "./components/settings/Settings";
 import Logout from "./pages/logout/Logout";
 import RegisterPage from "./pages/registerpage/Registerpage";

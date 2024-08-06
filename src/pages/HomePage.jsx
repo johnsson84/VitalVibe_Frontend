@@ -2,7 +2,6 @@
 import { Routes, Route, Outlet } from "react-router-dom";
 import Header from "../components/header/Header";
 import Sidebar from "../components/sidebar/Sidebar";
-import AddTraining from "../components/training/AddTraining";
 
 // CSS
 import "./HomePage.css";
