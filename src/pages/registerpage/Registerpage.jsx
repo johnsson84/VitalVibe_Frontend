@@ -8,14 +8,14 @@ const Registerpage = () => {
   // const [imageLink, setImageLink] = useState("");
 
   const [registerData, setRegisterData] = useState({
-    username: '',
-    email: '',
-    password: '',
-    confirmpassword: '',
-    firstName: '',
-    lastName: '',
-    age: '',
-    vo2max: '',
+    username: "",
+    email: "",
+    password: "",
+    confirmpassword: "",
+    firstName: "",
+    lastName: "",
+    age: "",
+    vo2max: "",
   });
 
   const handleInputChange = (e) => {
@@ -43,10 +43,6 @@ const Registerpage = () => {
       alert("you must enter a valid age");
       return;
     }
-
-
-
-
 
     // SETTING UP THE REQUEST OPTIONS
     var options = {
@@ -84,7 +80,10 @@ const Registerpage = () => {
           </Link>
         </div>
         <div className="form-container">
-          <form className="form" onSubmit={(e) => handleSubmit(e, registerData)}>
+          <form
+            className="form"
+            onSubmit={(e) => handleSubmit(e, registerData)}
+          >
             <br />
             <input
               type="text"
