@@ -1,22 +1,21 @@
 .profilePage {
     display: flex;
-    justify-content: center;
+    align-items: center;
     padding: 40px;
+    flex-direction: column;
 }
 /* ============================================ */
 /* Upper section*/
-.profilePicture {
-    background-color: #2A2E37;
-    border-radius: 15px;
-}
 .profileUpper {
     display: flex;
     justify-content:space-between;
-    
+    margin-bottom: 20px;
     width: 100%;
-    max-width: 700px;
+    max-width: 500px;
 }
 .profilePicture {
+    background-color: #2A2E37;
+    border-radius: 15px;
     width: 70%;
     max-width: 300px;
 }
@@ -42,5 +41,23 @@
     height: 100%;
     max-width: 50px;
     max-height: 50px;
+}
+/* ============================================ */
+/* User info */
+.profileUserInfo {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    color: white;
+    background-color: #2A2E37;
+    padding: 10px 20px 10px 20px;
+    border-radius: 10px;
+    flex-wrap: wrap;
+    max-width: 500px;
+}
+.profileUserInfoContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 /* ============================================ */

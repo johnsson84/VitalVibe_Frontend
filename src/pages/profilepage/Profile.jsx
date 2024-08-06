@@ -8,6 +8,9 @@ const Profile = () => {
 
     return (
         <div className='profilePage'>
+
+            {/* ======================================== */}
+            {/** Upper section */}
             <div className='profileUpper'>
                 <div className='profilePicture'>
                     <img src='profile_placeholder.svg'></img>
@@ -18,6 +21,23 @@ const Profile = () => {
                 </div>
             </div>
             
+            {/* ======================================== */}
+            {/** User info section */}
+            <div className='profileUserInfo'>
+                <div className='profileUserInfoContent'>
+                    <p>Ålder:</p>
+                    <p>28</p>
+                </div>
+                <div className='profileUserInfoContent'>
+                    <p>Vo2Max:</p>
+                    <p>45</p>
+                </div>
+                <div className='profileUserInfoContent'>
+                    <p>Vikt:</p>
+                    <p>84</p>
+                </div>
+            </div>
+
         </div>
     )
 }
