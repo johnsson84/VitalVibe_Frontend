@@ -66,7 +66,7 @@ const Registerpage = () => {
 
     // CHECK PASSWORD MATCH
     if (registerData.password !== registerData.confirmpassword) {
-      alert("the given password did not match");
+      setErrorMessage("the given password did not match");
       return;
     }
     // VALIDATE THE AGE
@@ -74,7 +74,7 @@ const Registerpage = () => {
       !Number.isInteger(Number(registerData.age)) ||
       Number(registerData.age) <= 0
     ) {
-      alert("you must enter a valid age");
+      setErrorMessage("you must enter a valid age");
       return;
     }
 
