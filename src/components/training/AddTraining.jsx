@@ -4,9 +4,11 @@ import "./AddTraining.css";
 import { useContext, useEffect, useState } from "react";
 
 import { ActivityContext } from "../../context/TrainingContext";
+import { ThemeColorContext } from "../../context/themeColor/ThemeColorContext";
 
 const AddTraining = () => {
   const { addActivity, message } = useContext(ActivityContext);
+  const { style } = useContext(ThemeColorContext);
 
   const [loggedInUserId, setLoggedInUserId] = useState(
     localStorage.getItem("loggedInUserId")
@@ -111,7 +113,7 @@ const AddTraining = () => {
         </select>
       </section>
 
-      <button type="button" className="publishButton" onClick={handlePublish}>
+      <button style={style} type="button" className="publishButton" onClick={handlePublish}>
         PUBLISH
       </button>
 

@@ -1,0 +1,41 @@
+.logoutPage {
+    color: white;
+    padding: 20px;
+}
+
+.logoutFrame {
+    background-color: #198891;
+    box-shadow: 5px 5px 5px 5px rgb(0, 0, 0);
+    border-radius: 15px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.logoutDirect {
+    background-color: white;
+    color: black;
+    box-shadow: 5px 5px 5px 5px rgb(0, 0, 0);
+    border-radius: 15px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin: 20px 10px 10px 10px;
+}
+.directP {
+    padding: 5px;
+}
+.directLink {
+    background-color: #198891;
+    box-shadow: 2px 2px 1px 1px rgb(62, 62, 62);
+    border-radius: 5px;
+    text-decoration: none;
+    padding: 1px 3px 1px 3px;
+    margin: 1px 2px 1px 2px;
+}
+.directLink:hover {
+    background-color: rgb(36, 36, 36);
+    color: white;
+}

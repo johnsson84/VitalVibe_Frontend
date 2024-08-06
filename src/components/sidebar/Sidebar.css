@@ -16,13 +16,18 @@ nav {
 }
 .sideLink {
     text-align: center;
-    padding: 10px 10px 20px 10px;
+    padding: 15px 15px 15px 15px;
+    margin: 5px;
     text-decoration: none;
     color: white;
+
+    background-color: #2A2E37;
 }
 .sideLink:hover {
-    background-color: white;
-    color: black;
+    background-color: var(--custom-color);
+    color: white;
+    border-radius: 15px;
+
 }
 .sideLinkHide {
     display: none;

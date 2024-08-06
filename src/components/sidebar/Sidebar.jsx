@@ -1,13 +1,22 @@
 // STUFF
 import { Link } from "react-router-dom";
+import { ThemeColorContext } from "../../context/themeColor/ThemeColorContext";
+import LogoutModal from "../logout/LogoutModal";
 
 // CSS
 import "./Sidebar.css";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 
 const Sidebar = () => {
 
+  const { style } = useContext(ThemeColorContext);
+
     const [panelStatus, setPanelStatus] = useState(1);
+
+    const [ showModal, setShowModal ] = useState(false);
+
+    const handleClose = () => setShowModal(false);
+    const handleShow = () => setShowModal(true);
 
     const handleArrowClick = () => {
         if (panelStatus === 1) {
@@ -40,21 +49,28 @@ const Sidebar = () => {
         <nav>
           {/** Maybe we change text to icons later? */}
 
-          <Link className={panelStatus === 1 ? "sideLink" : "sideLinkHide"} to="/home/training">
-            Logga träning
-          </Link>
-          <Link className={panelStatus === 1 ? "sideLink" : "sideLinkHide"} to="/home/food">
-            Logga mat
-          </Link>
-          <Link className={panelStatus === 1 ? "sideLink" : "sideLinkHide"} to="/challenges">
-            Utmaningar
-          </Link>
-          <Link className={panelStatus === 1 ? "sideLink" : "sideLinkHide"} to="/profile">
+          <Link style={style} className={panelStatus === 1 ? "sideLink" : "sideLinkHide"} to="/profile">
             Profil
           </Link>
-          <Link className={panelStatus === 1 ? "sideLink" : "sideLinkHide"} to="/about">
+          <Link style={style} className={panelStatus === 1 ? "sideLink" : "sideLinkHide"} to="/profile/training">
+            Logga träning
+          </Link>
+          <Link style={style} className={panelStatus === 1 ? "sideLink" : "sideLinkHide"} to="/profile/food">
+            Logga mat
+          </Link>
+          <Link style={style} className={panelStatus === 1 ? "sideLink" : "sideLinkHide"} to="/profile/challenges">
+            Utmaningar
+          </Link>   
+          <Link style={style} className={panelStatus === 1 ? "sideLink" : "sideLinkHide"} to="/profile/about">
             Om oss
           </Link>
+          <Link style={style} className={panelStatus === 1 ? "sideLink" : "sideLinkHide"} to="/profile/settings">
+            Inställningar
+          </Link>
+          <Link style={style} className={panelStatus === 1 ? "sideLink" : "sideLinkHide"} onClick={handleShow}>
+            Logga ut
+          </Link>
+          <LogoutModal isOpen={showModal} onClose={handleClose}></LogoutModal>
         </nav>
         {showPanel()}
       </div>
