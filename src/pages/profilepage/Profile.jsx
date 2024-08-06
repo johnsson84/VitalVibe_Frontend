@@ -1,10 +1,21 @@
 import './Profile.css';
+import { UserContext } from '../../context/user/UserContext';
+import { useContext, useEffect } from 'react';
 
 const Profile = () => {
+
+    const { getLoggedInUserInfo, currentUserInfo } = useContext(UserContext);
 
     const handleClick = () => {
         alert("test");
     }
+
+    useEffect(() => {
+        setTimeout(() => {
+            getLoggedInUserInfo();
+        }, 1000)
+        
+    }, [])
 
     return (
         <div className='profilePage'>
@@ -26,15 +37,15 @@ const Profile = () => {
             <div className='profileUserInfo'>
                 <div className='profileUserInfoContent'>
                     <p>Ålder:</p>
-                    <p>28</p>
+                    {currentUserInfo.age}
                 </div>
                 <div className='profileUserInfoContent'>
                     <p>Vo2Max:</p>
-                    <p>45</p>
+                    {currentUserInfo.vo2max}
                 </div>
                 <div className='profileUserInfoContent'>
                     <p>Vikt:</p>
-                    <p>84</p>
+                    {currentUserInfo.weight}
                 </div>
             </div>
 
