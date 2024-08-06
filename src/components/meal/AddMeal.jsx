@@ -79,13 +79,13 @@ const AddMeal = () => {
     const name = e.target.name;
     const value = e.target.value;
 
-    console.log(value);
-
-    if (name === "amount" || value.trim() === "") {
-      setIsDisplayable(false);
-    }
-    if (value === 0 || value ) {
-      setIsDisplayable(true);
+    if (name === "amount") {
+      if (value.trim() === "") {
+        setIsDisplayable(false);
+      }
+      if (value === 0 || value) {
+        setIsDisplayable(true);
+      }
     }
 
     newMealContent({ ...mealContent, [name]: value });
@@ -224,7 +224,7 @@ const AddMeal = () => {
           onPaste={handlePaste}
           placeholder="Antal:"
         />
-        
+
         <div className="addContentUnitButton">
           <select
             name="unit"
@@ -246,10 +246,10 @@ const AddMeal = () => {
             </button>
           )}
           {!isDisplayable && (
-          <p className="pCantContain" p>
-            Antal = endast nummer!
-          </p>
-        )}
+            <p className="pCantContain" p>
+              Antal = endast nummer!
+            </p>
+          )}
         </div>
       </section>
       <section>
