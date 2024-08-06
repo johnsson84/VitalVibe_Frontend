@@ -10,7 +10,6 @@ import { useEffect, useState } from "react";
 import { FaArrowRight, FaArrowUp } from "react-icons/fa";
 
 const Registerpage = () => {
-
   const [errorMessage, setErrorMessage] = useState(null);
   // I'm putting the state to false here.
   // Later i set it to true inside the handleSubmit once the form is submitted
@@ -28,7 +27,7 @@ const Registerpage = () => {
 
   const closeAlert = () => {
     setErrorMessage(null);
-  }
+  };
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -54,11 +53,10 @@ const Registerpage = () => {
   };
 
   // Shecks if any field in registerData is empty or undefined and therefore true
-  // (Only shows the specific fields that are left empty), otherwise false. 
+  // (Only shows the specific fields that are left empty), otherwise false.
   const isFieldEmpty = (fieldName) => {
     return !registerData[fieldName];
   };
-
 
   const handleSubmit = async (e, registerData) => {
     e.preventDefault();
@@ -100,18 +98,16 @@ const Registerpage = () => {
         setErrorMessage("regristrering ok");
         // Here i want to redirect the created user
         window.location.href = "/login";
-      }
-      else {
+      } else {
         const errorMessageCode = checkingErrors(res.status);
         setErrorMessage(errorMessageCode);
-      } 
+      }
     } catch (err) {
       console.log("Internt serverfel:", err);
       setErrorMessage("Ett oväntat fel inträffade");
     }
   };
 
-  
   return (
     <>
       <main className="registerpage">
@@ -135,9 +131,7 @@ const Registerpage = () => {
         <div className="form-container">
           <form
             className="form"
-            onSubmit={(e) => handleSubmit(e, registerData)}
-          >
-            <br />
+            onSubmit={(e) => handleSubmit(e, registerData)}>
             {submitted && isAnyFieldEmpty() && (
               <div className="input-demand">
                 <p>Fält som har symbolen (*) är krav och måste vara ifyllda</p>
@@ -154,7 +148,6 @@ const Registerpage = () => {
               onChange={handleInputChange}
               placeholder="Användarnamn"
             />
-            <br />
             {submitted && isFieldEmpty("email") && (
               <p className="p-demand">E-post *</p>
             )}
@@ -167,7 +160,6 @@ const Registerpage = () => {
               onChange={handleInputChange}
               placeholder="E-post"
             />
-            <br />
             {submitted && isFieldEmpty("password") && (
               <p className="p-demand">Lösenord *</p>
             )}
@@ -179,7 +171,6 @@ const Registerpage = () => {
               onChange={handleInputChange}
               placeholder="Lösenord"
             />
-            <br />
             {submitted && isFieldEmpty("confirmpassword") && (
               <p className="p-demand">Bekräfta lösenord *</p>
             )}
@@ -191,7 +182,6 @@ const Registerpage = () => {
               onChange={handleInputChange}
               placeholder="Bekräfta lösenord"
             />
-            <br />
             {submitted && isFieldEmpty("firstName") && (
               <p className="p-demand">Förnamn *</p>
             )}
@@ -204,7 +194,6 @@ const Registerpage = () => {
               onChange={handleInputChange}
               placeholder="Förnamn"
             />
-            <br />
             {submitted && isFieldEmpty("lastName") && (
               <p className="p-demand">Efternamn *</p>
             )}
@@ -217,7 +206,6 @@ const Registerpage = () => {
               onChange={handleInputChange}
               placeholder="Efternamn"
             />
-            <br />
             {submitted && isFieldEmpty("age") && (
               <p className="p-demand">Ålder *</p>
             )}
@@ -230,7 +218,6 @@ const Registerpage = () => {
               onChange={handleInputChange}
               placeholder="   Ålder"
             />
-            <br />
             <input
               type="number"
               id="personalinfo"
@@ -240,7 +227,6 @@ const Registerpage = () => {
               onChange={handleInputChange}
               placeholder="   Vo2max"
             />
-
             <div className="register-btn-container">
               <button className="register-btn" type="submit">
                 Skapa Konto
