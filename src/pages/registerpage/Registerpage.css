@@ -7,6 +7,7 @@
   margin: 0px 50px 0px 50px;
   scale: 60%;
   border-radius: 20px;
+  background-color: #2A2E37;
 }
 .reverse-icon {
   position: relative;
@@ -42,7 +43,7 @@
   padding: 20px;
   border-radius: 20px;
   /*Kan bytas ut mot color=#198891, för att få så som figma HI-FI profilen*/
-  background-color: #198891;
+  background-color: #2A2E37;
   border: none;
   box-shadow: 5px 5px 5px 5px rgb(0, 0, 0);
 }
@@ -83,7 +84,7 @@
   padding: 10px 20px 10px 20px;
   border-radius: 7px;
   cursor: pointer;
-  background-color: black;
+  background-color: #198891;
   color: white;
   text-align: center;
 }
@@ -91,12 +92,12 @@
   padding: 0px 0px 15px;
   font-size: x-small;
   text-align: center;
-  color: brown;
+  color: rgb(252, 131, 131);
   
 }
 .p-demand {
   font-size: 9px;
-  color: brown;
+  color: rgb(252, 131, 131);
 }
 
 /* HOVER STYLING-------------------------------------------*/

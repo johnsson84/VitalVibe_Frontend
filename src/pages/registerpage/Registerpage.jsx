@@ -124,7 +124,7 @@ const Registerpage = () => {
           <p className="reverse-icon-p">
             Loggan tar
             <br />
-            dig tillbaks <FaArrowRight className="icon-arrow-right" />
+            dig tillbaka <FaArrowRight className="icon-arrow-right" />
           </p>
         </div>
 
