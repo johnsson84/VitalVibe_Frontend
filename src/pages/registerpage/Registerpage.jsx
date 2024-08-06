@@ -22,6 +22,7 @@ const Registerpage = () => {
     firstName: "",
     lastName: "",
     age: "",
+    weight: "",
     vo2max: "",
   });
 
@@ -131,7 +132,8 @@ const Registerpage = () => {
         <div className="form-container">
           <form
             className="form"
-            onSubmit={(e) => handleSubmit(e, registerData)}>
+            onSubmit={(e) => handleSubmit(e, registerData)}
+          >
             {submitted && isAnyFieldEmpty() && (
               <div className="input-demand">
                 <p>Fält som har symbolen (*) är krav och måste vara ifyllda</p>
@@ -216,7 +218,16 @@ const Registerpage = () => {
               name="age"
               value={registerData.age}
               onChange={handleInputChange}
-              placeholder="   Ålder"
+              placeholder="Ålder"
+            />
+            <input
+              type="number"
+              id="personalinfo"
+              className="weight"
+              name="weight"
+              value={registerData.weight}
+              onChange={handleInputChange}
+              placeholder="Vikt"
             />
             <input
               type="number"
@@ -225,7 +236,7 @@ const Registerpage = () => {
               name="vo2max"
               value={registerData.vo2max}
               onChange={handleInputChange}
-              placeholder="   Vo2max"
+              placeholder="Vo2max"
             />
             <div className="register-btn-container">
               <button className="register-btn" type="submit">
