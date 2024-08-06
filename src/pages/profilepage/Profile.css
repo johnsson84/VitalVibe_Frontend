@@ -36,6 +36,9 @@
     max-width: 70px;
     max-height: 70px;
 }
+#profileButtonA:hover, #profileButtonB:hover {
+    background-color: var(--custom-color);
+}
 #profileButtonImgA, #profileButtonImgB {
     width: 100%;
     height: 100%;

@@ -1,10 +1,12 @@
 import './Profile.css';
 import { UserContext } from '../../context/user/UserContext';
 import { useContext, useEffect } from 'react';
+import { ThemeColorContext } from '../../context/themeColor/ThemeColorContext';
 
 const Profile = () => {
 
     const { getLoggedInUserInfo, currentUserInfo } = useContext(UserContext);
+    const { style } = useContext(ThemeColorContext);
 
     const handleClick = () => {
         alert("test");
@@ -18,7 +20,7 @@ const Profile = () => {
     }, [])
 
     return (
-        <div className='profilePage'>
+        <div style={style} className='profilePage'>
 
             {/* ======================================== */}
             {/** Upper section */}
