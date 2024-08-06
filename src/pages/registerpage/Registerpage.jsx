@@ -79,6 +79,7 @@ const Registerpage = () => {
       alert("you must enter a valid age");
       return;
     }
+
     // SETTING UP THE REQUEST OPTIONS
     var options = {
       method: "POST",

@@ -1,4 +1,3 @@
-
 .registerpage {
   display: flex;
   flex-direction: column;
@@ -167,6 +166,7 @@
   }
   .register-btn:hover,
   #personalinfo:hover,
+
   .register-username:hover,
   .register-password:hover,
   .age:hover {
