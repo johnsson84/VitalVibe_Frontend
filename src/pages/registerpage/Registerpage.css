@@ -1,6 +1,4 @@
-* {
-  overflow: scroll;
-}
+
 .registerpage {
   display: flex;
   flex-direction: column;
@@ -54,7 +52,6 @@
   margin-top: 1rem;
 }
 #personalinfo,
-#distance,
 .register-username,
 .register-password,
 .confirmpassword {
@@ -113,7 +110,6 @@
 }
 
 #personalinfo:hover,
-#distance:hover,
 .register-username:hover,
 .register-password:hover,
 .age:hover,
@@ -135,7 +131,6 @@
 
 /* FOCUS STYLING-------------------------------------------- */
 #personalinfo:focus,
-#distance:focus,
 .register-username:focus,
 .register-password:focus,
 .age:focus,
@@ -172,7 +167,6 @@
   }
   .register-btn:hover,
   #personalinfo:hover,
-  #distance:hover,
   .register-username:hover,
   .register-password:hover,
   .age:hover {
