@@ -7,11 +7,12 @@ import { useState, useEffect, useContext } from "react";
 
 // context
 import { FoodContext } from "../../context/FoodContext";
+import { ThemeColorContext } from "../../context/themeColor/ThemeColorContext";
 
 const AddMeal = () => {
   const { addFood, message } = useContext(FoodContext);
+  const { style } = useContext(ThemeColorContext);
 
-  // const { style } = useContext(ThemeColorContext);
 
   //DROPDOWN  {
   const [isOpen, setIsOpen] = useState(false);
@@ -205,7 +206,9 @@ const AddMeal = () => {
             <option value="st">st</option>
           </select>
 
-          <button onClick={handleContent}>+</button>
+          <button style={style} onClick={handleContent}>
+            +
+          </button>
         </div>
       </section>
       <section>
@@ -221,8 +224,9 @@ const AddMeal = () => {
 
       <section>
         <div className="contentArray">
-          {/* style={style} */}
+          
           <button
+            style={style}
             onClick={() => handleDeleteContent()}
             className="removeContentButton"
           >
@@ -246,8 +250,12 @@ const AddMeal = () => {
         )}
       </section>
 
-      {/* style={style} */}
-      <button className="publishMealButton" onClick={handlePublish}>
+      
+      <button
+        style={style}
+        className="publishMealButton"
+        onClick={handlePublish}
+      >
         PUBLICERA
       </button>
     </main>

@@ -23,9 +23,6 @@
   max-width: 600px;
 }
 
-
-
-
 .addMealContainer input {
   border-style: none;
   border-radius: 15px;
@@ -59,6 +56,13 @@
   font-size: 15px;
   font-weight: bold;
   margin-bottom: 2rem;
+  background-color: var(--custom-color);
+  color: white;
+}
+
+.publishMealButton:hover {
+  background-color: lightgray;
+  color: black;
 }
 
 .addContent {
@@ -73,9 +77,10 @@
   border-style: none;
   border-radius: 15px;
   cursor: pointer;
+  background-color: white;
 }
 
-.addContent select:hover, button:hover{
+.addContent select:hover {
   background-color: lightgray;
 }
 
@@ -92,23 +97,27 @@
   cursor: pointer;
 }
 
-.addContentUnitButton{
+.addContentUnitButton {
   display: flex;
   flex-direction: row;
   align-items: center;
   gap: 1rem;
   width: 120%;
 }
+.addContentUnitButton button:hover {
+  background-color: var(--custom-color);
+  color: white;
+}
 
 @media only screen and (max-width: 600px) {
-  .addContent{
+  .addContent {
     flex-direction: column;
     background-color: #222222;
     padding: 1rem;
     border-radius: 15px;
   }
 
-  .addContentUnitButton{
+  .addContentUnitButton {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -117,10 +126,11 @@
     width: auto;
   }
 
+  .addContentUnitButton button:hover {
+    background-color: var(--custom-color);
+    color: white;
+  }
 }
-
-
-
 
 .contentArray {
   display: flex;
@@ -154,7 +164,10 @@
   cursor: pointer;
 }
 
-
+.removeContentButton:hover {
+  background-color: var(--custom-color);
+  color: white;
+}
 
 /* DROPDOWN */
 
@@ -175,6 +188,7 @@
 
 .dropdown-toggle:hover {
   background-color: #e0e0e0;
+  color: black;
 }
 
 .dropdown-menu {
@@ -197,7 +211,6 @@
 .dropdown-menu li:hover {
   background-color: #f0f0f0;
   font-size: 30px;
-  
 }
 
 .dropdown.open .dropdown-toggle {
@@ -208,12 +221,10 @@
   display: block;
 }
 
-.mealError{
+.mealError {
   margin-top: 0.3rem;
   color: red;
 }
-#errorContent{
+#errorContent {
   align-self: flex-start;
 }
-
-

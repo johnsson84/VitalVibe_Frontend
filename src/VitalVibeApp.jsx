@@ -26,41 +26,55 @@ function VitalVibeApp() {
     <div className="vitalvibe">
       <AuthProvider>
         <LoginProvider>
-
-
           <UserProvider>
             <ActivityProvider>
-                               <FoodProvider>
-              <ThemeColorProvider>
-                <BrowserRouter>
-                  <Routes>
-                    <Route path="/login" element={<Loginpage />}></Route>
-                    <Route path="/register" element={<RegisterPage />}></Route>
-                    {/* <Route path="forgot-password" element={<ForgotPasswordPage />}></Route> */}
-                    {/** PrivateRoute till /profile innefattar alla som kommer efter /profile ex /profile/training osv...  */}
-                    <Route path="/profile" element={<PrivateRoute><HomePage /></PrivateRoute>}>
-                      <Route index element={<Profile></Profile>}></Route>{" "}
+              <FoodProvider>
+                <ThemeColorProvider>
+                  <BrowserRouter>
+                    <Routes>
+                      <Route path="/login" element={<Loginpage />}></Route>
                       <Route
-                        path="/profile/training"
-                        element={<AddTraining></AddTraining>}
+                        path="/register"
+                        element={<RegisterPage />}
                       ></Route>
-                      <Route path="/profile/food" element={""}></Route>
-                      <Route path="/profile/challenges" element={""}></Route>
-                      <Route path="/profile/about" element={""}></Route>
+                      {/* <Route path="forgot-password" element={<ForgotPasswordPage />}></Route> */}
+                      {/** PrivateRoute till /profile innefattar alla som kommer efter /profile ex /profile/training osv...  */}
                       <Route
-                        path="/profile/settings"
-                        element={<Settings></Settings>}
+                        path="/profile"
+                        element={
+                          <PrivateRoute>
+                            <HomePage />
+                          </PrivateRoute>
+                        }
+                      >
+                        <Route index element={<Profile></Profile>}></Route>{" "}
+                        <Route
+                          path="/profile/training"
+                          element={<AddTraining></AddTraining>}
+                        ></Route>
+                        <Route
+                          path="/profile/food"
+                          element={<AddMeal></AddMeal>}
+                        ></Route>
+                        <Route path="/profile/challenges" element={""}></Route>
+                        <Route path="/profile/about" element={""}></Route>
+                        <Route
+                          path="/profile/settings"
+                          element={<Settings></Settings>}
+                        ></Route>
+                      </Route>
+                      <Route
+                        path="/logout"
+                        element={
+                          <PrivateRoute>
+                            <Logout></Logout>
+                          </PrivateRoute>
+                        }
                       ></Route>
-                    </Route>
-                    <Route path="/logout" element={<PrivateRoute><Logout></Logout></PrivateRoute>}></Route>
-<Route
-                      path="/home/food"
-                      element={<AddMeal></AddMeal>}
-                    ></Route>
-                  </Routes>
-                </BrowserRouter>
-</FoodProvider>
-              </ThemeColorProvider>
+                    </Routes>
+                  </BrowserRouter>
+                </ThemeColorProvider>
+              </FoodProvider>
             </ActivityProvider>
           </UserProvider>
         </LoginProvider>
