@@ -47,6 +47,11 @@ const AddMeal = () => {
   //CONTENT ARRAY
   const [mealArray, setMealArray] = useState([]);
 
+  //amount error
+  const [amountError, setAmountError] = useState("");
+  //amount error
+  const [isDisplayable, setIsDisplayable] = useState(true);
+
   //food OBJECT
   const [meal, newMeal] = useState({
     userId: loggedInUserId,
@@ -73,6 +78,16 @@ const AddMeal = () => {
   const handleMealContent = (e) => {
     const name = e.target.name;
     const value = e.target.value;
+
+    console.log(value);
+
+    if (name === "amount" || value.trim() === "") {
+      setIsDisplayable(false);
+    }
+    if (value === 0 || value ) {
+      setIsDisplayable(true);
+    }
+
     newMealContent({ ...mealContent, [name]: value });
   };
 
@@ -92,6 +107,17 @@ const AddMeal = () => {
       amount: "",
       unit: "",
     });
+  };
+
+  const handlePaste = (e) => {
+    const paste = e.clipboardData.getData("text");
+    if (isNaN(paste)) {
+      e.preventDefault();
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        amount: "Antal måste vara en siffra",
+      }));
+    }
   };
 
   //TÖM ARRAY MED CONTENT
@@ -122,9 +148,11 @@ const AddMeal = () => {
     if (!meal.calories) {
       errors.calories = "Vänligen fyll i antal kalorier.";
     }
+
     if (mealArray.length === 0) {
       errors.contentArray = "Vänligen ange ingredienser.";
     }
+
     return errors;
   };
 
@@ -155,14 +183,14 @@ const AddMeal = () => {
       <h1>Logga Måltid:</h1>
       <section>
         <div className={`dropdown ${isOpen ? "open" : ""}`}>
-        <button
-  className={`dropdown-toggle ${
-    selectedOption ? "selected-option" : "placeholder"
-  }`}
-  onClick={toggleDropdown}
->
-  {selectedOption || "Måltidstyp  ↓"}
-</button>
+          <button
+            className={`dropdown-toggle ${
+              selectedOption ? "selected-option" : "placeholder"
+            }`}
+            onClick={toggleDropdown}
+          >
+            {selectedOption || "Måltidstyp  ↓"}
+          </button>
           {errors.mealType && <p className="mealError">{errors.mealType}</p>}
           {isOpen && (
             <ul className="dropdown-menu">
@@ -178,7 +206,6 @@ const AddMeal = () => {
             </ul>
           )}
         </div>
-        
       </section>
       <section className="addContent">
         <input
@@ -187,17 +214,17 @@ const AddMeal = () => {
           value={mealContent.ingredient}
           type="text"
           placeholder="Ingrediens:"
-          pattern="[A-Za-zÀ-ÿ\s]+"
         />
         <input
           onChange={handleMealContent}
           name="amount"
           value={mealContent.amount}
           type="number"
+          onInput={handleMealContent}
+          onPaste={handlePaste}
           placeholder="Antal:"
-          min="0"
         />
-
+        
         <div className="addContentUnitButton">
           <select
             name="unit"
@@ -213,9 +240,16 @@ const AddMeal = () => {
             <option value="st">st</option>
           </select>
 
-          <button style={style} onClick={handleContent}>
-            +
-          </button>
+          {isDisplayable && (
+            <button style={style} onClick={handleContent}>
+              +
+            </button>
+          )}
+          {!isDisplayable && (
+          <p className="pCantContain" p>
+            Antal = endast nummer!
+          </p>
+        )}
         </div>
       </section>
       <section>
@@ -246,7 +280,11 @@ const AddMeal = () => {
               </div>
             ))
           ) : (
-            <span> "Inga Ingredienser Tillagda..." </span>
+            <span>
+              {" "}
+              Inga Ingredienser Tillagda... <br /> Antal får en innehålla
+              bokstäver!{" "}
+            </span>
           )}
         </div>
         {errors.contentArray && (

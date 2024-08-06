@@ -68,6 +68,7 @@
 .addContent {
   display: flex;
   flex-direction: row;
+  justify-content: center;
   gap: 1rem;
 }
 
@@ -86,7 +87,7 @@
 
 .chooseUnit {
   height: 100%;
-  width: 60%;
+  width: auto;
   border-style: none;
   border-radius: 15px;
   text-align: center;
@@ -97,6 +98,11 @@
   cursor: pointer;
 }
 
+.pCantContain {
+  color: white;
+  font-size: 12px;
+}
+
 .addContentUnitButton {
   display: flex;
   flex-direction: row;
@@ -104,6 +110,7 @@
   gap: 1rem;
   width: 120%;
 }
+
 .addContentUnitButton button:hover {
   background-color: var(--custom-color);
   color: white;
@@ -143,6 +150,10 @@
   padding: 1rem;
   color: gray;
   gap: 1rem;
+}
+
+.contentArray span {
+  text-align: center;
 }
 
 .contentArrayDiv {
