@@ -151,6 +151,7 @@
   align-items: center;
   justify-content: end;
   width: auto;
+  color: black;
 }
 
 .removeContentButton {
@@ -191,6 +192,14 @@
   color: black;
 }
 
+.selected-option {
+  color: black;
+}
+
+.placeholder {
+  color: gray;
+}
+
 .dropdown-menu {
   width: 100%;
   list-style: none;
@@ -206,6 +215,7 @@
 
 .dropdown-menu li {
   cursor: pointer;
+  color: black;
 }
 
 .dropdown-menu li:hover {
@@ -222,8 +232,9 @@
 }
 
 .mealError {
-  margin-top: 0.3rem;
-  color: red;
+  margin-top: 0.2rem;
+  font-size: 12px;
+  color: rgb(255, 171, 171);
 }
 #errorContent {
   align-self: flex-start;

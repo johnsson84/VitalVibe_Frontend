@@ -13,7 +13,6 @@ const AddMeal = () => {
   const { addFood, message } = useContext(FoodContext);
   const { style } = useContext(ThemeColorContext);
 
-
   //DROPDOWN  {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState(null);
@@ -156,9 +155,15 @@ const AddMeal = () => {
       <h1>Logga Måltid:</h1>
       <section>
         <div className={`dropdown ${isOpen ? "open" : ""}`}>
-          <button className="dropdown-toggle" onClick={toggleDropdown}>
-            {selectedOption || "Måltidstyp  ↓"}
-          </button>
+        <button
+  className={`dropdown-toggle ${
+    selectedOption ? "selected-option" : "placeholder"
+  }`}
+  onClick={toggleDropdown}
+>
+  {selectedOption || "Måltidstyp  ↓"}
+</button>
+          {errors.mealType && <p className="mealError">{errors.mealType}</p>}
           {isOpen && (
             <ul className="dropdown-menu">
               {options.map((option, index) => (
@@ -173,7 +178,7 @@ const AddMeal = () => {
             </ul>
           )}
         </div>
-        {errors.mealType && <p className="mealError">{errors.mealType}</p>}
+        
       </section>
       <section className="addContent">
         <input
@@ -182,6 +187,7 @@ const AddMeal = () => {
           value={mealContent.ingredient}
           type="text"
           placeholder="Ingrediens:"
+          pattern="[A-Za-zÀ-ÿ\s]+"
         />
         <input
           onChange={handleMealContent}
@@ -189,6 +195,7 @@ const AddMeal = () => {
           value={mealContent.amount}
           type="number"
           placeholder="Antal:"
+          min="0"
         />
 
         <div className="addContentUnitButton">
@@ -224,7 +231,6 @@ const AddMeal = () => {
 
       <section>
         <div className="contentArray">
-          
           <button
             style={style}
             onClick={() => handleDeleteContent()}
@@ -250,7 +256,6 @@ const AddMeal = () => {
         )}
       </section>
 
-      
       <button
         style={style}
         className="publishMealButton"
