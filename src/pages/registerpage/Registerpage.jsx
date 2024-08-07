@@ -11,6 +11,7 @@ import { FaArrowRight, FaArrowUp } from "react-icons/fa";
 
 const Registerpage = () => {
   const [errorMessage, setErrorMessage] = useState(null);
+  const [buttonChange, setButtonChange] = useState("Försök igen")
   // I'm putting the state to false here.
   // Later i set it to true inside the handleSubmit once the form is submitted
   const [submitted, setSubmitted] = useState(false);
@@ -28,6 +29,7 @@ const Registerpage = () => {
 
   const closeAlert = () => {
     setErrorMessage(null);
+    setButtonChange("Försök igen")
   };
 
   const handleInputChange = (e) => {
@@ -71,13 +73,13 @@ const Registerpage = () => {
       return;
     }
     // VALIDATE THE AGE
-    if (
-      !Number.isInteger(Number(registerData.age)) ||
-      Number(registerData.age) <= 0
-    ) {
-      setErrorMessage("you must enter a valid age");
-      return;
-    }
+    // if (
+    //   !Number.isInteger(Number(registerData.age)) ||
+    //   Number(registerData.age) <= 0
+    // ) {
+    //   setErrorMessage("you must enter a valid age");
+    //   return;
+    // }
 
     // SETTING UP THE REQUEST OPTIONS
     var options = {
@@ -104,6 +106,8 @@ const Registerpage = () => {
       } else {
         const errorMessageCode = checkingErrors(res.status);
         setErrorMessage(errorMessageCode);
+        setButtonChange("Försök igen")
+        
       }
     } catch (err) {
       console.log("Internt serverfel:", err);
@@ -246,7 +250,7 @@ const Registerpage = () => {
               </button>
             </div>
           </form>
-          {errorMessage && <Alert alert={errorMessage} onClose={closeAlert} />}
+          {errorMessage && <Alert alert={errorMessage} onClose={closeAlert} buttonChange={buttonChange}/>}
         </div>
       </main>
     </>

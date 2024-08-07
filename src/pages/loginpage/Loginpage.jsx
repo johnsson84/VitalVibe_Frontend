@@ -78,7 +78,7 @@ const Loginpage = () => {
     setButtonChange("Försök igen");
   };
 
-  //För att hämta lagrat popup meddelande ifån postbegäran i registerpage.
+  //För att hämta lagrat popup meddelande ifån post-begäran i registerpage.
   useEffect(() => {
     const okPopupMessage = localStorage.getItem("popupmessage");
     if (okPopupMessage) {
