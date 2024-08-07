@@ -1,10 +1,16 @@
+
+//IMPORT COMPONENTS
 import "./Loginpage.css";
 import logo from "../../assets/logo.png";
 import Alert from "../../components/alert/Alert.jsx";
+import axios from "axios";
+
+// IMPORT STUFF
 import { Link, useNavigate } from "react-router-dom";
 import { useState, useContext } from "react";
 import { Authentication } from "../../components/login/Authentication.jsx";
-import axios from "axios";
+
+//IMPORT CONTEXT
 import { ThemeColorContext } from "../../context/themeColor/ThemeColorContext.jsx";
 
 const Loginpage = () => {
@@ -12,8 +18,10 @@ const Loginpage = () => {
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState(null);
   const navigate = useNavigate();
-
   const { setThemeColor } = useContext(ThemeColorContext);
+
+
+  
 
   const {
     state: { user },
@@ -71,6 +79,7 @@ const Loginpage = () => {
   const closeAlert = () => {
     setErrorMessage(null);
   };
+  
 
   return (
     <>
