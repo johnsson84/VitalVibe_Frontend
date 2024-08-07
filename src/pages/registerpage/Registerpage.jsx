@@ -96,7 +96,7 @@ const Registerpage = () => {
       );
 
       if (res.status === 200) {
-        setErrorMessage("regristrering ok");
+        console.log("regristrering ok");
         localStorage.setItem("popupmessage", "Lyckad Registrering!\nVänligen logga in")
         // Here i want to redirect the created user
         window.location.href = "/login";

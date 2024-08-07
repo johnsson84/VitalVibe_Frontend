@@ -1,4 +1,3 @@
-
 //IMPORT COMPONENTS
 import "./Loginpage.css";
 import logo from "../../assets/logo.png";
@@ -7,7 +6,7 @@ import axios from "axios";
 
 // IMPORT STUFF
 import { Link, useNavigate } from "react-router-dom";
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { Authentication } from "../../components/login/Authentication.jsx";
 
 //IMPORT CONTEXT
@@ -17,11 +16,9 @@ const Loginpage = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState(null);
+  const [buttonChange, setButtonChange] = useState("Försök igen");
   const navigate = useNavigate();
   const { setThemeColor } = useContext(ThemeColorContext);
-
-
-  
 
   const {
     state: { user },
@@ -78,8 +75,19 @@ const Loginpage = () => {
 
   const closeAlert = () => {
     setErrorMessage(null);
+    setButtonChange("Försök igen");
   };
-  
+
+  //För att hämta lagrat popup meddelande ifån postbegäran i registerpage.
+  useEffect(() => {
+    const okPopupMessage = localStorage.getItem("popupmessage");
+    if (okPopupMessage) {
+      setErrorMessage(okPopupMessage);
+      // sätta button  i alert komponenten till OK istället för (försök igen). 
+      setButtonChange("OK");
+      localStorage.removeItem("popupmessage");
+    }
+  }, []);
 
   return (
     <>
@@ -126,7 +134,13 @@ const Loginpage = () => {
             </button>
           </div>
         </form>
-        {errorMessage && <Alert alert={errorMessage} onClose={closeAlert} />}
+        {errorMessage && (
+          <Alert
+            alert={errorMessage}
+            buttonChange={buttonChange}
+            onClose={closeAlert}
+          />
+        )}
       </main>
     </>
   );
