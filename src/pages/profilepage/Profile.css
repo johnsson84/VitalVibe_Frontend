@@ -61,6 +61,7 @@
     flex-wrap: wrap;
     max-width: 500px;
     box-shadow: 3px 3px 3px 1px rgb(18, 18, 18);
+    margin-bottom: 20px;
 }
 .profileUserInfoContent {
     display: flex;
@@ -68,3 +69,84 @@
     align-items: center;
 }
 /* ============================================ */
+/* Best results*/
+.profileBestResults {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 500px;
+    color: white;
+    background-color: #2A2E37;
+    border-radius: 10px;
+    box-shadow: 3px 3px 3px 1px rgb(18, 18, 18);
+    padding: 20px;
+    align-items: center;
+    
+}
+.profileBestResultsIcons {
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    
+    
+}
+.profileBestResultIconButton {
+    cursor: pointer;
+    width: 35px;
+    background: none;
+    border: none;
+    padding: 5px;
+}
+.profileBestResultIconButton:hover {
+    background-color: var(--custom-color);
+    border-radius: 20px;
+    
+}
+.profileBestResultSwitch {
+    background-color: var(--custom-color);
+    width: 90%;
+    padding: 5px;
+    border-radius: 20px;
+    margin-top: 10px;
+    display: flex;
+    box-shadow: 3px 3px 3px 1px rgb(18, 18, 18);
+}
+.profileBestResultSwitchCircle1,
+.profileBestResultSwitchCircle2,
+.profileBestResultSwitchCircle3 {
+    background-color: rgb(36, 36, 36);
+    padding: 10px;
+    border-radius: 20px;
+    max-width: 5%;
+    transition: margin 0.5s ease-in-out;
+}
+
+.profileBestResultSwitchCircle2 {
+    margin-left: 50%;
+    transform: translateX(-50%);
+}
+.profileBestResultSwitchCircle3 {
+    margin-left: 90%;
+}
+
+@media (min-width: 340px) {
+    .profileBestResultSwitchCircle3 {
+        margin-left: 75%;
+    }
+}
+@media  (min-width: 390px) and (max-width: 460px) {
+    .profileBestResultSwitchCircle3 {
+        margin-left: calc(90% - 10px);
+    }
+}
+@media  (min-width: 461px) and (max-width: 599px) {
+    .profileBestResultSwitchCircle3 {
+        margin-left: 90%;
+    }
+}
+@media (min-width: 600px) {
+    .profileBestResultSwitchCircle3 {
+        margin-left: 93%;
+    }
+}
+
