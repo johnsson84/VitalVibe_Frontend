@@ -26,12 +26,14 @@ const Profile = () => {
         if (circlePosition === 1) {
             return (
                 <>
+                    {/* Var tvungen att ha allt på en rad för att annars kommer inte mellanrum med. */}
+                    {/** Varje rad kollar först om tiden är över en timme, om inte så kommer inte ex "1tim" med, därefter kollas minuter och sist sekunder. */}
                     <p>Tid:</p>
-                    <p>5km: {Math.floor(currentUserRunningResults.fivekm / 60)}min {currentUserRunningResults.fivekm % 60}sek</p>
-                    <p>10km: {Math.floor(currentUserRunningResults.tenkm / 60)}min {currentUserRunningResults.tenkm % 60}sek</p>
-                    <p>15km: {Math.floor(currentUserRunningResults.fifteenkm / 60)}min {currentUserRunningResults.fifteenkm % 60}sek</p>
-                    <p>21km: {Math.floor(currentUserRunningResults.halfmarathon / 60)}min {currentUserRunningResults.halfmarathon % 60}sek</p>
-                    <p>42km: {Math.floor(currentUserRunningResults.marathon / 60)}min {currentUserRunningResults.marathon % 60}sek</p>
+                    <p>5km: {Math.floor(currentUserRunningResults.fivekm / 3600) !== 0 ? `${Math.floor(currentUserRunningResults.fivekm / 3600)}tim` : null} {Math.floor((currentUserRunningResults.fivekm % 3600) / 60)}min {currentUserRunningResults.fivekm % 60}sek</p>
+                    <p>10km: {Math.floor(currentUserRunningResults.tenkm / 3600) !== 0 ? `${Math.floor(currentUserRunningResults.tenkm / 3600)}tim` : null} {Math.floor((currentUserRunningResults.tenkm % 3600) / 60)}min {currentUserRunningResults.tenkm % 60}sek</p>
+                    <p>15km: {Math.floor(currentUserRunningResults.fifteenkm / 3600) !== 0 ? `${Math.floor(currentUserRunningResults.fifteenkm / 3600)}tim` : null} {Math.floor((currentUserRunningResults.fifteenkm % 3600) / 60)}min {currentUserRunningResults.fifteenkm % 60}sek</p>
+                    <p>21km: {Math.floor(currentUserRunningResults.halfmarathon / 3600) !== 0 ? `${Math.floor(currentUserRunningResults.halfmarathon / 3600)}tim` : null} {Math.floor((currentUserRunningResults.halfmarathon % 3600) / 60)}min {currentUserRunningResults.halfmarathon % 60}sek</p>
+                    <p>42km: {Math.floor(currentUserRunningResults.marathon / 3600) !== 0 ? `${Math.floor(currentUserRunningResults.marathon / 3600)}tim` : null} {Math.floor((currentUserRunningResults.marathon % 3600) / 60)}min {currentUserRunningResults.marathon % 60}sek</p>
                 </>
             )
         }
@@ -50,12 +52,12 @@ const Profile = () => {
             return (
                 <>
                     <p>Tid:</p>
-                    <p>2km: {Math.floor(currentUserWalkingResults.two_km / 60)}min {currentUserWalkingResults.two_km % 60}sek</p>
-                    <p>5km: {Math.floor(currentUserWalkingResults.five_km / 60)}min {currentUserWalkingResults.five_km % 60}sek</p>
-                    <p>7km: {Math.floor(currentUserWalkingResults.seven_km / 60)}min {currentUserWalkingResults.seven_km % 60}sek</p>
-                    <p>10km: {Math.floor(currentUserWalkingResults.ten_km / 60)}min {currentUserWalkingResults.ten_km % 60}sek</p>
-                    <p>15km: {Math.floor(currentUserWalkingResults.fifteen_km / 60)}min {currentUserWalkingResults.fifteen_km % 60}sek</p>
-                    <p>20km: {Math.floor(currentUserWalkingResults.twenty_km / 60)}min {currentUserWalkingResults.twenty_km % 60}sek</p>
+                    <p>2km: {Math.floor(currentUserWalkingResults.two_km / 3600) !== 0 ? `${Math.floor(currentUserWalkingResults.two_km / 3600)}tim` : null} {Math.floor((currentUserWalkingResults.two_km % 3600) / 60)}min {currentUserWalkingResults.two_km % 60}sek</p>
+                    <p>5km: {Math.floor(currentUserWalkingResults.five_km / 3600) !== 0 ? `${Math.floor(currentUserWalkingResults.five_km / 3600)}tim` : null} {Math.floor((currentUserWalkingResults.five_km % 3600) / 60)}min {currentUserWalkingResults.five_km % 60}sek</p>
+                    <p>7km: {Math.floor(currentUserWalkingResults.seven_km / 3600) !== 0 ? `${Math.floor(currentUserWalkingResults.seven_km / 3600)}tim` : null} {Math.floor((currentUserWalkingResults.seven_km % 3600) / 60)}min {currentUserWalkingResults.seven_km % 60}sek</p>
+                    <p>10km: {Math.floor(currentUserWalkingResults.ten_km / 3600) !== 0 ? `${Math.floor(currentUserWalkingResults.ten_km / 3600)}tim` : null} {Math.floor((currentUserWalkingResults.ten_km % 3600) / 60)}min {currentUserWalkingResults.ten_km % 60}sek</p>
+                    <p>15km: {Math.floor(currentUserWalkingResults.fifteen_km / 3600) !== 0 ? `${Math.floor(currentUserWalkingResults.fifteen_km / 3600)}tim` : null} {Math.floor((currentUserWalkingResults.fifteen_km % 3600) / 60)}min {currentUserWalkingResults.fifteen_km % 60}sek</p>
+                    <p>20km: {Math.floor(currentUserWalkingResults.twenty_km / 3600) !== 0 ? `${Math.floor(currentUserWalkingResults.twenty_km / 3600)}tim` : null} {Math.floor((currentUserWalkingResults.twenty_km % 3600) / 60)}min {currentUserWalkingResults.twenty_km % 60}sek</p>
                 </>
             )
         }
