@@ -10,18 +10,19 @@ const AddTraining = () => {
   const { addActivity } = useContext(ActivityContext);
   const { style } = useContext(ThemeColorContext);
 
+  //get loggedInUserId from Local Storage
   const [loggedInUserId, setLoggedInUserId] = useState(
     localStorage.getItem("loggedInUserId")
   );
 
+  //objcet for time
   const [time, setTime] = useState({
     hours: "",
     minutes: "",
     seconds: "",
   });
 
-  const [seconds, setSeconds] = useState(0);
-
+  //object activity (this on will be sent to context)
   const [activity, setActivity] = useState({
     userId: loggedInUserId,
     activityName: "",
@@ -31,34 +32,39 @@ const AddTraining = () => {
     time: "",
   });
 
+  //handle all fields except time
   const handleActivity = (e) => {
     const name = e.target.name;
     const value = e.target.value;
     setActivity({ ...activity, [name]: value });
   };
 
+  //handles all fields on time
   const handleTime = (e) => {
     const name = e.target.name;
     const value = e.target.value;
     setTime({ ...time, [name]: value });
   };
 
+  //handle publis/post
   const handlePublish = (e) => {
     e.preventDefault();
 
+    //calculate time to seconds
     let hourSeconds = Number(time.hours) * 3600;
     let minuteSeconds = Number(time.minutes) * 60;
     let secondsSeconds = Number(time.seconds);
 
+    //sum of tot seconds
     let totalSeconds = hourSeconds + minuteSeconds + secondsSeconds;
 
+    //set time in object activity to totalseconds
     activity.time = totalSeconds;
 
-    console.log("tid: " + JSON.stringify(activity));
-    console.log("sekunder: " + totalSeconds);
-
+    //fetch/post
     addActivity(activity);
 
+    //reset activity
     setActivity({
       userId: loggedInUserId,
       activityName: "",
@@ -67,9 +73,8 @@ const AddTraining = () => {
       calories: "",
       time: "",
     });
+    //reset time
     setTime({ hours: "", minutes: "", seconds: "" });
-
-    
   };
 
   return (
