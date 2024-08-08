@@ -5,9 +5,11 @@
 }
 .homeLeft {
     box-shadow: 3px 3px 3px 1px rgb(18, 18, 18);
+    
 }
 .homeRight {
     width: 100%;
+    flex: 1;
 }
 .homeHeader {
     height: 10%;   

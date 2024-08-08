@@ -13,11 +13,14 @@ nav {
 }
 .sideLink {
     text-align: center;
-    padding: 15px 15px 15px 15px;
+    padding: 10px;
     margin: 5px;
     text-decoration: none;
     color: white;
     background-color: #2A2E37;
+    /* display: flex;
+    flex-direction: column; */
+    /* width: 100%; */
 }
 .sideLink:hover {
     background-color: var(--custom-color);
@@ -42,4 +45,7 @@ nav {
     border: none;
     background-color: #2A2E37;
     color: white;
+}
+.linkImg {
+    width: 50%;
 }
