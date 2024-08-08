@@ -17,6 +17,7 @@ const Loginpage = () => {
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState(null);
   const [buttonChange, setButtonChange] = useState("Försök igen");
+  const [submitted, setSubmitted] = useState(false)
   const navigate = useNavigate();
   const { setThemeColor } = useContext(ThemeColorContext);
 
@@ -25,8 +26,20 @@ const Loginpage = () => {
     dispatch,
   } = useContext(Authentication);
 
-  const handleSubmit = async (e) => {
+  
+
+  const isFieldEmpty = (fieldName) => {
+    if (fieldName === "username") {
+      return !username;
+    } else if (fieldName === "password") {
+      return !password;
+    }
+  };
+
+  const handleSubmit = async (e, username, password) => {
     e.preventDefault();
+    // Setting to true to confirm form has tried being submitted
+    setSubmitted(true);
 
     if (!username || (!password && password != data)) {
       setErrorMessage("Fyll i ditt användarnamn och lösenord");
@@ -62,12 +75,12 @@ const Loginpage = () => {
       await navigate("/profile");
       window.location.reload();
     } catch (err) {
-      if (err.response && err.response.data && err.response.data.message) {
-        setErrorMessage(err.response.data.message);
+      if (err.response?.data?.message) {
+        setErrorMessage("Felaktigt Användarnamn eller lösenord ");
       } else {
         // setErrorMessage(error.response.data.message);
         setErrorMessage(
-          "Lösenordet eller användarnamnet du har angivit är felaktigt"
+          "Lösenordet eller användarnamnet du har angett är felaktigt"
         );
       }
     }
@@ -83,7 +96,7 @@ const Loginpage = () => {
     const okPopupMessage = localStorage.getItem("popupmessage");
     if (okPopupMessage) {
       setErrorMessage(okPopupMessage);
-      // sätta button  i alert komponenten till OK istället för (försök igen). 
+      // sätta button  i alert komponenten till OK istället för (försök igen).
       setButtonChange("OK");
       localStorage.removeItem("popupmessage");
     }
@@ -98,24 +111,28 @@ const Loginpage = () => {
           </Link>
         </div>
 
-        <form className="login-form">
+        <form
+          className="login-form"
+          onSubmit={(e) => handleSubmit(e, username, password)}
+        >
+          {submitted && isFieldEmpty("username") && (<p className="p-demand">Användarnamn *</p>)}
           <input
             className="username"
+            name="username"
             type="text"
             placeholder="Användarnamn"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
           ></input>
-          <br></br>
+          {submitted && isFieldEmpty("password") && (<p className="p-demand">Lösenord *</p>)}
           <input
             className="password"
+            name="password"
             type="password"
             placeholder="Lösenord"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           ></input>
-
-          <br></br>
           <div className="new-user">
             <div>
               <Link className="register" to="/register">
@@ -129,9 +146,7 @@ const Loginpage = () => {
             </div>
           </div>
           <div className="login-button">
-            <button type="submit" onClick={handleSubmit}>
-              Logga in
-            </button>
+            <button type="submit">Logga in</button>
           </div>
         </form>
         {errorMessage && (
