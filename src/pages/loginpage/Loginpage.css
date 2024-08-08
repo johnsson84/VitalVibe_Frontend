@@ -92,3 +92,9 @@
 .password:focus {
     outline: none;
 }
+
+@media only screen and (max-width: 1000px) {
+    .loginpage-logo {
+        box-shadow: 5px 5px 5px 5px rgb(0, 0, 0);
+    }
+}

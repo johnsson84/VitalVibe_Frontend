@@ -81,6 +81,14 @@ const Registerpage = () => {
     //   return;
     // }
 
+    if (registerData.age.trim() === "") {
+      setErrorMessage("Ange din ålder.");
+      return;
+    } else if (!Number.isInteger(Number(registerData.age)) || Number(registerData.age)) {
+      setErrorMessage("Vänligen ange en giltig ålder\n (minimum 12 år.)")
+    }
+
+
     // SETTING UP THE REQUEST OPTIONS
     var options = {
       method: "POST",
