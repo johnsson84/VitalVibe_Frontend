@@ -20,13 +20,15 @@ const AddTraining = () => {
     seconds: "",
   });
 
+  const [seconds, setSeconds] = useState(0);
+
   const [activity, setActivity] = useState({
     userId: loggedInUserId,
     activityName: "",
     distance: "",
     mood: "",
     calories: "",
-    time: time.hours + time.minutes + time.seconds,
+    time: "",
   });
 
   const handleActivity = (e) => {
@@ -35,30 +37,43 @@ const AddTraining = () => {
     setActivity({ ...activity, [name]: value });
   };
 
-  const handleDistance = (e) => {
+  const handleTime = (e) => {
     const name = e.target.name;
     const value = e.target.value;
-    setDistance({ ...distance, [name]: value });
+    setTime({ ...time, [name]: value });
   };
 
   const handlePublish = (e) => {
     e.preventDefault();
 
+    let hourSeconds = Number(time.hours) * 3600;
+    let minuteSeconds = Number(time.minutes) * 60;
+    let secondsSeconds = Number(time.seconds);
+
+    let totalSeconds = hourSeconds + minuteSeconds + secondsSeconds;
+
+    activity.time = totalSeconds;
+
+    console.log("tid: " + JSON.stringify(activity));
+    console.log("sekunder: " + totalSeconds);
+
     addActivity(activity);
 
     setActivity({
+      userId: loggedInUserId,
       activityName: "",
       distance: "",
-      time: "",
-      calories: "",
       mood: "",
+      calories: "",
+      time: "",
     });
+    setTime({ hours: "", minutes: "", seconds: "" });
   };
 
   return (
     <div className="addTMain">
       <section>
-        <p>Activity:</p>
+        <p>Välj aktivitet:</p>
         <select
           name="activityName"
           placeholder="activity"
@@ -67,14 +82,14 @@ const AddTraining = () => {
           onChange={handleActivity}
           className="chooseActivity"
         >
-          <option value="">Choose Activity</option>
-          <option value="running">Running</option>
-          <option value="walking">Walking</option>
-          <option value="biking">Biking</option>
+          <option value=""></option>
+          <option value="running">Spring</option>
+          <option value="walking">Gå</option>
+          <option value="biking">Cykla</option>
         </select>
       </section>
       <section>
-        <p>Time:</p>
+        <p>Tid:</p>
         <div className="timeDiv">
           <input
             className="timeInput"
@@ -82,7 +97,7 @@ const AddTraining = () => {
             name="hours"
             value={time.hours}
             required
-            onChange={handleDistance}
+            onChange={handleTime}
             placeholder="h"
             id="hours"
           />
@@ -92,7 +107,7 @@ const AddTraining = () => {
             name="minutes"
             value={time.minutes}
             required
-            onChange={handleDistance}
+            onChange={handleTime}
             placeholder="min"
             id="minutes"
           />
@@ -102,12 +117,12 @@ const AddTraining = () => {
             name="seconds"
             value={time.seconds}
             required
-            onChange={handleDistance}
+            onChange={handleTime}
             placeholder="sec"
             id="seconds"
           />
         </div>
-        <p>Distance:</p>
+        <p>Distans:</p>
         <input
           className="addNumberInput"
           type="number"
@@ -119,7 +134,7 @@ const AddTraining = () => {
           placeholder="km"
           min="0"
         />
-        <p>Calories:</p>
+        <p>Kalorier:</p>
         <input
           className="addNumberInput"
           type="number"
@@ -131,7 +146,7 @@ const AddTraining = () => {
           min="0"
         />
 
-        <p>Mood:</p>
+        <p>Hur kändes det?</p>
         <select
           name="mood"
           placeholder="Mood"
@@ -140,11 +155,11 @@ const AddTraining = () => {
           onChange={handleActivity}
           className="chooseMood"
         >
-          <option value="">Choose Mood</option>
-          <option value="BAD">Bad</option>
-          <option value="AVERAGE">Average</option>
-          <option value="GOOD">Good</option>
-          <option value="VERYGOOD">Very Good</option>
+          <option value=""></option>
+          <option value="BAD">Jobbigt</option>
+          <option value="AVERAGE">Hyfsat</option>
+          <option value="GOOD">Bra</option>
+          <option value="VERYGOOD">Jättebra!</option>
         </select>
       </section>
 
