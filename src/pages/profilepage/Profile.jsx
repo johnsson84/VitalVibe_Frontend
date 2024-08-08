@@ -13,9 +13,7 @@ const Profile = () => {
     const [currentUserBikingResults, setCurrentUserBikingResults] = useState({});
     const [currentUserWalkingResults, setCurrentUserWalkingResults] = useState({});
     
-    
-    
-
+    // Temporär klick funktion till knapparna vid photo som inte har någon funktion just nu.
     const handleClick = () => {
         alert("Inget implementerat än...");
     }
@@ -87,7 +85,8 @@ const Profile = () => {
             {/** Upper section */}
             <div className='profileUpper'>
                 <div className='profilePicture'>
-                    <img src='profile_placeholder.svg'></img>
+                    <img id='photolink' src={currentUserInfo.photolink === null || currentUserInfo.photolink === 'none' ? 'profile_placeholder.svg' : `${currentUserInfo.photolink}`}></img>
+                    
                 </div>
                 <div className='profileButtons'>
                     <button id='profileButtonA' onClick={handleClick}><img id='profileButtonImgA' src='cog_icon.svg'></img></button>

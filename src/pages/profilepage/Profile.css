@@ -19,7 +19,12 @@
     border-radius: 15px;
     width: 70%;
     max-width: 300px;
+    overflow: hidden;
     box-shadow: 3px 3px 3px 1px rgb(18, 18, 18);
+    display: flex;
+}
+#photolink {
+    width: 100%;
 }
 .profileButtons {
     display: flex;
@@ -28,6 +33,7 @@
     align-items:flex-end;
     padding: 10px 7px 10px 0px;
     width: 30%;
+    gap: 10px;
 }
 #profileButtonA, #profileButtonB {
     background-color: #2A2E37;
