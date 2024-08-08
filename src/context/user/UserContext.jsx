@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 
 const UserContext = createContext();
 
@@ -58,6 +58,7 @@ const UserProvider = ({children}) => {
       try {
         const response = await fetch(`${import.meta.env.VITE_API_URL}/user/findUser/${currentUser}`, Options)
         if (response.ok) {
+          // console.log(await response.json());
           setCurrentUserInfo(await response.json());
         }
       } catch (connectionError) {

@@ -149,4 +149,22 @@
         margin-left: 93%;
     }
 }
+.profileBestResultContent {
+    background-color: rgb(36, 36, 36);
+    box-shadow: 3px 3px 3px 1px rgb(18, 18, 18);
+    padding: 20px;
+    margin-top: 40px;
+    border-radius: 10px;
+    font-weight: 800;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#bestResults {
+    margin-bottom: 20px;
+}
+#bestResult-vitalvibe {
+    margin-top: 20px;
+    color: var(--custom-color);
+}
 
