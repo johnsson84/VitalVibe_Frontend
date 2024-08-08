@@ -46,6 +46,32 @@ const AddTraining = () => {
     setTime({ ...time, [name]: value });
   };
 
+  // felhanterare (koder och state)
+
+  const [errors, setErrors] = useState({});
+
+  const validateInputsAndFields = () => {
+    let errors = {};
+    if (!activity.activityName) {
+      errors.activityName = "Ange Aktivitet.";
+    }
+    if (!activity.calories) {
+      errors.calories = "Ange Kalorier.";
+    }
+    if (!activity.distance) {
+      errors.distance = "Ange Distans.";
+    }
+
+    if (!activity.mood) {
+      errors.mood = "Ange hur ditt pass kändes.";
+    }
+    if (activity.time < 1) {
+      errors.time = "Ange Tid.";
+    }
+
+    return errors;
+  };
+
   //handle publis/post
   const handlePublish = (e) => {
     e.preventDefault();
@@ -60,6 +86,13 @@ const AddTraining = () => {
 
     //set time in object activity to totalseconds
     activity.time = totalSeconds;
+
+    //sätter fel i errors
+    const checkErrors = validateInputsAndFields();
+    if (Object.keys(checkErrors).length > 0) {
+      setErrors(checkErrors);
+      return;
+    }
 
     //fetch/post
     addActivity(activity);
@@ -79,7 +112,7 @@ const AddTraining = () => {
 
   return (
     <div className="addTMain">
-      <section>
+      <section className="activitySection">
         <p>Välj aktivitet:</p>
         <select
           name="activityName"
@@ -95,6 +128,9 @@ const AddTraining = () => {
           <option value="biking">Cykla</option>
         </select>
       </section>
+      {errors.activityName && (
+        <p className="activityErrorAct">{errors.activityName}</p>
+      )}
       <section>
         <p>Tid:</p>
         <div className="timeDiv">
@@ -129,6 +165,7 @@ const AddTraining = () => {
             id="seconds"
           />
         </div>
+        {errors.time && <p className="activityErrorTim">{errors.time}</p>}
         <p>Distans:</p>
         <input
           className="addNumberInput"
@@ -141,6 +178,9 @@ const AddTraining = () => {
           placeholder="km"
           min="0"
         />
+        {errors.distance && (
+          <p className="activityErrorDis">{errors.distance}</p>
+        )}
         <p>Kalorier:</p>
         <input
           className="addNumberInput"
@@ -152,6 +192,9 @@ const AddTraining = () => {
           id="calories"
           min="0"
         />
+        {errors.calories && (
+          <p className="activityErrorCal">{errors.calories}</p>
+        )}
 
         <p>Hur kändes det?</p>
         <select
@@ -168,6 +211,7 @@ const AddTraining = () => {
           <option value="GOOD">Bra</option>
           <option value="VERYGOOD">Jättebra!</option>
         </select>
+        {errors.mood && <p className="activityErrorMoo">{errors.mood}</p>}
       </section>
 
       <button

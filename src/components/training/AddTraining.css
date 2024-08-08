@@ -21,7 +21,9 @@
   display: flex;
   align-items: center;
   flex-direction: column;
-  
+}
+.activitySection {
+  padding-bottom: 1rem;
 }
 
 .addTMain section p {
@@ -126,4 +128,40 @@
 /* Firefox */
 .addTMain input[type="number"] {
   -moz-appearance: textfield;
+}
+
+.activityErrorCal {
+  font-size: 12px;
+  color: rgb(255, 171, 171);
+  position: relative;
+  left: -6.5rem;
+  top: -0.7rem;
+}
+.activityErrorDis {
+  font-size: 12px;
+  color: rgb(255, 171, 171);
+  position: relative;
+  left: -6.5rem;
+  top: -0.7rem;
+}
+.activityErrorMoo {
+  font-size: 12px;
+  color: rgb(255, 171, 171);
+  position: relative;
+  left: -5rem;
+  top: -1.6rem;
+}
+.activityErrorAct {
+  font-size: 12px;
+  color: rgb(255, 171, 171);
+  position: relative;
+  left: -6.5rem;
+  top: -2.7rem;
+}
+.activityErrorTim {
+  font-size: 12px;
+  color: rgb(255, 171, 171);
+  position: relative;
+  left: -7rem;
+  top: -0.6rem;
 }
