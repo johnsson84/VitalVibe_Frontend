@@ -8,6 +8,7 @@ import { useState, useEffect, useContext } from "react";
 // context
 import { FoodContext } from "../../context/FoodContext";
 import { ThemeColorContext } from "../../context/themeColor/ThemeColorContext";
+import { Link } from "react-router-dom";
 
 const AddMeal = () => {
   const { addFood, message } = useContext(FoodContext);
@@ -49,6 +50,14 @@ const AddMeal = () => {
 
   //display + button
   const [isDisplayable, setIsDisplayable] = useState(true);
+
+  //affirmation
+  const [postOk, setPostOk] = useState(false);
+
+  const handleNewMeal = () => {
+    setPostOk(false);
+    window.location.reload();
+  };
 
   //food OBJECT
   const [meal, newMeal] = useState({
@@ -163,6 +172,7 @@ const AddMeal = () => {
       return;
     }
 
+    // fetch-metod
     addFood(meal);
 
     newMeal({
@@ -172,132 +182,155 @@ const AddMeal = () => {
       calories: "",
     });
     newMealContent({ ingredient: "", amount: "", unit: "" });
+
+    setPostOk(true);
   };
 
   // --------------------------
 
   return (
-    <main className="addMealContainer">
-      <h1>Logga Måltid:</h1>
-      <section>
-        <div className={`dropdown ${isOpen ? "open" : ""}`}>
-          <button
-            className={`dropdown-toggle ${
-              selectedOption ? "selected-option" : "placeholder"
-            }`}
-            onClick={toggleDropdown}
-          >
-            {selectedOption || "Måltidstyp  ↓"}
-          </button>
-          {errors.mealType && <p className="mealError">{errors.mealType}</p>}
-          {isOpen && (
-            <ul className="dropdown-menu">
-              {options.map((option, index) => (
-                <li
-                  value={meal.mealType}
-                  key={index}
-                  onClick={() => handleOptionClick(option)}
-                >
-                  {option}
-                </li>
-              ))}
-            </ul>
-          )}
-        </div>
-      </section>
-      <section className="addContent">
-        <input
-          onChange={handleMealContent}
-          name="ingredient"
-          value={mealContent.ingredient}
-          type="text"
-          placeholder="Ingrediens:"
-        />
-        <input
-          onChange={handleMealContent}
-          name="amount"
-          value={mealContent.amount}
-          type="number"
-          onInput={handleMealContent}
-          onPaste={handlePaste}
-          placeholder="Antal:"
-        />
+    <main className="addMealMain">
+      {!postOk && (
+        <div className="addMealContainer">
+          <h1>Logga Måltid:</h1>
 
-        <div className="addContentUnitButton">
-          <select
-            name="unit"
-            value={mealContent.unit}
-            onChange={handleMealContent}
-            className="chooseUnit"
-          >
-            <option value="">Enhet: </option>
-            <option value="g">g</option>
-            <option value="kg">kg</option>
-            <option value="l">l</option>
-            <option value="dl">dl</option>
-            <option value="st">st</option>
-          </select>
+          <section>
+            <div className={`dropdown ${isOpen ? "open" : ""}`}>
+              <button
+                className={`dropdown-toggle ${
+                  selectedOption ? "selected-option" : "placeholder"
+                }`}
+                onClick={toggleDropdown}
+              >
+                {selectedOption || "Måltidstyp  ↓"}
+              </button>
+              {errors.mealType && (
+                <p className="mealError">{errors.mealType}</p>
+              )}
+              {isOpen && (
+                <ul className="dropdown-menu">
+                  {options.map((option, index) => (
+                    <li
+                      value={meal.mealType}
+                      key={index}
+                      onClick={() => handleOptionClick(option)}
+                    >
+                      {option}
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+          </section>
 
-          {isDisplayable && (
-            <button style={style} onClick={handleContent}>
-              +
-            </button>
-          )}
-          {!isDisplayable && (
-            <p className="pCantContain" p>
-              Antal = endast nummer!
-            </p>
-          )}
-        </div>
-      </section>
-      <section>
-        <input
-          value={meal.calories}
-          onChange={handleMeal}
-          type="number"
-          name="calories"
-          placeholder="Kalorier:"
-        />
-        {errors.calories && <p className="mealError">{errors.calories}</p>}
-      </section>
+          <section className="addContent">
+            <input
+              onChange={handleMealContent}
+              name="ingredient"
+              value={mealContent.ingredient}
+              type="text"
+              placeholder="Ingrediens:"
+            />
+            <input
+              onChange={handleMealContent}
+              name="amount"
+              value={mealContent.amount}
+              type="number"
+              onInput={handleMealContent}
+              onPaste={handlePaste}
+              placeholder="Antal:"
+            />
 
-      <section>
-        <div className="contentArray">
+            <div className="addContentUnitButton">
+              <select
+                name="unit"
+                value={mealContent.unit}
+                onChange={handleMealContent}
+                className="chooseUnit"
+              >
+                <option value="">Enhet: </option>
+                <option value="g">g</option>
+                <option value="kg">kg</option>
+                <option value="l">l</option>
+                <option value="dl">dl</option>
+                <option value="st">st</option>
+              </select>
+
+              {isDisplayable && (
+                <button style={style} onClick={handleContent}>
+                  +
+                </button>
+              )}
+              {!isDisplayable && (
+                <p className="pCantContain" p>
+                  Antal = endast nummer!
+                </p>
+              )}
+            </div>
+          </section>
+          <section>
+            <input
+              value={meal.calories}
+              onChange={handleMeal}
+              type="number"
+              name="calories"
+              placeholder="Kalorier:"
+            />
+            {errors.calories && <p className="mealError">{errors.calories}</p>}
+          </section>
+
+          <section>
+            <div className="contentArray">
+              <button
+                style={style}
+                onClick={() => handleDeleteContent()}
+                className="removeContentButton"
+              >
+                Töm Ingredienser
+              </button>
+              Ingredienser: {""}
+              {mealArray.length > 0 ? (
+                mealArray.map((item, index) => (
+                  <div className="contentArrayDiv" key={index}>
+                    {item}
+                  </div>
+                ))
+              ) : (
+                <span>
+                  {" "}
+                  Inga Ingredienser Tillagda... <br />
+                </span>
+              )}
+            </div>
+            {errors.contentArray && (
+              <p className="mealError" id="errorContent">
+                {errors.contentArray}
+              </p>
+            )}
+          </section>
+
           <button
             style={style}
-            onClick={() => handleDeleteContent()}
-            className="removeContentButton"
+            className="publishMealButton"
+            onClick={handlePublish}
           >
-            Töm Ingredienser
+            PUBLICERA
           </button>
-          Ingredienser: {""}
-          {mealArray.length > 0 ? (
-            mealArray.map((item, index) => (
-              <div className="contentArrayDiv" key={index}>
-                {item}
-              </div>
-            ))
-          ) : (
-            <span>
-              {" "}
-              Inga Ingredienser Tillagda... <br /> 
-            </span>
-          )}
         </div>
-        {errors.contentArray && (
-          <p className="mealError" id="errorContent">
-            {errors.contentArray}
-          </p>
-        )}
-      </section>
-
-      <button
-        style={style}
-        className="publishMealButton"
-        onClick={handlePublish}
-      >
-        PUBLICERA
-      </button>
+      )}
+      {postOk && (
+        <div className="postOk">
+          <p>Din måltid är publicerad!</p>
+          <div className="postOkContainer">
+            <Link to="/profile">
+              <button style={style}>Återgå till profilen</button>
+            </Link>
+            <button style={style} onClick={handleNewMeal}>
+              Logga ny måltid
+            </button>
+          </div>
+        </div>
+      )}
     </main>
   );
 };

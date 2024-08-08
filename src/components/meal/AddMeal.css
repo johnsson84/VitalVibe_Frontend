@@ -1,3 +1,11 @@
+.addMealMain{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: auto;
+}
+
 .addMealContainer {
   width: 90%;
   height: auto;
@@ -95,8 +103,6 @@
   padding-right: 0.3rem;
   cursor: pointer;
 }
-
-
 
 .pCantContain {
   color: white;
@@ -250,3 +256,55 @@
 #errorContent {
   align-self: flex-start;
 }
+
+/* ok box */
+
+.postOk {
+  height: 39rem;
+  width: 90%;
+  background-color: #2a2e37;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  flex-direction: column;
+  gap: 2rem;
+  border-radius: 25px;
+  max-width: 600px;
+}
+
+.postOk p{
+  margin-right: 1rem;
+  margin-left: 1rem;
+}
+
+.postOkContainer {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+}
+
+.postOkContainer button {
+  padding: 0.7rem;
+  border-radius: 10px;
+  border-style: none;
+  color: white;
+  box-shadow: 1px 1px 1px 1px black;
+  background-color: var(--custom-color);
+  cursor: pointer;
+}
+
+.postOkContainer button:hover{
+  background-color: lightgray;
+  color: black;
+}
+
+@media only screen and (max-width: 600px) {
+  .postOkContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+}
+
+
