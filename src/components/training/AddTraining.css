@@ -12,12 +12,15 @@
 
 .addTMain section {
   margin: 1rem;
-  background-color: white;
-  color: black;
-  width: 90%;
+  background-color: #2a2e37;
+  color: white;
+  width: 85%;
   max-width: 400px;
   border-radius: 20px;
   height: auto;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
 
 .addTMain section p {
@@ -25,23 +28,42 @@
 }
 .addTMain section select {
   margin-bottom: 1rem;
+  border-style: none;
+  padding: 0.5rem;
+  width: 60%;
 }
 
-.addTMain section input {
-  border-radius: 15px;
-  width: 50%;
+.addNumberInput {
+  border-radius: 10px;
+  width: 60%;
+  border-style: none;
+  background-color: white;
+  padding: 0.5rem;
+  text-align: center;
 }
 
 .addTMain select {
-  border-radius: 15px;
+  border-radius: 10px;
   width: 50%;
   text-align: center;
   background-color: white;
 }
 
-.addTMain .optionOne {
-  background-color: blue;
-  color: red;
+.timeDiv {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 85%;
+  gap: 0.5rem;
+}
+
+.timeInput {
+  width: 30%;
+  height: 2rem;
+  border-radius: 10px;
+  border-style: none;
+  text-align: center;
 }
 
 .addTMain .publishButton {
@@ -49,8 +71,8 @@
   color: white;
   border-style: none;
   border-radius: 15px;
-  height: 2rem;
-  width: 50%;
+  height: 2.5rem;
+  width: 60%;
   max-width: 200px;
   margin-top: 1rem;
 }
@@ -74,6 +96,20 @@
   color: white;
 }
 
-.addTMain .messageContainer p{
-    margin: 0.5rem;
+.addTMain .messageContainer p {
+  margin: 0.5rem;
+}
+
+/*remove input arrows*/
+/* Chrome, Safari, Edge, Opera */
+.addTMain input::-webkit-outer-spin-button,
+.addTMain input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/*remove input arrows*/
+/* Firefox */
+.addTMain input[type="number"] {
+  -moz-appearance: textfield;
 }

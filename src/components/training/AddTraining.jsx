@@ -15,6 +15,11 @@ const AddTraining = () => {
   );
 
   const [errorMessage, setErrorMessage] = useState("");
+  const [time, setTime] = useState({
+    hours: "",
+    minutes: "",
+    seconds: "",
+  });
 
   useEffect(() => {
     setErrorMessage(message);
@@ -33,6 +38,12 @@ const AddTraining = () => {
     const name = e.target.name;
     const value = e.target.value;
     setActivity({ ...activity, [name]: value });
+  };
+
+  const handleDistance = (e) => {
+    const name = e.target.name;
+    const value = e.target.value;
+    setDistance({ ...distance, [name]: value });
   };
 
   const handlePublish = (e) => {
@@ -67,33 +78,65 @@ const AddTraining = () => {
           <option value="biking">Biking</option>
         </select>
       </section>
-      <section>
+      <section >
         <p>Time:</p>
-        <input
-          type="number"
-          name="time"
-          value={activity.time}
-          required
-          onChange={handleActivity}
-          id="time"
-        />
+        <div className="timeDiv">
+          <input
+            className="timeInput"
+            type="number"
+            name="hours"
+            value={time.hours}
+            required
+            onChange={handleDistance}
+            placeholder="h"
+            id="hours"
+            min="0"
+          />
+          <input
+            className="timeInput"
+            type="number"
+            name="minutes"
+            value={time.minutes}
+            required
+            onChange={handleDistance}
+            placeholder="min"
+            id="minutes"
+            min="0"
+          />
+          <input
+            className="timeInput"
+            type="number"
+            name="seconds"
+            value={time.seconds}
+            required
+            onChange={handleDistance}
+            placeholder="sec"
+            id="seconds"
+            min="0"
+          />
+        </div>
         <p>Distance:</p>
         <input
+          className="addNumberInput"
           type="number"
           name="distance"
           value={activity.distance}
           required
           onChange={handleActivity}
           id="distance"
+          placeholder="km"
+          min="0"
         />
         <p>Calories:</p>
         <input
+        className="addNumberInput"
           type="number"
           name="calories"
           value={activity.calories}
           required
           onChange={handleActivity}
           id="calories"
+          min="0"
         />
 
         <p>Mood:</p>
@@ -113,7 +156,12 @@ const AddTraining = () => {
         </select>
       </section>
 
-      <button style={style} type="button" className="publishButton" onClick={handlePublish}>
+      <button
+        style={style}
+        type="button"
+        className="publishButton"
+        onClick={handlePublish}
+      >
         PUBLISH
       </button>
 
