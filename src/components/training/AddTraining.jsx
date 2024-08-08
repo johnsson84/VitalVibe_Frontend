@@ -7,23 +7,18 @@ import { ActivityContext } from "../../context/TrainingContext";
 import { ThemeColorContext } from "../../context/themeColor/ThemeColorContext";
 
 const AddTraining = () => {
-  const { addActivity, message } = useContext(ActivityContext);
+  const { addActivity } = useContext(ActivityContext);
   const { style } = useContext(ThemeColorContext);
 
   const [loggedInUserId, setLoggedInUserId] = useState(
     localStorage.getItem("loggedInUserId")
   );
 
-  const [errorMessage, setErrorMessage] = useState("");
   const [time, setTime] = useState({
     hours: "",
     minutes: "",
     seconds: "",
   });
-
-  useEffect(() => {
-    setErrorMessage(message);
-  }, [message]);
 
   const [activity, setActivity] = useState({
     userId: loggedInUserId,
@@ -31,7 +26,7 @@ const AddTraining = () => {
     distance: "",
     mood: "",
     calories: "",
-    time: "",
+    time: time.hours + time.minutes + time.seconds,
   });
 
   const handleActivity = (e) => {
@@ -78,7 +73,7 @@ const AddTraining = () => {
           <option value="biking">Biking</option>
         </select>
       </section>
-      <section >
+      <section>
         <p>Time:</p>
         <div className="timeDiv">
           <input
@@ -90,7 +85,6 @@ const AddTraining = () => {
             onChange={handleDistance}
             placeholder="h"
             id="hours"
-            min="0"
           />
           <input
             className="timeInput"
@@ -101,7 +95,6 @@ const AddTraining = () => {
             onChange={handleDistance}
             placeholder="min"
             id="minutes"
-            min="0"
           />
           <input
             className="timeInput"
@@ -112,7 +105,6 @@ const AddTraining = () => {
             onChange={handleDistance}
             placeholder="sec"
             id="seconds"
-            min="0"
           />
         </div>
         <p>Distance:</p>
@@ -129,7 +121,7 @@ const AddTraining = () => {
         />
         <p>Calories:</p>
         <input
-        className="addNumberInput"
+          className="addNumberInput"
           type="number"
           name="calories"
           value={activity.calories}
@@ -164,10 +156,6 @@ const AddTraining = () => {
       >
         PUBLISH
       </button>
-
-      <div className="messageContainer">
-        <p>{errorMessage}</p>
-      </div>
     </div>
   );
 };
