@@ -17,7 +17,7 @@ const ActivityProvider = ({ children }) => {
         userId: `${acitvity.userId}`,
         activityName: `${acitvity.activityName}`,
         distance: `${acitvity.distance}`,
-        time: `${acitvity.time}`,
+        time: acitvity.time,
         calories: `${acitvity.calories}`,
         mood: `${acitvity.mood}`,
       }),
@@ -31,9 +31,9 @@ const ActivityProvider = ({ children }) => {
 
       const data = await res.json();
 
-      
-
-      
+      if (data.statusCodeValue === 200) {
+        window.location.href = "/profile";
+      }
     } catch (error) {
       if (error) {
         //setMessage(data[1].status);
@@ -43,7 +43,7 @@ const ActivityProvider = ({ children }) => {
   };
 
   return (
-    <ActivityContext.Provider value={{ addActivity}}>
+    <ActivityContext.Provider value={{ addActivity }}>
       {children}
     </ActivityContext.Provider>
   );

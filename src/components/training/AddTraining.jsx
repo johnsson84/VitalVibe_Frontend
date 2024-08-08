@@ -68,6 +68,8 @@ const AddTraining = () => {
       time: "",
     });
     setTime({ hours: "", minutes: "", seconds: "" });
+
+    
   };
 
   return (
