@@ -10,7 +10,7 @@
   text-align: center;
 }
 
-section {
+.addTMain section {
   margin: 1rem;
   background-color: white;
   color: black;
@@ -20,31 +20,31 @@ section {
   height: auto;
 }
 
-section p {
+.addTMain section p {
   margin-top: 1rem;
 }
-section select {
+.addTMain section select {
   margin-bottom: 1rem;
 }
 
-section input {
+.addTMain section input {
   border-radius: 15px;
   width: 50%;
 }
 
-select {
+.addTMain select {
   border-radius: 15px;
   width: 50%;
   text-align: center;
   background-color: white;
 }
 
-.optionOne {
+.addTMain .optionOne {
   background-color: blue;
   color: red;
 }
 
-.publishButton {
+.addTMain .publishButton {
   background-color: var(--custom-color);
   color: white;
   border-style: none;
@@ -55,12 +55,12 @@ select {
   margin-top: 1rem;
 }
 
-.publishButton:hover {
+.addTMain .publishButton:hover {
   background-color: lightgray;
   color: black;
 }
 
-.messageContainer {
+.addTMain .messageContainer {
   height: auto;
   width: auto;
   display: flex;
@@ -74,6 +74,6 @@ select {
   color: white;
 }
 
-.messageContainer p{
+.addTMain .messageContainer p{
     margin: 0.5rem;
 }

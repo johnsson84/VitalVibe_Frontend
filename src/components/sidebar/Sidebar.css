@@ -2,14 +2,17 @@
     display: flex;
     flex-direction: column;
     background-color: #2A2E37;
-    /* border-right: 1px solid white; */
     height: 100%;
 }
 nav {
     background-color: #2A2E37;
+    color: white;
     display: flex;
     flex-direction: column;
     height: 100%;
+
+    gap: 2rem;
+    margin-top: 2rem;
 }
 .sideLink {
     text-align: center;
@@ -17,6 +20,7 @@ nav {
     margin: 5px;
     text-decoration: none;
     color: white;
+
     background-color: #2A2E37;
     /* display: flex;
     flex-direction: column; */
@@ -26,6 +30,7 @@ nav {
     background-color: var(--custom-color);
     color: white;
     border-radius: 15px;
+
 }
 .sideLinkHide {
     display: none;
