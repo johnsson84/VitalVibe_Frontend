@@ -1,12 +1,20 @@
 // IMPORT STUFF
 import "../../pages/registerpage/Registerpage.css";
-import { Link } from "react-router-dom";
 import logo from "../../assets/logo.png";
+import { checkingErrors } from "../../helper/functions";
+import Alert from "../../components/alert/Alert";
+
+// IMPORT react
+import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { FaArrowRight, FaArrowUp } from "react-icons/fa";
 
 const Registerpage = () => {
-  // const [imageLink, setImageLink] = useState("");
-
+  const [errorMessage, setErrorMessage] = useState(null);
+  const [buttonChange, setButtonChange] = useState("Försök igen");
+  // I'm putting the state to false here.
+  // Later i set it to true inside the handleSubmit once the form is submitted
+  const [submitted, setSubmitted] = useState(false);
   const [registerData, setRegisterData] = useState({
     username: "",
     email: "",
@@ -15,8 +23,14 @@ const Registerpage = () => {
     firstName: "",
     lastName: "",
     age: "",
+    weight: "",
     vo2max: "",
   });
+
+  const closeAlert = () => {
+    setErrorMessage(null);
+    setButtonChange("Försök igen");
+  };
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -26,21 +40,50 @@ const Registerpage = () => {
     });
   };
 
-  // should be registerData after (e,) like this (e, registerData)
+  // Shecks if any of the required fields are empty.
+  // If true it shows the information text that describes the required input.
+  const isAnyFieldEmpty = () => {
+    const fieldsRequired = [
+      "username",
+      "email",
+      "password",
+      "confirmpassword",
+      "firstName",
+      "lastName",
+      "age",
+    ];
+    return fieldsRequired.some((fieldName) => isFieldEmpty(fieldName));
+  };
+
+  // Shecks if any field in registerData is empty or undefined and therefore true
+  // (Only shows the specific fields that are left empty), otherwise false.
+  const isFieldEmpty = (fieldName) => {
+    return !registerData[fieldName];
+  };
+
   const handleSubmit = async (e, registerData) => {
     e.preventDefault();
 
+    // HERE I SET THE STATE TO TRUE
+    setSubmitted(true);
+
     // CHECK PASSWORD MATCH
     if (registerData.password !== registerData.confirmpassword) {
-      alert("the given password did not match");
+      setErrorMessage("Lösenorden matchar inte");
       return;
     }
+      // CHECK IF PASSWORD IS EMPTY OR BLANKSPACE.
+    if (registerData.age.trim() === "") {
+      setErrorMessage("Fält ej ifyllda. vänligen fyll i alla fält");
+      return;
+    }
+
     // VALIDATE THE AGE
     if (
       !Number.isInteger(Number(registerData.age)) ||
-      Number(registerData.age) <= 0
+      Number(registerData.age) <= 11
     ) {
-      alert("you must enter a valid age");
+      setErrorMessage("Vänligen ange en giltig ålder\n (minimum 12 år.)");
       return;
     }
 
@@ -61,13 +104,22 @@ const Registerpage = () => {
       );
 
       if (res.status === 200) {
-        alert("regristrering ok");
+        console.log("regristrering ok");
+        // Storing popupmessage, Getting it onece the user is redirected to login.
+        localStorage.setItem(
+          "popupmessage",
+          "Lyckad Registrering!\nVänligen logga in"
+        );
         // Here i want to redirect the created user
-        window.location.href = "/profile";
+        window.location.href = "/login";
+      } else {
+        const errorMessageCode = checkingErrors(res.status);
+        setErrorMessage(errorMessageCode);
+        setButtonChange("Försök igen");
       }
     } catch (err) {
-      console.log("Misslyckad regristrering:", err);
-      alert("gick ej att skapa anv'ndare");
+      console.log("Internt serverfel:", err);
+      setErrorMessage("Ett oväntat fel inträffade");
     }
   };
 
@@ -79,12 +131,31 @@ const Registerpage = () => {
             <img src={logo} className="logo" alt="VitalVibe" />
           </Link>
         </div>
+
+        <div className="reverse-icon">
+          <p className="reverse-icon-arrow-p">
+            <FaArrowUp className="icon-arrow-up" />
+          </p>
+          <p className="reverse-icon-p">
+            Loggan tar
+            <br />
+            dig tillbaka <FaArrowRight className="icon-arrow-right" />
+          </p>
+        </div>
+
         <div className="form-container">
           <form
             className="form"
             onSubmit={(e) => handleSubmit(e, registerData)}
           >
-            <br />
+            {submitted && isAnyFieldEmpty() && (
+              <div className="input-demand">
+                <p>Fält som har symbolen (*) är krav och måste vara ifyllda</p>
+              </div>
+            )}
+            {submitted && isFieldEmpty("username") && (
+              <p className="p-demand">Användarnamn *</p>
+            )}
             <input
               type="text"
               className="register-username"
@@ -93,7 +164,9 @@ const Registerpage = () => {
               onChange={handleInputChange}
               placeholder="Användarnamn"
             />
-            <br />
+            {submitted && isFieldEmpty("email") && (
+              <p className="p-demand">E-post *</p>
+            )}
             <input
               type="email"
               id="personalinfo"
@@ -101,27 +174,33 @@ const Registerpage = () => {
               name="email"
               value={registerData.email}
               onChange={handleInputChange}
-              placeholder="E-mail"
+              placeholder="E-post"
             />
-            <br />
+            {submitted && isFieldEmpty("password") && (
+              <p className="p-demand">Lösenord *</p>
+            )}
             <input
               type="password"
               className="register-password"
               name="password"
               value={registerData.password}
               onChange={handleInputChange}
-              placeholder="Lösenord"
+              placeholder="Lösenord (min 8, max 64)"
             />
-            <br />
+            {submitted && isFieldEmpty("confirmpassword") && (
+              <p className="p-demand">Bekräfta lösenord *</p>
+            )}
             <input
               type="password"
               className="confirmpassword"
               name="confirmpassword"
               value={registerData.confirmpassword}
               onChange={handleInputChange}
-              placeholder="Bekräfta lösenord"
+              placeholder="Bekräfta lösenord (min 8, max 64)"
             />
-            <br />
+            {submitted && isFieldEmpty("firstName") && (
+              <p className="p-demand">Förnamn *</p>
+            )}
             <input
               type="text"
               id="personalinfo"
@@ -131,7 +210,9 @@ const Registerpage = () => {
               onChange={handleInputChange}
               placeholder="Förnamn"
             />
-            <br />
+            {submitted && isFieldEmpty("lastName") && (
+              <p className="p-demand">Efternamn *</p>
+            )}
             <input
               type="text"
               id="personalinfo"
@@ -141,7 +222,9 @@ const Registerpage = () => {
               onChange={handleInputChange}
               placeholder="Efternamn"
             />
-            <br />
+            {submitted && isFieldEmpty("age") && (
+              <p className="p-demand">Ålder *</p>
+            )}
             <input
               type="number"
               id="personalinfo"
@@ -151,7 +234,15 @@ const Registerpage = () => {
               onChange={handleInputChange}
               placeholder="Ålder"
             />
-            <br />
+            <input
+              type="number"
+              id="personalinfo"
+              className="weight"
+              name="weight"
+              value={registerData.weight}
+              onChange={handleInputChange}
+              placeholder="Vikt"
+            />
             <input
               type="number"
               id="personalinfo"
@@ -161,13 +252,19 @@ const Registerpage = () => {
               onChange={handleInputChange}
               placeholder="Vo2max"
             />
-
             <div className="register-btn-container">
               <button className="register-btn" type="submit">
                 Skapa Konto
               </button>
             </div>
           </form>
+          {errorMessage && (
+            <Alert
+              alert={errorMessage}
+              onClose={closeAlert}
+              buttonChange={buttonChange}
+            />
+          )}
         </div>
       </main>
     </>
