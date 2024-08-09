@@ -69,10 +69,10 @@ const Registerpage = () => {
 
     // CHECK PASSWORD MATCH
     if (registerData.password !== registerData.confirmpassword) {
-      setErrorMessage("the given password did not match");
+      setErrorMessage("Lösenorden matchar inte");
       return;
     }
-
+      // CHECK IF PASSWORD IS EMPTY OR BLANKSPACE.
     if (registerData.age.trim() === "") {
       setErrorMessage("Fält ej ifyllda. vänligen fyll i alla fält");
       return;
@@ -81,9 +81,9 @@ const Registerpage = () => {
     // VALIDATE THE AGE
     if (
       !Number.isInteger(Number(registerData.age)) ||
-      Number(registerData.age) <= 10
+      Number(registerData.age) <= 11
     ) {
-      setErrorMessage("Vänligen ange en giltig ålder\n (minimum 10 år.)");
+      setErrorMessage("Vänligen ange en giltig ålder\n (minimum 12 år.)");
       return;
     }
 
@@ -105,6 +105,7 @@ const Registerpage = () => {
 
       if (res.status === 200) {
         console.log("regristrering ok");
+        // Storing popupmessage, Getting it onece the user is redirected to login.
         localStorage.setItem(
           "popupmessage",
           "Lyckad Registrering!\nVänligen logga in"
@@ -184,7 +185,7 @@ const Registerpage = () => {
               name="password"
               value={registerData.password}
               onChange={handleInputChange}
-              placeholder="Lösenord"
+              placeholder="Lösenord (min 8, max 64)"
             />
             {submitted && isFieldEmpty("confirmpassword") && (
               <p className="p-demand">Bekräfta lösenord *</p>
@@ -195,7 +196,7 @@ const Registerpage = () => {
               name="confirmpassword"
               value={registerData.confirmpassword}
               onChange={handleInputChange}
-              placeholder="Bekräfta lösenord"
+              placeholder="Bekräfta lösenord (min 8, max 64)"
             />
             {submitted && isFieldEmpty("firstName") && (
               <p className="p-demand">Förnamn *</p>
