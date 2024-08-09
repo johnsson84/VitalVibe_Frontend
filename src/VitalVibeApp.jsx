@@ -17,7 +17,6 @@ import HomePage from "./pages/HomePage";
 import AddTraining from "./components/training/AddTraining";
 import Profile from "./pages/profilepage/Profile";
 import AddMeal from "./components/meal/AddMeal";
-import Profile from "./components/profile/Profile";
 import Settings from "./components/settings/Settings";
 import Logout from "./pages/logout/Logout";
 import RegisterPage from "./pages/registerpage/Registerpage";
