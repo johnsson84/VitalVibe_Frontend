@@ -180,5 +180,6 @@
 #bestResult-vitalvibe {
     margin-top: 20px;
     color: var(--custom-color);
+    align-self: center;
 }
 
