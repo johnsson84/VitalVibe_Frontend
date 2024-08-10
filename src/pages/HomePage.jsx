@@ -10,6 +10,7 @@ const HomePage = () => {
   return (
     <>
       <div className="homeMain">
+        {/* <div className="homeContainer"> */}
         <div className="homeLeft">
           <Sidebar></Sidebar>
         </div>
@@ -20,6 +21,7 @@ const HomePage = () => {
           <div className="homeContent">
             <Outlet></Outlet>
           </div>
+        {/* </div> */}
         </div>
       </div>
     </>
