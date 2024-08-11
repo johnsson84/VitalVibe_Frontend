@@ -39,11 +39,23 @@ const AddTraining = () => {
     setActivity({ ...activity, [name]: value });
   };
 
+  const [timeError, setTimeError] = useState(false);
+
+
+
   //handles all fields on time
   const handleTime = (e) => {
     const name = e.target.name;
     const value = e.target.value;
-    setTime({ ...time, [name]: value });
+
+    // Check if the value is an empty string or a valid number
+    if (value === "" || /^\d+$/.test(value)) {
+      setTime({ ...time, [name]: value });
+      setTimeError(false)
+    } else {
+      setTime({ ...time, [name]: "" }); // Reset the state if invalid input
+      setTimeError(true)
+    }
   };
 
   // felhanterare (koder och state)
@@ -65,7 +77,7 @@ const AddTraining = () => {
     if (!activity.mood) {
       errors.mood = "Ange hur ditt pass kändes.";
     }
-    if (activity.time < 1) {
+    if (timeError) {
       errors.time = "Ange Tid.";
     }
 
