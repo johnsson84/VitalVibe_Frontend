@@ -39,9 +39,7 @@ const AddTraining = () => {
     setActivity({ ...activity, [name]: value });
   };
 
-  const [timeError, setTimeError] = useState(false);
-
-
+  
 
   //handles all fields on time
   const handleTime = (e) => {
@@ -51,10 +49,10 @@ const AddTraining = () => {
     // Check if the value is an empty string or a valid number
     if (value === "" || /^\d+$/.test(value)) {
       setTime({ ...time, [name]: value });
-      setTimeError(false)
+      
     } else {
       setTime({ ...time, [name]: "" }); // Reset the state if invalid input
-      setTimeError(true)
+      
     }
   };
 
@@ -77,11 +75,11 @@ const AddTraining = () => {
     if (!activity.mood) {
       errors.mood = "Ange hur ditt pass kändes.";
     }
-    if (timeError) {
-      errors.time = "Ange Tid.";
+    
+    if (time.minutes === "" || time.seconds === ""){
+      errors.time = "Ange tid (OBS: Endast siffror)"
     }
-
-    return errors;
+      return errors;
   };
 
   //handle publis/post
@@ -99,12 +97,16 @@ const AddTraining = () => {
     //set time in object activity to totalseconds
     activity.time = totalSeconds;
 
+    console.log(time)
+
     //sätter fel i errors
     const checkErrors = validateInputsAndFields();
     if (Object.keys(checkErrors).length > 0) {
       setErrors(checkErrors);
       return;
     }
+
+    
 
     //fetch/post
     addActivity(activity);
@@ -177,7 +179,7 @@ const AddTraining = () => {
             id="seconds"
           />
         </div>
-        {errors.time && <p className="activityErrorTim">{errors.time}</p>}
+        {errors.time && <p className="activityErrorTim">{errors.time} </p>}
         <p>Distans:</p>
         <input
           className="addNumberInput"
