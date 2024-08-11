@@ -1,0 +1,186 @@
+.profilePage {
+    display: flex;
+    align-items: center;
+    padding: 40px;
+    flex-direction: column;
+    width: 100%;
+    min-width: 275px;
+    max-width: 500px;
+    margin-bottom: 40px;
+}
+/* ============================================ */
+/* Upper section*/
+.profileUpper {
+    display: flex;
+    justify-content:space-between;
+    margin-bottom: 20px;
+    width: 100%;
+    
+    padding: 10px;
+}
+.profilePicture {
+    background-color: #2A2E37;
+    border-radius: 15px;
+    width: 70%;
+    max-width: 300px;
+    overflow: hidden;
+    box-shadow: 3px 3px 3px 1px rgb(18, 18, 18);
+    display: flex;
+}
+#photolink {
+    width: 100%;
+}
+.profileButtons {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items:flex-end;
+    padding: 10px 7px 10px 0px;
+    width: 30%;
+    
+    gap: 10px;
+}
+#profileButtonA, #profileButtonB {
+    background-color: #2A2E37;
+    border: none;
+    border-radius: 10px;
+    padding: 10px;
+    width: 80%;
+    min-width: 60%
+    max-width: 70px;
+    max-height: 70px;
+    box-shadow: 3px 3px 3px 1px rgb(18, 18, 18);
+}
+#profileButtonA:hover, #profileButtonB:hover {
+    background-color: var(--custom-color);
+}
+#profileButtonImgA, #profileButtonImgB {
+    width: 100%;
+    height: 100%;
+    max-width: 50px;
+    /* min-width: 42px; */
+    max-height: 50px;
+}
+/* ============================================ */
+/* User info */
+.profileUserInfo {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    color: white;
+    background-color: #2A2E37;
+    padding: 10px 20px 10px 20px;
+    border-radius: 10px;
+    flex-wrap: wrap;
+    
+    box-shadow: 3px 3px 3px 1px rgb(18, 18, 18);
+    margin-bottom: 20px;
+}
+.profileUserInfoContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+/* ============================================ */
+/* Best results*/
+.profileBestResults {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    
+    color: white;
+    background-color: #2A2E37;
+    border-radius: 10px;
+    box-shadow: 3px 3px 3px 1px rgb(18, 18, 18);
+    padding: 20px;
+    align-items: center;
+    
+}
+.profileBestResultsIcons {
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    
+    
+}
+.profileBestResultIconButton {
+    cursor: pointer;
+    width: 35px;
+    background: none;
+    border: none;
+    padding: 5px;
+}
+.profileBestResultIconButton:hover {
+    background-color: var(--custom-color);
+    border-radius: 20px;
+    
+}
+.profileBestResultSwitch {
+    background-color: var(--custom-color);
+    width: 90%;
+    padding: 5px;
+    border-radius: 20px;
+    margin-top: 10px;
+    display: flex;
+    box-shadow: 3px 3px 3px 1px rgb(18, 18, 18);
+}
+.profileBestResultSwitchCircle1,
+.profileBestResultSwitchCircle2,
+.profileBestResultSwitchCircle3 {
+    background-color: rgb(36, 36, 36);
+    padding: 10px;
+    border-radius: 20px;
+    max-width: 5%;
+    transition: margin 0.5s ease-in-out;
+}
+
+.profileBestResultSwitchCircle2 {
+    margin-left: 50%;
+    transform: translateX(-50%);
+}
+.profileBestResultSwitchCircle3 {
+    margin-left: 90%;
+}
+
+@media (min-width: 340px) {
+    .profileBestResultSwitchCircle3 {
+        margin-left: 75%;
+    }
+}
+@media  (min-width: 390px) and (max-width: 460px) {
+    .profileBestResultSwitchCircle3 {
+        margin-left: calc(90% - 10px);
+    }
+}
+@media  (min-width: 461px) and (max-width: 599px) {
+    .profileBestResultSwitchCircle3 {
+        margin-left: 90%;
+    }
+}
+@media (min-width: 600px) {
+    .profileBestResultSwitchCircle3 {
+        margin-left: 93%;
+    }
+}
+.profileBestResultContent {
+    background-color: rgb(36, 36, 36);
+    box-shadow: 3px 3px 3px 1px rgb(18, 18, 18);
+    padding: 20px;
+    margin-top: 40px;
+    border-radius: 10px;
+    font-weight: 800;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    width: 90%;
+}
+#bestResults {
+    margin-bottom: 20px;
+}
+#bestResult-vitalvibe {
+    margin-top: 20px;
+    color: var(--custom-color);
+    align-self: center;
+}
+

@@ -1,14 +1,17 @@
-import { createContext, useContext } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 
 const UserContext = createContext();
 
 const UserProvider = ({children}) => {
 
     const currentUser = localStorage.getItem("loggedInUserId");
+    const [currentUserInfo, setCurrentUserInfo] = useState({});
 
+    {/** ============================================================== */}
+    {/** UPDATE USER */}
     const updateUserTheme = async (themeColor) => {
         
-        var activityOptions = {
+        var Options = {
             method: "PUT",
             headers: {
               "Content-Type": "application/json",
@@ -23,7 +26,7 @@ const UserProvider = ({children}) => {
           try {
             const res = await fetch(
               `${import.meta.env.VITE_API_URL}/user/update/${currentUser}`,
-              activityOptions
+              Options
             );
       
             const data = await res.json();
@@ -39,10 +42,33 @@ const UserProvider = ({children}) => {
             }
           }
         };
+
+    {/** ============================================================== */}
+    {/** GET LOGGED IN USER INFO */}
+    const getLoggedInUserInfo = async () => {
+
+      var Options = {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+      };
+
+      try {
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/user/findUser/${currentUser}`, Options)
+        if (response.ok) {
+          // console.log(await response.json());
+          setCurrentUserInfo(await response.json());
+        }
+      } catch (connectionError) {
+        console.log("Backend running? Error message: " + connectionError);
+      }
+    }
     
 
     return (
-        <UserContext.Provider value={{ updateUserTheme }}>
+        <UserContext.Provider value={{ updateUserTheme, getLoggedInUserInfo, currentUserInfo }}>
             {children}
         </UserContext.Provider>
     )

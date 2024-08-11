@@ -22,7 +22,7 @@ const Settings = () => {
 
       <div className="themeColorSection">
         <div>
-          <label>Theme color</label>
+          <label id="themeColorLabel">Theme color:</label>
           <select name="color" id="color" value={(themeColor === null ? undefined : themeColor)} onChange={handleThemeColorChange}>
             <option>1</option>
             <option>2</option>

@@ -1,8 +1,6 @@
 .side-main {
-    display: flex;
-    flex-direction: column;
     background-color: #2A2E37;
-    height: 100%;
+    min-height: 100vh;
 }
 nav {
     background-color: #2A2E37;
@@ -10,24 +8,21 @@ nav {
     display: flex;
     flex-direction: column;
     height: 100%;
-
     gap: 2rem;
     margin-top: 2rem;
 }
 .sideLink {
     text-align: center;
-    padding: 15px 15px 15px 15px;
+    padding: 10px;
     margin: 5px;
     text-decoration: none;
     color: white;
-
     background-color: #2A2E37;
 }
 .sideLink:hover {
     background-color: var(--custom-color);
     color: white;
     border-radius: 15px;
-
 }
 .sideLinkHide {
     display: none;
@@ -47,4 +42,7 @@ nav {
     border: none;
     background-color: #2A2E37;
     color: white;
+}
+.linkImg {
+    width: 50%;
 }
