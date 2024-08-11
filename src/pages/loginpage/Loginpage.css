@@ -4,23 +4,22 @@
     align-items: center;
 }
 .loginpage-logo {
-    margin: 100px 50px 50px 50px;
-    color: white;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    margin: 20px 50px 50px 50px;
+    scale: 60%;
+    border-radius: 20px;
+    background-color: #2A2E37;
 }
 .logo {
     height: 15rem;
     width: 15rem;
 }
 .login-form {
-    /*Kan bytas ut mot color=#198891, för att få så som figma HI-FI profilen*/
-    background-color: white;
+    /*Kan bytas ut mot color=#2A2E37, för att få så som figma HI-FI profilen*/
+    background-color:  #2A2E37;
     padding: 40px;
     height: 22rem;
     width: 20rem;
-    border-radius: 10px;
+    border-radius: 20px;
     border: none;
     box-shadow: 5px 5px 5px 5px rgb(0, 0, 0);
 }
@@ -46,7 +45,7 @@
 }
 .login-button button {
     border: none;
-    background-color: black;
+    background-color: #198891;
     color: white;
     padding: 10px 20px 10px 20px;
     border-radius: 7px;
@@ -55,7 +54,6 @@
 .login-button button:hover {
     background-color: white;
     color: black;
-    box-shadow: 2px 3px 1px 1px grey;
     border: 1px solid black;
 }
 
@@ -65,7 +63,7 @@
 
 .register:link, .register:visited,
 .forgot-password:link, .forgot-password:visited {
-    background-color: rgb(0, 0, 0);
+    background-color: #198891;
     color: white;
     padding: 5px 10px;
     margin-top: 1rem;
@@ -79,7 +77,6 @@
 .forgot-password:hover, .forgot-password:active {
     background-color: white;
     color: black;
-    box-shadow: 2px 3px 1px 1px grey;
 }
 
 /*HOVER STYLING--------------------------------------------------------*/
@@ -87,8 +84,17 @@
 .password:hover {
     box-shadow: 1px 1px 1px 1px rgb(0, 0, 0);
 }
+.loginpage-logo:hover {
+    box-shadow: 5px 5px 5px 5px rgb(0, 0, 0);
+}
 /*FOCUS STYLING--------------------------------------------------------*/
 .username:focus,
 .password:focus {
     outline: none;
+}
+
+@media only screen and (max-width: 1000px) {
+    .loginpage-logo {
+        box-shadow: 5px 5px 5px 5px rgb(0, 0, 0);
+    }
 }

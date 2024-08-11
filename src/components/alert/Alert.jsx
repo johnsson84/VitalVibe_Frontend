@@ -1,13 +1,13 @@
 import "../alert/Alert.css";
 
-const Alert = ({ alert, onClose }) => {
+const Alert = ({ alert, onClose, buttonChange }) => {
   return (
     <div className="background-layer">
       <div className="alert-container">
         <div className="alert">
           <p className="alert-p">{alert}</p>
           <button className="alert-button" onClick={onClose}>
-            Försök igen
+            {buttonChange}
           </button>
         </div>
       </div>

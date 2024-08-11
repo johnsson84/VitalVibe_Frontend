@@ -1,51 +1,63 @@
-/* * {
-  overflow: scroll;
-} */
 .registerpage {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 .registerpage-logo {
-  margin: 100px 50px 50px 50px;
+  margin: 0px 50px 0px 50px;
+  scale: 60%;
+  border-radius: 20px;
+  background-color: #2A2E37;
+}
+.reverse-icon {
+  position: relative;
+  bottom: 9rem;
+  right: 8rem;
+}
+.reverse-icon-arrow-p,
+.reverse-icon-p {
+  color: white;
+  font-size: x-small;
+  text-align: center;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.icon-arrow-right,
+.icon-arrow-up {
+  color: #198891;
 }
 .form-container {
+  margin-top: -3rem;
   padding: 20px;
   width: 50%;
 }
+
 .form {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   max-width: 100%;
   height: auto;
   padding: 20px;
-  border-radius: 10px;
-  /*Kan bytas ut mot color=#198891, för att få så som figma HI-FI profilen*/
-  background-color: white;
+  border-radius: 20px;
+  /*Kan bytas ut mot color=#2A2E37, för att få så som figma HI-FI profilen*/
+  background-color: #2A2E37;
   border: none;
   box-shadow: 5px 5px 5px 5px rgb(0, 0, 0);
 }
-
 #personalinfo,
-/* #distance, */
 .register-username,
 .register-password,
 .confirmpassword {
   border: 1px solid rgb(167, 167, 167);
   border-radius: 5px;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
   height: 2rem;
-  width: 100%;
+  width: 70%;
   text-align: center;
   text-decoration: none;
-}
-.age {
-  width: 100%;
-  height: 2rem;
-  border: 1px solid rgb(167, 167, 167);
-  border-radius: 5px;
-  text-align: center;
 }
 .register-btn-container {
   display: flex;
@@ -53,6 +65,7 @@
   width: 100%;
   order: 3;
   margin-top: 1rem;
+  margin-bottom: 0.5rem;
 }
 .register-btn {
   width: 60%;
@@ -61,14 +74,28 @@
   padding: 10px 20px 10px 20px;
   border-radius: 7px;
   cursor: pointer;
-  background-color: black;
+  background-color: #198891;
   color: white;
   text-align: center;
 }
+.input-demand {
+  padding: 0px 0px 15px;
+  font-size: x-small;
+  text-align: center;
+  color: rgb(252, 131, 131);
+  
+}
+.p-demand {
+  font-size: 9px;
+  color: rgb(252, 131, 131);
+}
 
 /* HOVER STYLING-------------------------------------------*/
+.registerpage-logo:hover {
+  box-shadow: 5px 5px 5px 5px rgb(0, 0, 0);
+}
+
 #personalinfo:hover,
-/* #distance:hover, */
 .register-username:hover,
 .register-password:hover,
 .age:hover,
@@ -82,9 +109,14 @@
   box-shadow: 1px 1px 1px 1px rgb(0, 0, 0);
 }
 
+/*DISPLAYS reverse-icon-p WHEN HOVER ON LOGO*/
+.registerpage-logo:hover ~ .reverse-icon .reverse-icon-p {
+  visibility: visible;
+  opacity: 1;
+}
+
 /* FOCUS STYLING-------------------------------------------- */
 #personalinfo:focus,
-/* #distance:focus, */
 .register-username:focus,
 .register-password:focus,
 .age:focus,
@@ -92,11 +124,33 @@
   outline: none;
 }
 
+
+/* WEBKITS FOR FIREFOX/ CHROME/ Safari/ Edge/ Opera ---------------------------------*/
+
+/* Chrome, Safari, Edge, Opera */
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+/* Remove up/down arrows in IE */
+input[type=number] {
+    -ms-appearance: textfield;
+}
+
 /* RESPONSIVE DESIGN */
 @media only screen and (max-width: 1000px) {
+  .registerpage-logo {
+    box-shadow: 5px 5px 5px 5px rgb(0, 0, 0);
+  }
   .form-container {
     width: 80%;
-    margin-bottom: 5rem;
   }
   .form {
     flex-direction: column;
@@ -118,10 +172,32 @@
   }
   .register-btn:hover,
   #personalinfo:hover,
-  /* #distance:hover, */
+
   .register-username:hover,
   .register-password:hover,
   .age:hover {
     box-shadow: none;
   }
+  .reverse-icon-p {
+    visibility: visible;
+    opacity: 1;
+  } 
 }
+
+@media only screen and (max-width: 360px) {
+  .icon-arrow-right {
+    display: none;
+  }
+
+  .reverse-icon {
+    bottom: 2.5rem;
+    right: 0;
+  }
+  .reverse-icon-arrow-p {
+    visibility: visible;
+    opacity: 1;
+  }
+}
+
+
+
