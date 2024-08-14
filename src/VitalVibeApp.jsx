@@ -21,6 +21,7 @@ import Settings from "./components/settings/Settings";
 import Logout from "./pages/logout/Logout";
 import RegisterPage from "./pages/registerpage/Registerpage";
 import Challenges from "./pages/challenges/Challenges";
+import About from "./pages/about/About";
 
 function VitalVibeApp() {
   return (
@@ -61,7 +62,7 @@ function VitalVibeApp() {
                             path="/profile/challenges"
                             element={<Challenges></Challenges>}
                           ></Route>
-                          <Route path="/profile/about" element={""}></Route>
+                          <Route path="/profile/about" element={<About></About>}></Route>
                           <Route
                             path="/profile/settings"
                             element={<Settings></Settings>}
