@@ -32,23 +32,8 @@ const AuthProvider = ({ children }) => {
     });
   }, []);
 
-  //LOG OUT
-  const logout = async () => {
-    try {
-      await fetch(`${import.meta.env.VITE_API_URL}/auth/logout`, {
-        method: "POST",
-        credentials: "include",
-      });
-
-      localStorage.removeItem("loggedInUserId");
-      localStorage.removeItem("user");
-    } catch (logoutError) {
-      console.log(logoutError);
-    }
-  };
-
   return (
-    <Authentication.Provider value={{ state, dispatch, logout }}>
+    <Authentication.Provider value={{ state, dispatch }}>
       {children}
     </Authentication.Provider>
   );
