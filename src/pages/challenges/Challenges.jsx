@@ -1,42 +1,53 @@
-import "./Challenges.css";
 import { useContext, useEffect, useState } from "react";
 import { ThemeColorContext } from "../../context/themeColor/ThemeColorContext";
 import { ChallengeContext } from "../../context/ChallengeContext";
 import { Link } from "react-router-dom";
+import ChallengeItem from "../../components/challenge/ChallengeItem";
+import "./Challenges.css";
 
 const Challenges = () => {
   const { style } = useContext(ThemeColorContext);
   const { getAllChallenges, foundChallenges } = useContext(ChallengeContext);
-  
+  const [isChallengeEmpty, setIsChallengeEmpty] = useState(false);
 
   useEffect(() => {
     getAllChallenges();
   }, []);
 
   useEffect(() => {
-    console.log("Challenges state updated: ", foundChallenges);
+    
+
+    if (foundChallenges.length < 1) {
+      setIsChallengeEmpty(true);
+    } else {
+      setIsChallengeEmpty(false);
+    }
+    
   }, [foundChallenges]);
 
   return (
     <div className="challengeMainContainer">
-      <h1>Challenges:</h1>
+      <h1>Utmaningar:</h1>
       <div className="challengeMainContainerTwo">
         {foundChallenges.map((challenge) => (
-          <div className="challengeContainer" key={challenge.id}>
-            <p>
-              Distance:
-              {" " + challenge.distance}
-            </p>
-            <p>
-              Ending:
-              {" " + challenge.endDate}
-            </p>
-            <Link to="/profile/training">
-              <button style={style}>Registrera Utmaning</button>
-            </Link>
-          </div>
+          <ChallengeItem
+            key={challenge.id}
+            challenge={challenge}
+            style={style}
+          />
         ))}
       </div>
+
+      {isChallengeEmpty && (
+        <div className="challengeMainContainerThree">
+          <p className="noChallenges">
+            Det finns för tillfälet inga utmaninar, återkom igen lite senare.
+          </p>
+          <Link to="/profile">
+            <button style={style}>Tillbaka</button>
+          </Link>
+        </div>
+      )}
     </div>
   );
 };
