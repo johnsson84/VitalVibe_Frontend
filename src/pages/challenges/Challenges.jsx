@@ -41,7 +41,7 @@ const Challenges = () => {
       {isChallengeEmpty && (
         <div className="challengeMainContainerThree">
           <p className="noChallenges">
-            Det finns för tillfälet inga utmaninar, återkom igen lite senare.
+            Det finns för tillfället inga utmaningar, återkom igen lite senare.
           </p>
           <Link to="/profile">
             <button style={style}>Tillbaka</button>

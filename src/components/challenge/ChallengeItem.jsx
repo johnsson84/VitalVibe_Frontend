@@ -6,17 +6,6 @@ import "./ChallengeItem.css";
 const ChallengeItem = ({ challenge, style }) => {
   const targetDate = new Date(challenge.endDate);
   const [timeLeft, setTimeLeft] = useState(setTheTimeLeft());
-  const [noChallenge, setNoChallenge] = useState("");
-
-  useEffect(() => {
-    if (challenge === null) {
-      setNoChallenge("Det finns inga utmaningar.");
-    } else {
-      setNoChallenge("");
-    }
-
-    console.log("noChallenge: " + noChallenge);
-  }, [challenge]);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -61,12 +50,13 @@ const ChallengeItem = ({ challenge, style }) => {
   };
 
   return (
-    <div className="challengeContainer">
-      {noChallenge}
+    <div value={challenge.id} className="challengeContainer">
       <p>Distans:{" " + challenge.distance}</p>
       <p>Slutar om:{" " + timeLeftToString(timeLeft)}</p>
       <Link to="/profile/training">
-        <button style={style}>Registrera Utmaning</button>
+        <button style={style}>
+          Registrera Utmaning
+        </button>
       </Link>
     </div>
   );
