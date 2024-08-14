@@ -20,6 +20,7 @@ const Loginpage = () => {
   const [submitted, setSubmitted] = useState(false)
   const navigate = useNavigate();
   const { setThemeColor } = useContext(ThemeColorContext);
+  
 
   const {
     state: { user },
@@ -62,6 +63,13 @@ const Loginpage = () => {
         type: "LOGIN",
         payload: data,
       });
+
+      ////////////////////////////////////////////////////////////
+      // SECTION ENCODE LOGIN DATE
+      const loginDate = new Date().toJSON(); // Current date.
+      const encodedDate = window.btoa(loginDate); // Encode date.
+      localStorage.setItem('loginDate', encodedDate); // Save encoded date to local.
+      ////////////////////////////////////////////////////////////
 
       window.localStorage.setItem("user", JSON.stringify(data));
       localStorage.setItem("loggedInUserId", data.id);
