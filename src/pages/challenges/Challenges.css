@@ -1,0 +1,58 @@
+.challengeMainContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.challengeMainContainerTwo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  width: 95%;
+  height: auto;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+  max-width: 700px;
+}
+
+.challengeMainContainer h1 {
+  color: white;
+}
+
+.noChallenges {
+  color: white;
+  font-size: 12px;
+  padding-top: 1rem;
+}
+
+.challengeMainContainerThree {
+  background-color: #2a2e37;
+  height: auto;
+  width: 100%;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.challengeMainContainerThree button {
+  border-style: none;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  border-radius: 10px;
+  color: white;
+  background-color: var(--custom-color);
+  cursor: pointer;
+}
+.challengeMainContainerThree button:hover {
+  background-color: beige;
+  color: black;
+}
