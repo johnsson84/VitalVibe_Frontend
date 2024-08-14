@@ -40,7 +40,7 @@ const HomePage = () => {
     // Timer to check login time every minute.
     logoutTimer = setInterval(() => {
       checkLoginTime();
-    }, 1000 * 6);
+    }, 1000 * 60);
 
     return () => {
       clearInterval(logoutTimer);
