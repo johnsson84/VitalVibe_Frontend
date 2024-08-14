@@ -18,6 +18,9 @@ const HomePage = () => {
   let logoutTimer;
   const checkLoginTime = () => {
 
+    if (!localStorage.getItem("loginDate")) {
+      navigate("/logout");
+    } 
     // Get encoded date from localstorage and decode
     const encodedDate = localStorage.getItem("loginDate");
     const loginDate = new Date(window.atob(encodedDate));
@@ -29,7 +32,7 @@ const HomePage = () => {
     const timeBeforeLogout = 1000 * 60 * 60; // Default 60.
 
     // Comment out for testing in console.
-    // console.log(`Logout in: ${(diffTime / 1000) / 60} min / ${(timeBeforeLogout / 1000) / 60} min`);
+    console.log(`Logout in: ${(diffTime / 1000) / 60} min / ${(timeBeforeLogout / 1000) / 60} min`);
 
     // Check if difference time is equal or bigger than set logut time, default 60 min.
     if (diffTime >= timeBeforeLogout) {
@@ -42,7 +45,7 @@ const HomePage = () => {
     // Timer to check login time every minute.
     logoutTimer = setInterval(() => {
       checkLoginTime();
-    }, 1000 * 60);
+    }, 1000 * 6);
 
     return () => {
       clearInterval(logoutTimer);
