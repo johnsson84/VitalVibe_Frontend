@@ -46,4 +46,4 @@ export const LoginProvider = ({ children, username, password }) => {
   );
 };
 
-export default Login;
+export default Login

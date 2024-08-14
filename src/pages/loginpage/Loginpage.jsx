@@ -63,6 +63,13 @@ const Loginpage = () => {
         payload: data,
       });
 
+      ////////////////////////////////////////////////////////////
+      // SECTION ENCODE LOGIN TIME
+      const loginDate = new Date().toJSON(); // Current time.
+      const encodedDate = window.btoa(loginDate); // Encode time.
+      localStorage.setItem('loginTime', encodedDate); // Save encoded time to local.
+      ////////////////////////////////////////////////////////////
+
       window.localStorage.setItem("user", JSON.stringify(data));
       localStorage.setItem("loggedInUserId", data.id);
       setThemeColor(data.themeColor); // Sätt themeColor från usern i databasen.

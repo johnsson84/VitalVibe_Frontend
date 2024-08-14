@@ -3,8 +3,13 @@ import { Routes, Route, Outlet } from "react-router-dom";
 import Header from "../components/header/Header";
 import Sidebar from "../components/sidebar/Sidebar";
 
+// FUNCTIONS
+
 // CSS
 import "./HomePage.css";
+import { useEffect } from "react";
+
+
 
 const HomePage = () => {
   return (
