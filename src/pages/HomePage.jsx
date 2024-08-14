@@ -4,6 +4,7 @@ import Header from "../components/header/Header";
 import Sidebar from "../components/sidebar/Sidebar";
 
 // FUNCTIONS
+import { useNavigate } from "react-router-dom";
 
 // CSS
 import "./HomePage.css";
@@ -13,6 +14,7 @@ import { useEffect } from "react";
 
 const HomePage = () => {
 
+  const navigate = useNavigate();
   let logoutTimer;
   const checkLoginTime = () => {
 
