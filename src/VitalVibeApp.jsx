@@ -5,7 +5,6 @@ import PrivateRoute from "./components/privateRoute/PrivateRoute";
 
 //PROVIDERS
 import { AuthProvider } from "./components/login/Authentication";
-import { LoginProvider } from "./components/login/Login";
 import { ActivityProvider } from "./context/TrainingContext";
 import { FoodProvider } from "./context/FoodContext";
 import { ThemeColorProvider } from "./context/themeColor/ThemeColorContext";
@@ -24,8 +23,7 @@ import RegisterPage from "./pages/registerpage/Registerpage";
 function VitalVibeApp() {
   return (
     <div className="vitalvibe">
-      <AuthProvider>
-        <LoginProvider>
+      <AuthProvider>     
           <UserProvider>
             <ActivityProvider>
               <FoodProvider>
@@ -77,7 +75,6 @@ function VitalVibeApp() {
               </FoodProvider>
             </ActivityProvider>
           </UserProvider>
-        </LoginProvider>
       </AuthProvider>
     </div>
   );

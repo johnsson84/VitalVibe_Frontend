@@ -18,6 +18,7 @@ const Logout = () => {
         localStorage.removeItem("loggedInUserId");
         localStorage.removeItem("user");
         localStorage.removeItem("savedColor");
+        localStorage.removeItem("loginDate");
         
         // console.log(fetchData);
         

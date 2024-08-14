@@ -64,10 +64,10 @@ const Loginpage = () => {
       });
 
       ////////////////////////////////////////////////////////////
-      // SECTION ENCODE LOGIN TIME
-      const loginDate = new Date().toJSON(); // Current time.
-      const encodedDate = window.btoa(loginDate); // Encode time.
-      localStorage.setItem('loginTime', encodedDate); // Save encoded time to local.
+      // SECTION ENCODE LOGIN DATE
+      const loginDate = new Date().toJSON(); // Current date.
+      const encodedDate = window.btoa(loginDate); // Encode date.
+      localStorage.setItem('loginDate', encodedDate); // Save encoded date to local.
       ////////////////////////////////////////////////////////////
 
       window.localStorage.setItem("user", JSON.stringify(data));

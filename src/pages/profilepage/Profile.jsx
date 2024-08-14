@@ -147,34 +147,39 @@ const Profile = () => {
     }
   };
 
+  let logoutTimer;
   const checkLoginTime = () => {
 
-    const encodedDate = localStorage.getItem("loginTime"); // Get encoded time from local.
-    const loginTime = window.atob(encodedDate); // Decode time.
-    const currentTime = new Date().toJSON(); // Check current time.
-    // Save hours and minutes in numbers
-    const loginTimeHour = Number(loginTime.substring(11, 13));
-    const loginTimeMinutes = Number(loginTime.substring(14, 16));
-    const currentTimeHour = Number(currentTime.substring(11, 13));
-    const currentTimeMinutes = Number(currentTime.substring(14, 16));
-    // Output test
-    console.log("Login Time: " + loginTime.substring(11, 16));
-    console.log("Current Time: " + currentTime.substring(11, 16));
-    console.log(`Logout Time: ${loginTimeHour}:${loginTimeMinutes + 3}`);
+    // Get encoded date from localstorage and decode
+    const encodedDate = localStorage.getItem("loginDate");
+    const loginDate = new Date(window.atob(encodedDate));
+    // Check current date
+    const currentDate = new Date();
+    // Check time difference between login time and current time.
+    const diffTime = currentDate.getTime() - loginDate.getTime();
+    // Change last number for shorter logout interval for testing purpose ex 3 for three minutes.
+    const timeBeforeLogout = 1000 * 60 * 60; // Default 60.
 
-    if (
-      currentTimeHour === loginTimeHour &&
-      currentTimeMinutes === loginTimeMinutes + 3
-    ) {
+    // Comment out for testing in console.
+    // console.log(`Logout in: ${(diffTime / 1000) / 60} min / ${(timeBeforeLogout / 1000) / 60} min`);
+
+    // Check if difference time is equal or bigger than set logut time, default 60 min.
+    if (diffTime >= timeBeforeLogout) {
+      clearInterval(logoutTimer);
       navigate("/logout");
     }
   };
 
   useEffect(() => {
-      setInterval(() => {
-          checkLoginTime();
-      }, (1000 * 10))
-    }, [])
+    // Timer to check login time every minute.
+    logoutTimer = setInterval(() => {
+      checkLoginTime();
+    }, 1000 * 60);
+
+    return () => {
+      clearInterval(logoutTimer);
+    };
+  }, []);
 
   useEffect(() => {
     setTimeout(() => {
