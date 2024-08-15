@@ -7,7 +7,12 @@ import { ActivityContext } from "../../context/TrainingContext";
 import { ThemeColorContext } from "../../context/themeColor/ThemeColorContext";
 import { UserBestResultContext } from "../../context/user/UserBestResultContext";
 
+import { Link } from "react-router-dom";
+
 const AddTraining = () => {
+  //affirmation
+  const [postOk, setPostOk] = useState(true);
+
   const { addActivity } = useContext(ActivityContext);
   const { updateWalking, updateBiking, updateRunning } = useContext(
     UserBestResultContext
@@ -168,7 +173,7 @@ const AddTraining = () => {
       updateWalking(body);
     }
 
-    console.log(activity)
+    console.log(activity);
 
     //fetch/post
     addActivity(activity);
@@ -186,118 +191,140 @@ const AddTraining = () => {
     setTime({ hours: "", minutes: "", seconds: "" });
   };
 
+  const handleNewMeal = () => {
+    setPostOk(false);
+    window.location.reload();
+  };
+
   return (
     <div className="addTMain">
-      <section className="activitySection">
-        <p>Välj aktivitet:</p>
-        <select
-          name="activityName"
-          placeholder="activity"
-          value={activity.activityName}
-          required
-          onChange={handleActivity}
-          className="chooseActivity"
-        >
-          <option value=""></option>
-          <option value="running">Spring</option>
-          <option value="walking">Gå</option>
-          <option value="biking">Cykla</option>
-        </select>
-      </section>
-      {errors.activityName && (
-        <p className="activityErrorAct">{errors.activityName}</p>
+      {!postOk && (
+        <>
+          <section className="activitySection">
+            <p>Välj aktivitet:</p>
+            <select
+              name="activityName"
+              placeholder="activity"
+              value={activity.activityName}
+              required
+              onChange={handleActivity}
+              className="chooseActivity"
+            >
+              <option value=""></option>
+              <option value="running">Spring</option>
+              <option value="walking">Gå</option>
+              <option value="biking">Cykla</option>
+            </select>
+          </section>
+          {errors.activityName && (
+            <p className="activityErrorAct">{errors.activityName}</p>
+          )}
+          <section>
+            <p>Tid:</p>
+            <div className="timeDiv">
+              <input
+                className="timeInput"
+                type="number"
+                name="hours"
+                value={time.hours}
+                required
+                onChange={handleTime}
+                placeholder="h"
+                id="hours"
+              />
+              <input
+                className="timeInput"
+                type="number"
+                name="minutes"
+                value={time.minutes}
+                required
+                onChange={handleTime}
+                placeholder="min"
+                id="minutes"
+              />
+              <input
+                className="timeInput"
+                type="number"
+                name="seconds"
+                value={time.seconds}
+                required
+                onChange={handleTime}
+                placeholder="sec"
+                id="seconds"
+              />
+            </div>
+            {errors.time && <p className="activityErrorTim">{errors.time} </p>}
+            <p>Distans:</p>
+            <input
+              className="addNumberInput"
+              type="number"
+              name="distance"
+              value={activity.distance}
+              required
+              onChange={handleActivity}
+              id="distance"
+              placeholder="km"
+              min="0"
+            />
+            {errors.distance && (
+              <p className="activityErrorDis">{errors.distance}</p>
+            )}
+            <p>Kalorier:</p>
+            <input
+              className="addNumberInput"
+              type="number"
+              name="calories"
+              value={activity.calories}
+              required
+              onChange={handleActivity}
+              id="calories"
+              min="0"
+            />
+            {errors.calories && (
+              <p className="activityErrorCal">{errors.calories}</p>
+            )}
+
+            <p>Hur kändes det?</p>
+            <select
+              name="mood"
+              placeholder="Mood"
+              value={activity.mood}
+              required
+              onChange={handleActivity}
+              className="chooseMood"
+            >
+              <option value=""></option>
+              <option value="BAD">Jobbigt</option>
+              <option value="AVERAGE">Hyfsat</option>
+              <option value="GOOD">Bra</option>
+              <option value="VERYGOOD">Jättebra!</option>
+            </select>
+            {errors.mood && <p className="activityErrorMoo">{errors.mood}</p>}
+          </section>
+
+          <button
+            style={style}
+            type="button"
+            className="publishButton"
+            onClick={handlePublish}
+          >
+            PUBLISH
+          </button>
+        </>
       )}
-      <section>
-        <p>Tid:</p>
-        <div className="timeDiv">
-          <input
-            className="timeInput"
-            type="number"
-            name="hours"
-            value={time.hours}
-            required
-            onChange={handleTime}
-            placeholder="h"
-            id="hours"
-          />
-          <input
-            className="timeInput"
-            type="number"
-            name="minutes"
-            value={time.minutes}
-            required
-            onChange={handleTime}
-            placeholder="min"
-            id="minutes"
-          />
-          <input
-            className="timeInput"
-            type="number"
-            name="seconds"
-            value={time.seconds}
-            required
-            onChange={handleTime}
-            placeholder="sec"
-            id="seconds"
-          />
+      {postOk && (
+        <div className="postOk">
+          <p>Din aktivitet är publicerad!</p>
+          <div className="postOkContainer">
+            <Link to="/profile">
+              <button style={style}>Återgå till profilen</button>
+            </Link>
+            <button style={style} onClick={handleNewMeal}>
+              Logga ny aktivitet
+            </button>
+          </div>
         </div>
-        {errors.time && <p className="activityErrorTim">{errors.time} </p>}
-        <p>Distans:</p>
-        <input
-          className="addNumberInput"
-          type="number"
-          name="distance"
-          value={activity.distance}
-          required
-          onChange={handleActivity}
-          id="distance"
-          placeholder="km"
-          min="0"
-        />
-        {errors.distance && (
-          <p className="activityErrorDis">{errors.distance}</p>
-        )}
-        <p>Kalorier:</p>
-        <input
-          className="addNumberInput"
-          type="number"
-          name="calories"
-          value={activity.calories}
-          required
-          onChange={handleActivity}
-          id="calories"
-          min="0"
-        />
-        {errors.calories && (
-          <p className="activityErrorCal">{errors.calories}</p>
-        )}
-
-        <p>Hur kändes det?</p>
-        <select
-          name="mood"
-          placeholder="Mood"
-          value={activity.mood}
-          required
-          onChange={handleActivity}
-          className="chooseMood"
-        >
-          <option value=""></option>
-          <option value="BAD">Jobbigt</option>
-          <option value="AVERAGE">Hyfsat</option>
-          <option value="GOOD">Bra</option>
-          <option value="VERYGOOD">Jättebra!</option>
-        </select>
-        {errors.mood && <p className="activityErrorMoo">{errors.mood}</p>}
-      </section>
-
-      <button
-        style={style}
-        type="button"
-        className="publishButton"
-        onClick={handlePublish}
-      >
-        PUBLISH
-      </button>
+      )}
     </div>
   );
 };
