@@ -9,7 +9,9 @@ import { UserBestResultContext } from "../../context/user/UserBestResultContext"
 
 const AddTraining = () => {
   const { addActivity } = useContext(ActivityContext);
-  const {updateWalking, updateBiking, updateRunning} = useContext(UserBestResultContext)
+  const { updateWalking, updateBiking, updateRunning } = useContext(
+    UserBestResultContext
+  );
   const { style } = useContext(ThemeColorContext);
 
   //get loggedInUserId from Local Storage
@@ -107,26 +109,24 @@ const AddTraining = () => {
     //RUNNING
     if (activity.activityName === "running" && activity.distance === "42") {
       body = { marathon: activity.time };
-      updateRunning(body)
+      updateRunning(body);
     }
     if (activity.activityName === "running" && activity.distance === "21") {
-      body = {halfmarathon: activity.time}
-      updateRunning(body)
+      body = { halfmarathon: activity.time };
+      updateRunning(body);
     }
     if (activity.activityName === "running" && activity.distance === "15") {
-      body = {fifteenkm: activity.time}
-      updateRunning(body)
+      body = { fifteenkm: activity.time };
+      updateRunning(body);
     }
     if (activity.activityName === "running" && activity.distance === "10") {
-      body = {tenkm: activity.time}
-      updateRunning(body)
+      body = { tenkm: activity.time };
+      updateRunning(body);
     }
     if (activity.activityName === "running" && activity.distance === "5") {
-      body = {fivekm: activity.time}
-      updateRunning(body)
+      body = { fivekm: activity.time };
+      updateRunning(body);
     }
-
-
 
     //BIKING
     if (activity.activityName === "biking") {
@@ -138,41 +138,37 @@ const AddTraining = () => {
       };
 
       body = bodyObject;
-      updateBiking(body)
+      updateBiking(body);
     }
 
     //walking
     if (activity.activityName === "walking" && activity.distance === "2") {
       body = { two_km: activity.time };
-      updateWalking(body)
+      console.log(JSON.stringify(body));
+      updateWalking(body);
     }
     if (activity.activityName === "walking" && activity.distance === "5") {
-      body = {five_km: activity.time}
-      updateWalking(body)
+      body = { five_km: activity.time };
+      updateWalking(body);
     }
     if (activity.activityName === "walking" && activity.distance === "7") {
-      body = {seven_km: activity.time}
-      updateWalking(body)
+      body = { seven_km: activity.time };
+      updateWalking(body);
     }
     if (activity.activityName === "walking" && activity.distance === "10") {
-      body = {ten_km: activity.time}
-      updateWalking(body)
+      body = { ten_km: activity.time };
+      updateWalking(body);
     }
     if (activity.activityName === "walking" && activity.distance === "15") {
-      body = {fifteen_km: activity.time}
-      updateWalking(body)
+      body = { fifteen_km: activity.time };
+      updateWalking(body);
     }
     if (activity.activityName === "walking" && activity.distance === "20") {
-      body = {twenty_km: activity.time}
-      updateWalking(body)
+      body = { twenty_km: activity.time };
+      updateWalking(body);
     }
 
-
-
-
-
-    
-    
+    console.log(activity)
 
     //fetch/post
     addActivity(activity);
