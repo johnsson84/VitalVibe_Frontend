@@ -5,9 +5,11 @@ import { useContext, useEffect, useState } from "react";
 
 import { ActivityContext } from "../../context/TrainingContext";
 import { ThemeColorContext } from "../../context/themeColor/ThemeColorContext";
+import { UserBestResultContext } from "../../context/user/UserBestResultContext";
 
 const AddTraining = () => {
   const { addActivity } = useContext(ActivityContext);
+  const {updateWalkning, updateBiking, updateRunning} = useContext(UserBestResultContext)
   const { style } = useContext(ThemeColorContext);
 
   //get loggedInUserId from Local Storage
@@ -39,8 +41,6 @@ const AddTraining = () => {
     setActivity({ ...activity, [name]: value });
   };
 
-  
-
   //handles all fields on time
   const handleTime = (e) => {
     const name = e.target.name;
@@ -49,10 +49,8 @@ const AddTraining = () => {
     // Check if the value is an empty string or a valid number
     if (value === "" || /^\d+$/.test(value)) {
       setTime({ ...time, [name]: value });
-      
     } else {
       setTime({ ...time, [name]: "" }); // Reset the state if invalid input
-      
     }
   };
 
@@ -75,11 +73,11 @@ const AddTraining = () => {
     if (!activity.mood) {
       errors.mood = "Ange hur ditt pass kändes.";
     }
-    
-    if (time.minutes === "" || time.seconds === ""){
-      errors.time = "Ange tid (OBS: Endast siffror)"
+
+    if (time.minutes === "" || time.seconds === "") {
+      errors.time = "Ange tid (OBS: Endast siffror)";
     }
-      return errors;
+    return errors;
   };
 
   //handle publis/post
@@ -97,8 +95,6 @@ const AddTraining = () => {
     //set time in object activity to totalseconds
     activity.time = totalSeconds;
 
-    console.log(time)
-
     //sätter fel i errors
     const checkErrors = validateInputsAndFields();
     if (Object.keys(checkErrors).length > 0) {
@@ -106,10 +102,80 @@ const AddTraining = () => {
       return;
     }
 
+    let body = {};
+
+    //RUNNING
+    if (activity.activityName === "running" && activity.distance === "42") {
+      body = { marathon: activity.time };
+      updateRunning(body)
+    }
+    if (activity.activityName === "running" && activity.distance === "21") {
+      body = {halfmarathon: activity.time}
+      updateRunning(body)
+    }
+    if (activity.activityName === "running" && activity.distance === "15") {
+      body = {fifteenkm: activity.time}
+      updateRunning(body)
+    }
+    if (activity.activityName === "running" && activity.distance === "10") {
+      body = {tenkm: activity.time}
+      updateRunning(body)
+    }
+    if (activity.activityName === "running" && activity.distance === "5") {
+      body = {fivekm: activity.time}
+      updateRunning(body)
+    }
+
+
+
+    //BIKING
+    if (activity.activityName === "biking") {
+      const bodyObject = {
+        ptw_5: activity.time,
+        ptw_60s: activity.time,
+        ptw_5min: activity.time,
+        ptw_60min: activity.time,
+      };
+
+      body = bodyObject;
+      updateBiking(body)
+    }
+
+    //walking
+    if (activity.activityName === "walking" && activity.distance === "2") {
+      body = { two_km: activity.time };
+      updateWalkning(body)
+    }
+    if (activity.activityName === "walking" && activity.distance === "5") {
+      body = {five_km: activity.time}
+      updateWalkning(body)
+    }
+    if (activity.activityName === "walking" && activity.distance === "7") {
+      body = {seven_km: activity.time}
+      updateWalkning(body)
+    }
+    if (activity.activityName === "walking" && activity.distance === "10") {
+      body = {ten_km: activity.time}
+      updateWalkning(body)
+    }
+    if (activity.activityName === "walking" && activity.distance === "15") {
+      body = {fifteen_km: activity.time}
+      updateWalkning(body)
+    }
+    if (activity.activityName === "walking" && activity.distance === "20") {
+      body = {twenty_km: activity.time}
+      updateWalkning(body)
+    }
+
+
+
+
+
+    
     
 
     //fetch/post
-    addActivity(activity);
+    //addActivity(activity);
 
     //reset activity
     setActivity({
