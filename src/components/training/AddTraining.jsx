@@ -173,7 +173,7 @@ const AddTraining = () => {
       updateWalking(body);
     }
 
-    console.log(activity);
+    
 
     //fetch/post
     addActivity(activity);
@@ -189,9 +189,11 @@ const AddTraining = () => {
     });
     //reset time
     setTime({ hours: "", minutes: "", seconds: "" });
+
+    setPostOk(true);
   };
 
-  const handleNewMeal = () => {
+  const handleNewActivity = () => {
     setPostOk(false);
     window.location.reload();
   };
@@ -319,7 +321,7 @@ const AddTraining = () => {
             <Link to="/profile">
               <button style={style}>Återgå till profilen</button>
             </Link>
-            <button style={style} onClick={handleNewMeal}>
+            <button style={style} onClick={handleNewActivity}>
               Logga ny aktivitet
             </button>
           </div>
