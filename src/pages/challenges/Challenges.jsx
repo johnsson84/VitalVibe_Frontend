@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { ThemeColorContext } from "../../context/themeColor/ThemeColorContext";
-import { ChallengeContext } from "../../context/ChallengeContext";
+import { ChallengeContext } from "../../context/ChallengeContext/ChallengeContext";
 import { Link } from "react-router-dom";
 import ChallengeItem from "../../components/challenge/ChallengeItem";
 import "./Challenges.css";

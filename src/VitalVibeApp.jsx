@@ -9,7 +9,8 @@ import { ActivityProvider } from "./context/TrainingContext";
 import { FoodProvider } from "./context/FoodContext";
 import { ThemeColorProvider } from "./context/themeColor/ThemeColorContext";
 import { UserProvider } from "./context/user/UserContext";
-import { ChallengeProvider } from "./context/ChallengeContext";
+import { ChallengeProvider } from "./context/ChallengeContext/ChallengeContext";
+import { UserBestResultProvider } from "./context/user/UserBestResultContext";
 
 // PAGES
 import Loginpage from "./pages/loginpage/Loginpage";
@@ -26,10 +27,11 @@ import About from "./pages/about/About";
 function VitalVibeApp() {
   return (
     <div className="vitalvibe">
-      <AuthProvider>     
-          <UserProvider>
-            <ActivityProvider>
-              <ChallengeProvider>
+      <AuthProvider>
+        <UserProvider>
+          <ActivityProvider>
+            <ChallengeProvider>
+              <UserBestResultProvider>
                 <FoodProvider>
                   <ThemeColorProvider>
                     <BrowserRouter>
@@ -62,7 +64,10 @@ function VitalVibeApp() {
                             path="/profile/challenges"
                             element={<Challenges></Challenges>}
                           ></Route>
-                          <Route path="/profile/about" element={<About></About>}></Route>
+                          <Route
+                            path="/profile/about"
+                            element={<About></About>}
+                          ></Route>
                           <Route
                             path="/profile/settings"
                             element={<Settings></Settings>}
@@ -80,9 +85,10 @@ function VitalVibeApp() {
                     </BrowserRouter>
                   </ThemeColorProvider>
                 </FoodProvider>
-              </ChallengeProvider>
-            </ActivityProvider>
-          </UserProvider>
+              </UserBestResultProvider>
+            </ChallengeProvider>
+          </ActivityProvider>
+        </UserProvider>
       </AuthProvider>
     </div>
   );
