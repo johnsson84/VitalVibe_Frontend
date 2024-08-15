@@ -20,9 +20,12 @@ const Profile = () => {
 
   const navigate = useNavigate();
 
-  // Temporär klick funktion till knapparna vid photo som inte har någon funktion just nu.
-  const handleClick = () => {
-    alert("Inget implementerat än...");
+  const handleActivityClick = () => {
+    navigate("/profile/activitypage");
+  };
+
+  const handleFoodClick = () => {
+    navigate("/profile/foodpage");
   };
 
   const activeCircleClass = `profileBestResultSwitchCircle${circlePosition}`;
@@ -180,11 +183,11 @@ const Profile = () => {
           ></img>
         </div>
         <div className="profileButtons">
-          <button id="profileButtonA" onClick={handleClick}>
-            <img id="profileButtonImgA" src="cog_icon.svg"></img>
+          <button id="profileButtonA" onClick={handleActivityClick}>
+            <img id="profileButtonImgA" src="nav_training.svg"></img>
           </button>
-          <button id="profileButtonB" onClick={handleClick}>
-            <img id="profileButtonImgB" src="food.svg"></img>
+          <button id="profileButtonB" onClick={handleFoodClick}>
+            <img id="profileButtonImgB" src="nav_food.svg"></img>
           </button>
         </div>
       </div>

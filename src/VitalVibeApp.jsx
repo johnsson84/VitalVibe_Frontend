@@ -24,6 +24,7 @@ import RegisterPage from "./pages/registerpage/Registerpage";
 import Challenges from "./pages/challenges/Challenges";
 import About from "./pages/about/About";
 import ActivityPage from "./pages/activitypage/ActivityPage";
+import FoodPage from "./pages/foodpage/FoodPage";
 
 function VitalVibeApp() {
   return (
@@ -76,6 +77,10 @@ function VitalVibeApp() {
                           <Route
                             path="/profile/activitypage"
                             element={<ActivityPage></ActivityPage>}
+                          ></Route>
+                          <Route
+                            path="/profile/foodpage"
+                            element={<FoodPage></FoodPage>}
                           ></Route>
                         </Route>
                         <Route

@@ -1,0 +1,12 @@
+.activityPageContent {
+    
+    display: flex;
+    flex-wrap: wrap;
+}
+.activityPageContentBox {
+    background-color: rgb(36, 36, 36);
+    box-shadow: 3px 3px 3px 1px rgb(18, 18, 18);
+    padding: 10px;
+    border-radius: 10px;
+    margin: 10px;
+}

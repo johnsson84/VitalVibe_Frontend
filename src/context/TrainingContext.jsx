@@ -5,6 +5,8 @@ import { useContext, useState, createContext } from "react";
 const ActivityContext = createContext();
 
 const ActivityProvider = ({ children }) => {
+
+  // Lägg till en aktivitet
   const addActivity = async (acitvity) => {
     var activityOptions = {
       method: "POST",
@@ -42,8 +44,36 @@ const ActivityProvider = ({ children }) => {
     }
   };
 
+  // Lista alla aktiviteter från en user.
+  const [foundActivities, setFoundActivities] = useState({});
+
+  const listActivities = async (userId) => {
+
+    var options = {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      credentials: "include",
+    };
+
+    try {
+      const res = await fetch(
+        `${import.meta.env.VITE_API_URL}/activity/list-all/${userId}`,
+        options
+      );
+
+      const data = await res.json();
+      setFoundActivities(data);
+
+    } catch (error) {
+      console.log(error);
+    }
+
+  }
+
   return (
-    <ActivityContext.Provider value={{ addActivity }}>
+    <ActivityContext.Provider value={{ addActivity, listActivities, foundActivities }}>
       {children}
     </ActivityContext.Provider>
   );
