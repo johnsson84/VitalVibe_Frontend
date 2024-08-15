@@ -59,7 +59,7 @@ const UserBestResultProvider = ({ children }) => {
     }
   };
 
-  const updateWalkning = async (bodySeconds) => {
+  const updateWalking = async (bodySeconds) => {
     var WalkingOptions = {
       method: "PUT",
       headers: {
@@ -87,7 +87,7 @@ const UserBestResultProvider = ({ children }) => {
 
   return (
     <UserBestResultContext.Provider
-      value={{ updateWalkning, updateBiking, updateRunning }}
+      value={{ updateWalking, updateBiking, updateRunning }}
     >
       {children}
     </UserBestResultContext.Provider>

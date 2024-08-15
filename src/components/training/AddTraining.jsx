@@ -9,7 +9,7 @@ import { UserBestResultContext } from "../../context/user/UserBestResultContext"
 
 const AddTraining = () => {
   const { addActivity } = useContext(ActivityContext);
-  const {updateWalkning, updateBiking, updateRunning} = useContext(UserBestResultContext)
+  const {updateWalking, updateBiking, updateRunning} = useContext(UserBestResultContext)
   const { style } = useContext(ThemeColorContext);
 
   //get loggedInUserId from Local Storage
@@ -144,27 +144,27 @@ const AddTraining = () => {
     //walking
     if (activity.activityName === "walking" && activity.distance === "2") {
       body = { two_km: activity.time };
-      updateWalkning(body)
+      updateWalking(body)
     }
     if (activity.activityName === "walking" && activity.distance === "5") {
       body = {five_km: activity.time}
-      updateWalkning(body)
+      updateWalking(body)
     }
     if (activity.activityName === "walking" && activity.distance === "7") {
       body = {seven_km: activity.time}
-      updateWalkning(body)
+      updateWalking(body)
     }
     if (activity.activityName === "walking" && activity.distance === "10") {
       body = {ten_km: activity.time}
-      updateWalkning(body)
+      updateWalking(body)
     }
     if (activity.activityName === "walking" && activity.distance === "15") {
       body = {fifteen_km: activity.time}
-      updateWalkning(body)
+      updateWalking(body)
     }
     if (activity.activityName === "walking" && activity.distance === "20") {
       body = {twenty_km: activity.time}
-      updateWalkning(body)
+      updateWalking(body)
     }
 
 
@@ -175,7 +175,7 @@ const AddTraining = () => {
     
 
     //fetch/post
-    //addActivity(activity);
+    addActivity(activity);
 
     //reset activity
     setActivity({
