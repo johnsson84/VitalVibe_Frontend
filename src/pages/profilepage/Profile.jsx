@@ -25,6 +25,10 @@ const Profile = () => {
     alert("Inget implementerat än...");
   };
 
+  const handleClickFood = () => {
+    navigate("/profile/foodpage");
+  };
+
   const activeCircleClass = `profileBestResultSwitchCircle${circlePosition}`;
 
   const showResultContent = (circlePosition) => {
@@ -147,7 +151,6 @@ const Profile = () => {
     }
   };
 
-  
   useEffect(() => {
     setTimeout(() => {
       getLoggedInUserInfo();
@@ -183,7 +186,7 @@ const Profile = () => {
           <button id="profileButtonA" onClick={handleClick}>
             <img id="profileButtonImgA" src="cog_icon.svg"></img>
           </button>
-          <button id="profileButtonB" onClick={handleClick}>
+          <button id="profileButtonB" onClick={handleClickFood}>
             <img id="profileButtonImgB" src="food.svg"></img>
           </button>
         </div>

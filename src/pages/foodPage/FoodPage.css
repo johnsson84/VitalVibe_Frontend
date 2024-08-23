@@ -1,0 +1,35 @@
+.foodPageMain{
+    color: white;
+    height: auto;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.foodPageContainer{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.foodPageContainer p{
+    text-align: left;
+}
+
+.foodPageContainer button{
+    border-style: none;
+    background-color: var(--custom-color);
+    color: white;
+    padding: 0.2rem;
+    border-radius: 5px;
+}
+
+.foodPageContainer button:hover{
+    background-color: beige;
+    color: black;
+    cursor: pointer;
+}

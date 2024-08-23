@@ -34,12 +34,41 @@ const FoodProvider = ({ children }) => {
       console.log("data" + JSON.stringify(data));
       setMessage("Message: " + JSON.stringify(data));
     } catch (error) {
-      console.log(error)
+      console.log(error);
+    }
+  };
+
+  const currentUser = localStorage.getItem("loggedInUserId");
+  const [allFood, setAllFood] = useState([]);
+
+  //get all food
+  const getAllFood = async () => {
+    var foodOptionsAll = {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      credentials: "include",
+    };
+
+    try {
+      const res = await fetch(
+        `${import.meta.env.VITE_API_URL}/meal/list-all/${currentUser}`,
+        foodOptionsAll
+      );
+
+      const data = await res.json();
+      console.log("data get all" + JSON.stringify(data));
+      setAllFood(data);
+    } catch (error) {
+      console.log(error);
     }
   };
 
   return (
-    <FoodContext.Provider value={{ addFood }}>{children}</FoodContext.Provider>
+    <FoodContext.Provider value={{ addFood, getAllFood, allFood }}>
+      {children}
+    </FoodContext.Provider>
   );
 };
 
