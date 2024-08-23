@@ -31,7 +31,6 @@ const FoodProvider = ({ children }) => {
       );
 
       const data = await res.json();
-      console.log("data" + JSON.stringify(data));
       setMessage("Message: " + JSON.stringify(data));
     } catch (error) {
       console.log(error);
@@ -58,15 +57,37 @@ const FoodProvider = ({ children }) => {
       );
 
       const data = await res.json();
-      console.log("data get all" + JSON.stringify(data));
       setAllFood(data);
     } catch (error) {
       console.log(error);
     }
   };
 
+  //delete food
+  const deleteFood = async (foodId) => {
+    var foodOptionsAll = {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      credentials: "include",
+    };
+
+    try {
+      const res = await fetch(
+        `${import.meta.env.VITE_API_URL}/meal/delete/${foodId}`,
+        foodOptionsAll
+      );
+
+      const data = await res.json();
+      
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
-    <FoodContext.Provider value={{ addFood, getAllFood, allFood }}>
+    <FoodContext.Provider value={{ addFood, getAllFood, allFood, deleteFood }}>
       {children}
     </FoodContext.Provider>
   );
