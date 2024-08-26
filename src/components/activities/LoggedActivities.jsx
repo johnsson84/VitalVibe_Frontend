@@ -15,9 +15,29 @@ const LoggedActivities = () => {
     deleteActivity,
   } = useContext(ActivityContext);
 
+  const [ currentActivities, setCurrentActivities ] = useState({});
+
+  // Run on page load
+  useEffect(() => {
+    listActivities(loggedInUserId);
+  }, []);
+
+  useEffect(() => {
+    if (foundActivities) {
+      setCurrentActivities(foundActivities);
+    }
+  }, [foundActivities]);
+
+  // Delete an activity
+  const handleDelete = (activityId) => {
+    deleteActivity(activityId).then(() => {
+      setCurrentActivities(prevActivities => prevActivities.filter(activity => activity.id !== activityId))
+    })
+  }
+
   const usersActivities = () => {
-    if (Array.isArray(foundActivities)) {
-      let foundActivitiesReversed = foundActivities.slice().reverse();
+    if (Array.isArray(currentActivities)) {
+      let foundActivitiesReversed = currentActivities.slice().reverse();
       return (
         <div className="activityPageContent">
           {foundActivitiesReversed.map((activity) => (
@@ -55,7 +75,7 @@ const LoggedActivities = () => {
                 </div>
               </div>
               <div className="activityPageContentButtons">
-                <button>Delete</button>
+                <button onClick={() => handleDelete(activity.id)}>Delete</button>
                 <button>Edit</button>
               </div>
             </div>
@@ -80,13 +100,9 @@ const LoggedActivities = () => {
     }
   };
 
-  // Run on page load
-  useEffect(() => {
-    listActivities(loggedInUserId);
-    // console.log(foundActivities);
-  }, []);
+  
 
-  useEffect(() => {}, [foundActivities]);
+  
 
   return <>{usersActivities()}</>;
 };
