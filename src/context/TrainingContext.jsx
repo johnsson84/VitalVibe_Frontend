@@ -72,8 +72,31 @@ const ActivityProvider = ({ children }) => {
 
   }
 
+  // Delete an activity
+  const deleteActivity = async (activityId) => {
+
+    var options = {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      credentials: "include",
+    };
+
+    try {
+      const res = await fetch(
+        `${import.meta.env.VITE_API_URL}/activity/delete/${activityId}`,
+        options
+      );
+
+    } catch (error) {
+      console.log(error);
+    }
+
+  }
+
   return (
-    <ActivityContext.Provider value={{ addActivity, listActivities, foundActivities }}>
+    <ActivityContext.Provider value={{ addActivity, listActivities, foundActivities, setFoundActivities, deleteActivity }}>
       {children}
     </ActivityContext.Provider>
   );

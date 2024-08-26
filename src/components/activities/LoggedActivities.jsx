@@ -8,27 +8,55 @@ const LoggedActivities = () => {
     localStorage.getItem("loggedInUserId")
   );
 
-  const { listActivities, foundActivities } = useContext(ActivityContext);
+  const {
+    listActivities,
+    foundActivities,
+    setFoundActivities,
+    deleteActivity,
+  } = useContext(ActivityContext);
 
   const usersActivities = () => {
     if (Array.isArray(foundActivities)) {
+      let foundActivitiesReversed = foundActivities.slice().reverse();
       return (
         <div className="activityPageContent">
-          {foundActivities.map((activity) => (
+          {foundActivitiesReversed.map((activity) => (
             <div key={activity.id} className="activityPageContentBox">
               <div className="activitPageContentInfo">
-                Type: {activity.activityName}
-                <br></br>
-                Distance: {activity.distance} km <br></br>
-                Tid:{" "}
-                {Math.floor(activity.time / 3600) !== 0
-                  ? `${Math.floor(activity.time / 3600)}tim`
-                  : null}{" "}
-                {Math.floor((activity.time % 3600) / 60)}min{" "}
-                {activity.time % 60}sek<br></br>
-                Datum: {activity.date}<br></br>
-                Kalorier: {activity.calories}<br></br>
-                Kändes? {checkMood(activity.mood)}
+                <div className="activityContentInfoFields">
+                  <div>Type:</div>
+                  <div>{activity.activityName}</div>
+                </div>
+                <div className="activityContentInfoFields">
+                  <div>Distance:</div>
+                  <div>{activity.distance} km</div>
+                </div>
+                <div className="activityContentInfoFields">
+                  <div>Tid:</div>
+                  <div>
+                    {Math.floor(activity.time / 3600) !== 0
+                      ? `${Math.floor(activity.time / 3600)}tim`
+                      : null}{" "}
+                    {Math.floor((activity.time % 3600) / 60)}min{" "}
+                    {activity.time % 60}sek
+                  </div>
+                </div>
+                <div className="activityContentInfoFields">
+                  <div>Datum:</div>
+                  <div>{activity.date}</div>
+                </div>
+                <div className="activityContentInfoFields">
+                  <div>Kalorier:</div>
+                  <div>{activity.calories}</div>
+                </div>
+                <div className="activityContentInfoFields">
+                  <div>Kändes?</div>
+                  <div>{checkMood(activity.mood)}</div>
+                </div>
+              </div>
+              <div className="activityPageContentButtons">
+                <button>Delete</button>
+                <button>Edit</button>
               </div>
             </div>
           ))}
@@ -41,16 +69,16 @@ const LoggedActivities = () => {
   // Översätta mood
   const checkMood = (mood) => {
     switch (mood) {
-        case "BAD":
-            return "Dåligt"
-        case "AVERAGE":
-            return "Hyffsat"
-        case "GOOD":
-            return "Bra"
-        case "VERY GOOD":
-            return "Jättebra!"        
+      case "BAD":
+        return "Dåligt";
+      case "AVERAGE":
+        return "Hyffsat";
+      case "GOOD":
+        return "Bra";
+      case "VERY GOOD":
+        return "Jättebra!";
     }
-  }
+  };
 
   // Run on page load
   useEffect(() => {
@@ -58,15 +86,9 @@ const LoggedActivities = () => {
     // console.log(foundActivities);
   }, []);
 
-  useEffect(() => {
+  useEffect(() => {}, [foundActivities]);
 
-  }, [foundActivities]);
-
-  return (
-    <>
-        {usersActivities()}
-    </>
-  )
+  return <>{usersActivities()}</>;
 };
 
 export default LoggedActivities;
