@@ -1,12 +1,16 @@
 import "./LoggedActivities.css";
 import { ActivityContext } from "../../context/TrainingContext";
 import { useState, useContext, useEffect } from "react";
+import { ThemeColorContext } from "../../context/themeColor/ThemeColorContext";
+import ActivitiesEditModal from "./ActivitiesEditModal";
 
 const LoggedActivities = () => {
   // Get loggedInUserId from Local Storage
   const [loggedInUserId, setLoggedInUserId] = useState(
     localStorage.getItem("loggedInUserId")
   );
+
+  const {style} = useContext(ThemeColorContext);
 
   const {
     listActivities,
@@ -16,6 +20,14 @@ const LoggedActivities = () => {
   } = useContext(ActivityContext);
 
   const [ currentActivities, setCurrentActivities ] = useState({});
+  const [showModal, setShowModal] = useState(false);
+  const [activityToEdit, setActivityToEdit] = useState("");
+
+  const handleClose = () => setShowModal(false);
+  const handleShow = (activityId) => {
+    setShowModal(true);
+    setActivityToEdit(activityId);
+  } 
 
   // Run on page load
   useEffect(() => {
@@ -75,8 +87,8 @@ const LoggedActivities = () => {
                 </div>
               </div>
               <div className="activityPageContentButtons">
-                <button onClick={() => handleDelete(activity.id)}>Delete</button>
-                <button>Edit</button>
+                <button className="activityPageContentButton" onClick={() => handleShow(activity.id)}>Edit</button>
+                <button className="activityPageContentButton" onClick={() => handleDelete(activity.id)}>Delete</button>
               </div>
             </div>
           ))}
@@ -100,11 +112,12 @@ const LoggedActivities = () => {
     }
   };
 
-  
-
-  
-
-  return <>{usersActivities()}</>;
+ return (
+    <div style={style}>
+      {usersActivities()}
+      <ActivitiesEditModal isOpen={showModal} onClose={handleClose} activityId={activityToEdit}></ActivitiesEditModal>
+    </div>
+  );
 };
 
 export default LoggedActivities;

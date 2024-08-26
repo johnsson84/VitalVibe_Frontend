@@ -20,5 +20,17 @@
     justify-content: space-between;
 }
 .activityPageContentButtons {
-    
+    display: flex;
+    justify-content:space-between;
+}
+.activityPageContentButton {
+    border: none;
+    border-radius: 3px;
+    padding: 0px 5px;
+    color: white;
+    background-color: var(--custom-color);
+}
+.activityPageContentButton:hover {
+    background-color: white;
+    color: black;
 }
