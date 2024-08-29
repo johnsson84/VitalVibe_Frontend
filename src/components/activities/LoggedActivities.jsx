@@ -87,8 +87,8 @@ const LoggedActivities = () => {
                 </div>
               </div>
               <div className="activityPageContentButtons">
-                <button className="activityPageContentButton" onClick={() => handleShow(activity.id)}>Edit</button>
-                <button className="activityPageContentButton" onClick={() => handleDelete(activity.id)}>Delete</button>
+                <button className="activityPageContentButton" onClick={() => handleShow(activity.id)}>Ändra</button>
+                <button className="activityPageContentButton" onClick={() => handleDelete(activity.id)}>Ta bort</button>
               </div>
             </div>
           ))}
