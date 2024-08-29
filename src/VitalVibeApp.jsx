@@ -63,6 +63,10 @@ function VitalVibeApp() {
                             element={<AddMeal></AddMeal>}
                           ></Route>
                           <Route
+                            path="/profile/foodpage"
+                            element={<FoodPage></FoodPage>}
+                          ></Route>
+                          <Route
                             path="/profile/challenges"
                             element={<Challenges></Challenges>}
                           ></Route>

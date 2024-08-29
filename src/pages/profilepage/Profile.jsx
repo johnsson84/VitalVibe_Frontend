@@ -28,6 +28,10 @@ const Profile = () => {
     navigate("/profile/foodpage");
   };
 
+  const handleClickFood = () => {
+    navigate("/profile/foodpage");
+  };
+
   const activeCircleClass = `profileBestResultSwitchCircle${circlePosition}`;
 
   const showResultContent = (circlePosition) => {
@@ -150,7 +154,6 @@ const Profile = () => {
     }
   };
 
-  
   useEffect(() => {
     setTimeout(() => {
       getLoggedInUserInfo();
