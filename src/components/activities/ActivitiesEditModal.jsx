@@ -8,7 +8,7 @@ const ActivitiesEditModal = ({ isOpen, onClose, activityId }) => {
   return (
     <div className="activitiesEditModal">
       <div className="activitiesEditModalContent">
-        {activityId}
+        Aktivitets id: {activityId}
         <button className="activitiesEditModalCloseButton" onClick={onClose}>Close</button>
       </div>
     </div>
