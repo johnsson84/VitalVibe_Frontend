@@ -1,7 +1,7 @@
 .homeMain {
     width: 100vw;
     display: flex;
-    overflow: hidden;
+    overflow: scroll;
 }
 .homeLeft {
     box-shadow: 3px 3px 3px 1px rgb(18, 18, 18);
@@ -11,6 +11,7 @@
     width: 100%;
     flex: 1;
     margin-left: 6px;
+    height: 100%;
 }
 .homeHeader {
     height: 10%;   
@@ -19,5 +20,4 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    
 }

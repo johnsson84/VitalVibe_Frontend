@@ -1,0 +1,38 @@
+.activityPageContent {
+    
+    display: flex;
+    flex-wrap: wrap;
+}
+.activityPageContentBox {
+    background-color: rgb(36, 36, 36);
+    box-shadow: 3px 3px 3px 1px rgb(18, 18, 18);
+    padding: 10px;
+    border-radius: 10px;
+    margin: 10px;
+}
+.activitPageContentInfo {
+    display: flex;
+    min-width: 200px;
+    flex-direction: column;
+}
+.activityContentInfoFields {
+    display: flex;
+    justify-content: space-between;
+}
+.activityPageContentButtons {
+    display: flex;
+    justify-content:space-between;
+}
+.activityPageContentButton {
+    border: none;
+    border-radius: 3px;
+    padding: 0.2rem;
+    margin-top: 0.4rem;
+    color: white;
+    background-color: var(--custom-color);
+    cursor: pointer;
+}
+.activityPageContentButton:hover {
+    background-color: white;
+    color: black;
+}

@@ -1,0 +1,21 @@
+.activityPage {
+    color: white;
+    width: 100%;
+    max-width: 1100px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+.activityPageLogged {
+    background-color: #2A2E37;
+    box-shadow: 3px 3px 3px 1px rgb(18, 18, 18);
+    border-radius: 15px;
+    padding: 20px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* margin-bottom: 80px; */
+}
+#activityPageTitle {
+    margin-bottom: 10px;
+}

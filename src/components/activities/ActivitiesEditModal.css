@@ -1,0 +1,17 @@
+.activitiesEditModal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.activitiesEditModalContent {
+    background-color: blue;
+    border-radius: 15px;
+    color: white;
+}

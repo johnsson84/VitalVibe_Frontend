@@ -23,6 +23,7 @@ import Logout from "./pages/logout/Logout";
 import RegisterPage from "./pages/registerpage/Registerpage";
 import Challenges from "./pages/challenges/Challenges";
 import About from "./pages/about/About";
+import ActivityPage from "./pages/activitypage/ActivityPage";
 import FoodPage from "./pages/foodPage/FoodPage";
 
 function VitalVibeApp() {
@@ -77,6 +78,11 @@ function VitalVibeApp() {
                             path="/profile/settings"
                             element={<Settings></Settings>}
                           ></Route>
+                          <Route
+                            path="/profile/activitypage"
+                            element={<ActivityPage></ActivityPage>}
+                          ></Route>
+                          
                         </Route>
                         <Route
                           path="/logout"
