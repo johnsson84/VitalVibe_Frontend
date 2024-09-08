@@ -32,10 +32,10 @@ const FoodPage = () => {
           <button style={style} onClick={() => handleClick(food.id)}>
             Radera
           </button>
-          <p>{food.mealType}</p>
-          <p>{food.content}</p>
-          <p>{food.calories}</p>
-          <p>{food.date}</p>
+          <p>Måltid: {food.mealType}</p>
+          <p>Ingredienser: {food.content}</p>
+          <p>Kalorier: {food.calories}</p>
+          <p>Datum: {food.date}</p>
         </div>
       ))}
     </div>
